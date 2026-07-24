@@ -1,24 +1,1120 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import {
+  BookOpen,
+  Brain,
+  Calendar,
+  CheckCircle2,
+  ChevronDown,
+  FileText,
+  Focus,
+  Layers,
+  ListChecks,
+  Mail,
+  Map as MapIcon,
+  Menu,
+  Route as RouteIcon,
+  Search,
+  Sparkles,
+  Target,
+  X,
+  Zap,
+} from "lucide-react";
+import { CONFIG, trackEvent } from "@/lib/landing-config";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
 export const Route = createFileRoute("/")({
-  component: Index,
+  component: LandingPage,
+  head: () => ({
+    meta: [
+      { title: "Guia Visual para o ENEM 2026 | 70 Mapas Mentais" },
+      {
+        name: "description",
+        content:
+          "Organize sua revisão do ENEM 2026 com 70 mapas mentais divididos entre Primeiro Dia, Segundo Dia e Atualidades. Produto digital em PDF.",
+      },
+      { property: "og:title", content: "Guia Visual para o ENEM 2026 | 70 Mapas Mentais" },
+      {
+        property: "og:description",
+        content:
+          "Uma rota visual com 70 mapas mentais para organizar sua revisão do ENEM 2026 — Primeiro Dia, Segundo Dia e Atualidades.",
+      },
+      { property: "og:type", content: "product" },
+      { property: "og:url", content: "/" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Guia Visual para o ENEM 2026 | 70 Mapas Mentais" },
+      {
+        name: "twitter:description",
+        content:
+          "70 mapas mentais organizados em 3 e-books digitais para revisar o ENEM 2026.",
+      },
+    ],
+    links: [
+      { rel: "canonical", href: "/" },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap",
+      },
+    ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Product",
+          name: "Guia Visual para o ENEM 2026 — Rota Visual 70",
+          description:
+            "Coleção de 3 e-books digitais com 70 mapas mentais para revisão do ENEM 2026.",
+          brand: { "@type": "Brand", name: "HN Educação Digital" },
+          category: "Educação",
+          offers: {
+            "@type": "Offer",
+            price: "37.90",
+            priceCurrency: "BRL",
+            availability: "https://schema.org/InStock",
+          },
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: FAQ_ITEMS.map((f) => ({
+            "@type": "Question",
+            name: f.q,
+            acceptedAnswer: { "@type": "Answer", text: f.a },
+          })),
+        }),
+      },
+    ],
+  }),
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
-function Index() {
+// ─────────────────────────────── data
+const NAV_LINKS = [
+  { href: "#como-funciona", label: "Como funciona" },
+  { href: "#materiais", label: "Os materiais" },
+  { href: "#recebe", label: "O que você recebe" },
+  { href: "#oferta", label: "Oferta" },
+  { href: "#faq", label: "Dúvidas" },
+];
+
+const ROUTES = [
+  {
+    tag: "ROTA 1",
+    title: "Primeiro Dia",
+    count: "30 mapas mentais",
+    subjects: [
+      "Linguagens",
+      "Língua Portuguesa",
+      "Literatura",
+      "Redação",
+      "História",
+      "Geografia",
+      "Filosofia",
+      "Sociologia",
+    ],
+    color: "from-[#123A63] to-[#245B8E]",
+  },
+  {
+    tag: "ROTA 2",
+    title: "Segundo Dia",
+    count: "30 mapas mentais",
+    subjects: ["Matemática", "Física", "Química", "Biologia"],
+    color: "from-[#0F6654] to-[#16856B]",
+  },
+  {
+    tag: "ROTA 3",
+    title: "Atualidades 2026",
+    count: "10 mapas mentais",
+    subjects: [
+      "Temas contemporâneos",
+      "Contextualização",
+      "Repertório",
+      "Debates sociais e ambientais",
+      "Debates econômicos",
+      "Tecnologia e geopolítica",
+    ],
+    color: "from-[#F4B942] to-[#e5a627]",
+  },
+];
+
+const FEATURES = [
+  {
+    icon: MapIcon,
+    title: "Rota visual dividida por dias",
+    text: "Materiais separados entre Primeiro Dia, Segundo Dia e Atualidades para consultar apenas o que você precisa.",
+  },
+  {
+    icon: Brain,
+    title: "70 mapas mentais",
+    text: "Cada assunto apresentado com relações, conceitos e pontos essenciais organizados visualmente.",
+  },
+  {
+    icon: Search,
+    title: "Recuperação e identificação de lacunas",
+    text: "Conceitos, relações, fórmulas e pontos essenciais apresentados em uma sequência visual.",
+  },
+  {
+    icon: FileText,
+    title: "Arquivos digitais organizados",
+    text: "Três e-books separados para facilitar a navegação e a escolha do conteúdo que será revisado.",
+  },
+];
+
+const BENEFITS = [
+  "Pare de procurar o mesmo assunto em vários materiais",
+  "Identifique mais facilmente o que ainda precisa de reforço",
+  "Visualize como os principais conceitos se relacionam",
+  "Consulte conteúdos pelo celular, tablet ou computador",
+  "Organize sua revisão entre Primeiro Dia, Segundo Dia e Atualidades",
+  "Utilize os mapas como apoio para questões, aulas e aprofundamentos",
+];
+
+const PAINS = [
+  { icon: Layers, title: "Materiais espalhados", text: "Videoaulas, apostilas, resumos e anotações misturados." },
+  { icon: Calendar, title: "Pouco tempo", text: "Rotina apertada e prova cada vez mais próxima." },
+  { icon: Search, title: "Dificuldade para recuperar conceitos", text: "Sem saber o que já foi estudado e o que voltar a ver." },
+  { icon: Focus, title: "Falta de direção", text: "Sem clareza sobre por onde começar a revisão." },
+];
+
+const AUDIENCE = [
+  { title: "Revisar sem recomeçar tudo", text: "Consulte estruturas visuais antes de retornar a aulas e capítulos completos." },
+  { title: "Organizar conteúdos espalhados", text: "Tenha uma referência visual dividida por áreas e dias de prova." },
+  { title: "Estudar mesmo com pouco tempo", text: "Escolha um tema e faça uma revisão direcionada dentro da sua rotina." },
+  { title: "Saber por onde começar", text: "Escolha entre Primeiro Dia, Segundo Dia e Atualidades conforme sua prioridade." },
+  { title: "Identificar suas lacunas", text: "Perceba quais conceitos estão claros e quais precisam de aprofundamento." },
+  { title: "Utilizar uma estrutura visual", text: "Observe relações, sequências, fórmulas e conceitos apresentados de forma organizada." },
+];
+
+const METHOD_STEPS = [
+  { n: "1", title: "Escolha sua rota", text: "Comece pelo Primeiro Dia, Segundo Dia ou Atualidades." },
+  { n: "2", title: "Visualize o mapa", text: "Observe o tema central, os conceitos essenciais e as relações apresentadas." },
+  { n: "3", title: "Recupere o conteúdo", text: "Feche o material e tente explicar os principais pontos com suas próprias palavras." },
+  { n: "4", title: "Identifique as lacunas", text: "Perceba quais conceitos estão claros e quais ainda precisam de reforço." },
+  { n: "5", title: "Direcione o próximo estudo", text: "Retorne às aulas, questões ou materiais complementares apenas nos pontos necessários." },
+];
+
+const NOT_FOR = [
+  "Não é um curso completo em vídeo",
+  "Não substitui automaticamente aulas, questões e simulados",
+  "Não oferece garantia de aprovação",
+  "Não oferece garantia de determinada nota",
+  "Não é um material oficial do Inep ou do MEC",
+  "Não pretende aprofundar academicamente todos os conteúdos",
+  "Funciona como ferramenta de revisão, organização e identificação de lacunas",
+];
+
+const BONUSES = [
+  { title: "Plano de Revisão Visual de 14 Dias", text: "Uma sequência prática para distribuir os mapas ao longo de duas semanas." },
+  { title: "Checklist dos 70 Mapas", text: "Uma ferramenta para acompanhar o que já foi revisado e o que precisa de reforço." },
+  { title: "Guia de Recuperação Ativa", text: "Orientações simples para utilizar os mapas de maneira mais ativa durante a revisão." },
+];
+
+const FAQ_ITEMS = [
+  {
+    q: "Quantos mapas mentais estão incluídos?",
+    a: "O combo completo reúne 70 mapas mentais: 30 no Primeiro Dia, 30 no Segundo Dia e 10 no material de Atualidades 2026.",
+  },
+  {
+    q: "Quais disciplinas fazem parte?",
+    a: "O Primeiro Dia reúne Linguagens, Língua Portuguesa, Literatura, Redação, História, Geografia, Filosofia e Sociologia. O Segundo Dia reúne Matemática, Física, Química e Biologia.",
+  },
+  {
+    q: "É um curso ou um material em PDF?",
+    a: "É uma coleção de três e-books digitais em PDF. Não se trata de um curso completo em vídeo.",
+  },
+  {
+    q: "O material substitui aulas e exercícios?",
+    a: "Não necessariamente. Ele foi desenvolvido como ferramenta de revisão, organização e identificação de lacunas. Aulas, questões e aprofundamentos continuam sendo importantes quando surgirem dificuldades.",
+  },
+  {
+    q: "Posso estudar pelo celular?",
+    a: "Sim. Os arquivos podem ser consultados pelo celular, tablet ou computador, conforme as condições de acesso e download apresentadas após a compra.",
+  },
+  { q: "Receberei algum material físico?", a: "Não. O produto é totalmente digital e nenhum material físico será enviado." },
+  { q: "Posso imprimir?", a: "Os arquivos poderão ser impressos quando essa opção estiver disponível. Os custos de impressão não estão incluídos." },
+  {
+    q: "Como devo utilizar os mapas?",
+    a: "Escolha uma rota, analise o mapa, tente recuperar os conceitos sem consultar, identifique suas lacunas e direcione o próximo estudo para os pontos que precisam de reforço.",
+  },
+  {
+    q: "O material garante aprovação?",
+    a: "Não. Nenhum material isolado pode garantir aprovação ou determinada nota. O resultado depende da rotina, da prática, da resolução de questões e do desempenho individual.",
+  },
+  ...(CONFIG.showEditorialDate && CONFIG.editorialClosingDate
+    ? [
+        {
+          q: "O material de Atualidades será atualizado?",
+          a: `Data de fechamento editorial: ${CONFIG.editorialClosingDate}. Eventuais atualizações dependerão das condições informadas no momento da compra.`,
+        },
+      ]
+    : []),
+  { q: "Posso compartilhar os arquivos?", a: "Não. O acesso é individual e destinado ao comprador, conforme os Termos de Uso." },
+  {
+    q: "Como funciona o suporte?",
+    a: "O suporte é realizado pelo e-mail informado no rodapé, dentro dos horários e condições apresentados.",
+  },
+];
+
+// ─────────────────────────────── shared UI
+function CTAButton({
+  kind = "combo",
+  children,
+  event,
+  size = "lg",
+  variant = "primary",
+  className = "",
+}: {
+  kind?: "combo" | "firstDay";
+  children: React.ReactNode;
+  event: string;
+  size?: "md" | "lg";
+  variant?: "primary" | "gold" | "outline";
+  className?: string;
+}) {
+  const url = kind === "combo" ? CONFIG.comboCheckoutUrl : CONFIG.firstDayCheckoutUrl;
+  const enabled = Boolean(url);
+  const sizeCls = size === "lg" ? "px-7 py-4 text-base sm:text-lg" : "px-5 py-3 text-sm";
+  const variantCls =
+    variant === "gold"
+      ? "bg-gold text-navy hover:brightness-105"
+      : variant === "outline"
+        ? "bg-white text-navy border-2 border-navy hover:bg-navy hover:text-white"
+        : "bg-green text-white hover:bg-green-dark";
+  const handleClick = () => {
+    if (!enabled) return;
+    trackEvent(event);
+    window.location.href = url;
+  };
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
+    <button
+      type="button"
+      onClick={handleClick}
+      disabled={!enabled}
+      aria-disabled={!enabled}
+      className={`inline-flex items-center justify-center gap-2 rounded-full font-bold uppercase tracking-wide shadow-lg shadow-green/20 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xl disabled:cursor-not-allowed disabled:opacity-60 disabled:shadow-none disabled:hover:translate-y-0 ${sizeCls} ${variantCls} ${className}`}
     >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
+      {children}
+    </button>
+  );
+}
+
+function SectionEyebrow({ children }: { children: React.ReactNode }) {
+  return (
+    <span className="inline-flex items-center gap-2 rounded-full border border-border-soft bg-white px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-navy-2">
+      <Sparkles className="h-3.5 w-3.5 text-gold" />
+      {children}
+    </span>
+  );
+}
+
+// ─────────────────────────────── page
+function LandingPage() {
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [showSticky, setShowSticky] = useState(false);
+  const heroRef = useRef<HTMLDivElement | null>(null);
+  const footerRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    if (!CONFIG.showStickyMobileCta || !CONFIG.comboCheckoutUrl) return;
+    const heroEl = heroRef.current;
+    const footerEl = footerRef.current;
+    if (!heroEl) return;
+    let heroPassed = false;
+    let footerVisible = false;
+    const update = () => setShowSticky(heroPassed && !footerVisible);
+    const heroObs = new IntersectionObserver(
+      ([e]) => {
+        heroPassed = !e.isIntersecting && e.boundingClientRect.top < 0;
+        update();
+      },
+      { threshold: 0 },
+    );
+    heroObs.observe(heroEl);
+    let footerObs: IntersectionObserver | null = null;
+    if (footerEl) {
+      footerObs = new IntersectionObserver(
+        ([e]) => {
+          footerVisible = e.isIntersecting;
+          update();
+        },
+        { threshold: 0 },
+      );
+      footerObs.observe(footerEl);
+    }
+    return () => {
+      heroObs.disconnect();
+      footerObs?.disconnect();
+    };
+  }, []);
+
+  const closeMenu = useCallback(() => setMenuOpen(false), []);
+
+  return (
+    <div className="min-h-screen bg-white text-foreground">
+      {/* Announcement bar */}
+      <div className="bg-navy text-white">
+        <div className="mx-auto flex max-w-6xl items-center justify-center gap-2 px-4 py-2 text-center text-[11px] font-semibold uppercase tracking-wider sm:text-xs">
+          <Zap className="h-3.5 w-3.5 shrink-0 text-gold" aria-hidden />
+          <span>70 mapas mentais • 3 e-books digitais • acesso após a confirmação do pagamento</span>
+        </div>
+      </div>
+
+      {/* Header */}
+      <header
+        className={`sticky top-0 z-40 border-b border-transparent transition-all ${
+          scrolled ? "border-border-soft bg-white/85 shadow-sm backdrop-blur" : "bg-white"
+        }`}
+      >
+        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
+          <a href="#top" className="flex items-center gap-2 font-display text-base font-extrabold text-navy sm:text-lg">
+            <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-navy text-white">
+              <MapIcon className="h-5 w-5" aria-hidden />
+            </span>
+            <span className="tracking-tight">Guia Visual ENEM 2026</span>
+          </a>
+
+          <nav className="hidden items-center gap-6 lg:flex">
+            {NAV_LINKS.map((l) => (
+              <a key={l.href} href={l.href} className="text-sm font-medium text-foreground/80 transition hover:text-navy">
+                {l.label}
+              </a>
+            ))}
+            <a
+              href="#oferta"
+              onClick={() => trackEvent("view_offer")}
+              className="rounded-full bg-green px-5 py-2 text-sm font-bold text-white shadow-md transition hover:bg-green-dark"
+            >
+              Ver oferta
+            </a>
+          </nav>
+
+          <button
+            className="lg:hidden inline-flex h-10 w-10 items-center justify-center rounded-lg border border-border-soft text-navy"
+            aria-label={menuOpen ? "Fechar menu" : "Abrir menu"}
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen((v) => !v)}
+          >
+            {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
+
+        {menuOpen && (
+          <div className="border-t border-border-soft bg-white lg:hidden">
+            <nav className="mx-auto flex max-w-6xl flex-col px-4 py-3">
+              {NAV_LINKS.map((l) => (
+                <a
+                  key={l.href}
+                  href={l.href}
+                  onClick={closeMenu}
+                  className="border-b border-border-soft/60 py-3 text-sm font-medium text-foreground/90"
+                >
+                  {l.label}
+                </a>
+              ))}
+              <a
+                href="#oferta"
+                onClick={() => {
+                  trackEvent("view_offer");
+                  closeMenu();
+                }}
+                className="mt-3 inline-flex items-center justify-center rounded-full bg-green px-5 py-3 text-sm font-bold text-white"
+              >
+                Ver oferta
+              </a>
+            </nav>
+          </div>
+        )}
+      </header>
+
+      <main id="top">
+        {/* HERO */}
+        <section ref={heroRef} className="relative overflow-hidden bg-gradient-to-b from-cream via-white to-white">
+          <div className="pointer-events-none absolute inset-0 opacity-40">
+            <div className="absolute -top-24 -left-24 h-72 w-72 rounded-full bg-gold-soft blur-3xl" />
+            <div className="absolute -bottom-32 -right-16 h-80 w-80 rounded-full bg-[color:var(--gold-soft)] blur-3xl" />
+          </div>
+          <div className="relative mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-20 lg:py-24">
+            <div className="mx-auto max-w-3xl text-center">
+              <SectionEyebrow>Guia Visual para o ENEM 2026</SectionEyebrow>
+              <h1 className="mt-5 font-display text-3xl font-extrabold leading-[1.1] text-navy sm:text-5xl lg:text-6xl">
+                Organize sua revisão com <span className="marker-underline">70 mapas mentais</span> divididos entre o
+                Primeiro Dia, o Segundo Dia e Atualidades.
+              </h1>
+              <p className="mx-auto mt-5 max-w-2xl text-base text-muted-fg sm:text-lg">
+                Uma rota visual para recuperar os principais conteúdos, identificar lacunas e saber o que precisa ser
+                reforçado antes da prova.
+              </p>
+
+              <ul className="mx-auto mt-7 flex max-w-2xl flex-col gap-2 text-left text-sm text-foreground sm:text-base">
+                {[
+                  "Três e-books digitais organizados por rota",
+                  "70 mapas mentais para consulta e revisão",
+                  "Acesso pelo celular, tablet ou computador",
+                ].map((b) => (
+                  <li key={b} className="flex items-start gap-3">
+                    <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-green" aria-hidden />
+                    <span>{b}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="mt-8 flex flex-col items-center gap-3">
+                <div className="text-sm text-muted-fg">
+                  Combo completo por{" "}
+                  <span className="text-lg font-extrabold text-navy">{CONFIG.comboPrice}</span>
+                </div>
+                <CTAButton event="cta_combo_click">Quero acessar os 70 mapas mentais</CTAButton>
+                <p className="max-w-md text-xs text-muted-fg">
+                  Produto 100% digital. Acesso disponibilizado após a confirmação do pagamento.
+                </p>
+              </div>
+            </div>
+
+            {/* Mockup placeholder (only visible in dev — hidden in prod as briefed) */}
+            {import.meta.env.DEV && (
+              <div className="mx-auto mt-12 max-w-4xl">
+                <div className="relative mx-auto grid aspect-[16/9] w-full place-items-center rounded-3xl border border-dashed border-navy-2/30 bg-white/60 text-sm text-muted-fg">
+                  <div className="text-center">
+                    <BookOpen className="mx-auto h-8 w-8 text-navy-2" />
+                    <p className="mt-2">Espaço reservado para o mockup dos três e-books</p>
+                    <p className="text-xs">(imagens serão adicionadas posteriormente)</p>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+        </section>
+
+        {/* Trust strip */}
+        <section className="border-y border-border-soft bg-surface">
+          <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
+            <p className="text-center font-display text-lg font-bold text-navy sm:text-xl">
+              Receba os materiais digitais após a confirmação do pagamento.
+            </p>
+            <div className="mt-6 grid gap-4 sm:grid-cols-3">
+              {[
+                { icon: FileText, title: "Acesso digital", text: "Arquivos em PDF disponibilizados após a confirmação." },
+                { icon: Layers, title: "Arquivos organizados", text: "Três e-books separados por rota de revisão." },
+                { icon: Mail, title: "Suporte por e-mail", text: "Atendimento pelo canal informado no rodapé." },
+              ].map((i) => (
+                <div key={i.title} className="flex items-start gap-3 rounded-2xl bg-white p-4 shadow-sm">
+                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-cream text-navy">
+                    <i.icon className="h-5 w-5" />
+                  </span>
+                  <div>
+                    <div className="text-sm font-bold text-navy">{i.title}</div>
+                    <div className="text-sm text-muted-fg">{i.text}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Demonstration visual (real gallery placeholder — hidden in prod until real images provided) */}
+        <section id="materiais" className="py-16 sm:py-24">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <div className="mx-auto max-w-3xl text-center">
+              <SectionEyebrow>Demonstração visual</SectionEyebrow>
+              <h2 className="mt-4 font-display text-3xl font-extrabold text-navy sm:text-4xl">
+                Veja como sua revisão fica <span className="marker-underline">mais clara</span> quando os conteúdos
+                estão organizados visualmente.
+              </h2>
+              <p className="mt-4 text-muted-fg">
+                Cada rota apresenta os assuntos em uma sequência visual, com conceitos centrais, relações e pontos
+                essenciais para a revisão.
+              </p>
+            </div>
+
+            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {ROUTES.map((r) => (
+                <article
+                  key={r.title}
+                  className="group relative overflow-hidden rounded-3xl border border-border-soft bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-lg"
+                >
+                  <div className={`inline-flex rounded-full bg-gradient-to-r ${r.color} px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-white`}>
+                    {r.tag}
+                  </div>
+                  <h3 className="mt-4 font-display text-xl font-extrabold text-navy">{r.title}</h3>
+                  <div className="mt-1 text-sm font-semibold text-green">{r.count}</div>
+                  <ul className="mt-4 space-y-1.5 text-sm text-foreground/80">
+                    {r.subjects.map((s) => (
+                      <li key={s} className="flex items-start gap-2">
+                        <span className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-gold" />
+                        {s}
+                      </li>
+                    ))}
+                  </ul>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Feature cards */}
+        <section id="como-funciona" className="bg-surface py-16 sm:py-24">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <div className="mx-auto max-w-3xl text-center">
+              <SectionEyebrow>Como funciona</SectionEyebrow>
+              <h2 className="mt-4 font-display text-3xl font-extrabold text-navy sm:text-4xl">
+                Um material pensado para <span className="marker-underline">revisar com clareza</span>.
+              </h2>
+            </div>
+
+            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {FEATURES.map((f) => (
+                <div key={f.title} className="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-border-soft transition hover:-translate-y-1 hover:shadow-md">
+                  <span className="grid h-12 w-12 place-items-center rounded-2xl bg-cream text-navy">
+                    <f.icon className="h-6 w-6" />
+                  </span>
+                  <h3 className="mt-4 font-display text-lg font-extrabold text-navy">{f.title}</h3>
+                  <p className="mt-2 text-sm text-muted-fg">{f.text}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-10 text-center">
+              <CTAButton event="cta_combo_click" variant="primary">
+                Quero organizar minha revisão
+              </CTAButton>
+            </div>
+          </div>
+        </section>
+
+        {/* Direct benefit — dark */}
+        <section className="relative overflow-hidden bg-navy py-16 text-white sm:py-24">
+          <div className="pointer-events-none absolute inset-0 opacity-20">
+            <div className="absolute -top-24 right-0 h-72 w-72 rounded-full bg-green blur-3xl" />
+            <div className="absolute bottom-0 -left-16 h-72 w-72 rounded-full bg-gold blur-3xl" />
+          </div>
+          <div className="relative mx-auto grid max-w-6xl gap-10 px-4 sm:px-6 lg:grid-cols-[1.2fr_1fr] lg:items-center">
+            <div>
+              <SectionEyebrow>Benefício direto</SectionEyebrow>
+              <h2 className="mt-4 font-display text-3xl font-extrabold sm:text-4xl">
+                Revise de uma forma mais <span className="text-gold">visual, prática e organizada</span>.
+              </h2>
+              <ul className="mt-6 space-y-3">
+                {BENEFITS.map((b) => (
+                  <li key={b} className="flex items-start gap-3 text-white/90">
+                    <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-gold" aria-hidden />
+                    <span>{b}</span>
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-8">
+                <CTAButton event="cta_combo_click" variant="gold">
+                  Quero acessar a Rota Visual 70
+                </CTAButton>
+              </div>
+            </div>
+
+            <div className="grid gap-4 sm:grid-cols-2">
+              {ROUTES.map((r) => (
+                <div key={r.title} className="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur">
+                  <div className="text-[11px] font-bold uppercase tracking-widest text-gold">{r.tag}</div>
+                  <div className="mt-1 font-display text-lg font-extrabold">{r.title}</div>
+                  <div className="text-sm text-white/70">{r.count}</div>
+                </div>
+              ))}
+              <div className="rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur">
+                <div className="text-[11px] font-bold uppercase tracking-widest text-gold">Total</div>
+                <div className="mt-1 font-display text-2xl font-extrabold">70 mapas mentais</div>
+                <div className="text-sm text-white/70">3 e-books digitais</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Pain */}
+        <section className="py-16 sm:py-24">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <div className="mx-auto max-w-3xl text-center">
+              <SectionEyebrow>O problema</SectionEyebrow>
+              <h2 className="mt-4 font-display text-3xl font-extrabold text-navy sm:text-4xl">
+                Quanto tempo você ainda vai perder tentando revisar conteúdos espalhados?
+              </h2>
+              <p className="mt-4 text-muted-fg">
+                Durante a preparação, é comum acumular videoaulas, apostilas, exercícios, resumos e anotações. O
+                problema aparece quando chega a hora de revisar e você não sabe o que retomar primeiro.
+              </p>
+            </div>
+
+            <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+              {PAINS.map((p) => (
+                <div key={p.title} className="rounded-2xl border border-border-soft bg-white p-5 shadow-sm">
+                  <span className="grid h-11 w-11 place-items-center rounded-xl bg-cream text-navy">
+                    <p.icon className="h-5 w-5" />
+                  </span>
+                  <div className="mt-3 font-display text-base font-extrabold text-navy">{p.title}</div>
+                  <p className="mt-1 text-sm text-muted-fg">{p.text}</p>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-10 text-center">
+              <CTAButton event="cta_combo_click">Quero uma rota para minha revisão</CTAButton>
+            </div>
+          </div>
+        </section>
+
+        {/* Ideal para você */}
+        <section className="bg-cream py-16 sm:py-24">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <div className="mx-auto max-w-3xl text-center">
+              <SectionEyebrow>Para quem é</SectionEyebrow>
+              <h2 className="mt-4 font-display text-3xl font-extrabold text-navy sm:text-4xl">
+                Este material é ideal para você que deseja:
+              </h2>
+            </div>
+
+            <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+              {AUDIENCE.map((c) => (
+                <div
+                  key={c.title}
+                  className="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-border-soft transition hover:-translate-y-1 hover:shadow-md"
+                >
+                  <div className="flex items-center gap-3">
+                    <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-green/10 text-green">
+                      <Target className="h-5 w-5" />
+                    </span>
+                    <h3 className="font-display text-base font-extrabold text-navy">{c.title}</h3>
+                  </div>
+                  <p className="mt-3 text-sm text-muted-fg">{c.text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Product stack — tudo que recebe */}
+        <section id="recebe" className="py-16 sm:py-24">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <div className="mx-auto max-w-3xl text-center">
+              <SectionEyebrow>3 e-books digitais • 70 mapas mentais</SectionEyebrow>
+              <h2 className="mt-4 font-display text-3xl font-extrabold text-navy sm:text-4xl">
+                Tudo o que você vai receber
+              </h2>
+              <p className="mt-4 text-muted-fg">
+                Tudo organizado para ser visual, prático e fácil de consultar.
+              </p>
+            </div>
+
+            <div className="mt-12 grid gap-6 lg:grid-cols-3">
+              {ROUTES.map((r, i) => (
+                <article key={r.title} className="relative overflow-hidden rounded-3xl bg-white p-6 shadow-sm ring-1 ring-border-soft">
+                  <div className={`absolute inset-x-0 top-0 h-1.5 bg-gradient-to-r ${r.color}`} />
+                  <div className="flex items-center gap-3">
+                    <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-navy text-white">
+                      <RouteIcon className="h-5 w-5" />
+                    </span>
+                    <div>
+                      <div className="text-[11px] font-bold uppercase tracking-widest text-navy-2">{r.tag}</div>
+                      <div className="font-display text-lg font-extrabold text-navy">{r.title}</div>
+                    </div>
+                  </div>
+                  <div className="mt-4 inline-flex rounded-full bg-cream px-3 py-1 text-xs font-bold text-navy">
+                    {r.count}
+                  </div>
+                  <ul className="mt-4 grid grid-cols-1 gap-y-1.5 text-sm text-foreground/80 sm:grid-cols-2">
+                    {r.subjects.map((s) => (
+                      <li key={s} className="flex items-start gap-2">
+                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-green" />
+                        {s}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="pointer-events-none absolute -bottom-6 -right-6 text-6xl font-black text-navy/5">
+                    0{i + 1}
+                  </div>
+                </article>
+              ))}
+            </div>
+
+            <div className="mt-10 rounded-3xl border border-border-soft bg-gradient-to-r from-cream to-white p-6 text-center sm:p-8">
+              <p className="font-display text-xl font-extrabold text-navy sm:text-2xl">
+                70 mapas mentais organizados em três rotas.
+              </p>
+              <div className="mt-5">
+                <CTAButton event="cta_combo_click">Quero receber os três e-books</CTAButton>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Bonuses (conditional) */}
+        {CONFIG.showBonuses && (
+          <section className="bg-surface py-16 sm:py-24">
+            <div className="mx-auto max-w-6xl px-4 sm:px-6">
+              <div className="mx-auto max-w-3xl text-center">
+                <SectionEyebrow>Bônus incluídos</SectionEyebrow>
+                <h2 className="mt-4 font-display text-3xl font-extrabold text-navy sm:text-4xl">
+                  Ferramentas complementares
+                </h2>
+              </div>
+              <div className="mt-10 grid gap-5 lg:grid-cols-3">
+                {BONUSES.map((b) => (
+                  <div key={b.title} className="rounded-3xl bg-white p-6 shadow-sm ring-1 ring-border-soft">
+                    <span className="inline-flex rounded-full bg-gold-soft px-3 py-1 text-[11px] font-bold uppercase tracking-widest text-navy">
+                      Bônus
+                    </span>
+                    <h3 className="mt-3 font-display text-lg font-extrabold text-navy">{b.title}</h3>
+                    <p className="mt-2 text-sm text-muted-fg">{b.text}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* Method steps */}
+        <section className="bg-surface py-16 sm:py-24">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <div className="mx-auto max-w-3xl text-center">
+              <SectionEyebrow>Como aplicar</SectionEyebrow>
+              <h2 className="mt-4 font-display text-3xl font-extrabold text-navy sm:text-4xl">
+                Como utilizar a Rota Visual 70
+              </h2>
+            </div>
+
+            <ol className="mx-auto mt-12 grid max-w-5xl gap-5 sm:grid-cols-2 lg:grid-cols-5">
+              {METHOD_STEPS.map((s) => (
+                <li key={s.n} className="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-border-soft">
+                  <div className="font-display text-3xl font-black text-gold">{s.n}</div>
+                  <div className="mt-1 font-display text-base font-extrabold text-navy">{s.title}</div>
+                  <p className="mt-1 text-sm text-muted-fg">{s.text}</p>
+                </li>
+              ))}
+            </ol>
+
+            <div className="mx-auto mt-10 flex max-w-3xl flex-wrap items-center justify-center gap-2 text-xs font-bold uppercase tracking-widest text-navy sm:text-sm">
+              {["Visualizar", "Recuperar", "Identificar", "Direcionar"].map((w, i, arr) => (
+                <span key={w} className="flex items-center gap-2">
+                  <span className="rounded-full bg-white px-4 py-2 shadow-sm ring-1 ring-border-soft">{w}</span>
+                  {i < arr.length - 1 && <span className="text-gold">→</span>}
+                </span>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Not for you */}
+        <section className="py-16 sm:py-20">
+          <div className="mx-auto max-w-3xl px-4 sm:px-6">
+            <div className="rounded-3xl border border-border-soft bg-white p-6 sm:p-8">
+              <h2 className="font-display text-xl font-extrabold text-navy sm:text-2xl">
+                Antes de escolher, veja o que este material não promete.
+              </h2>
+              <ul className="mt-5 space-y-2 text-sm text-muted-fg">
+                {NOT_FOR.map((n) => (
+                  <li key={n} className="flex items-start gap-2">
+                    <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-navy-2/50" />
+                    {n}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        {/* Pricing */}
+        <section id="oferta" className="bg-gradient-to-b from-white to-cream py-16 sm:py-24">
+          <div className="mx-auto max-w-6xl px-4 sm:px-6">
+            <div className="mx-auto max-w-3xl text-center">
+              <SectionEyebrow>Oferta</SectionEyebrow>
+              <h2 className="mt-4 font-display text-3xl font-extrabold text-navy sm:text-4xl">
+                Escolha a opção que combina com sua revisão
+              </h2>
+            </div>
+
+            <div className={`mx-auto mt-12 grid max-w-5xl gap-6 ${CONFIG.showFirstDayOffer ? "lg:grid-cols-2" : "lg:grid-cols-1"}`}>
+              {CONFIG.showFirstDayOffer && (
+                <div className="flex flex-col rounded-3xl border border-border-soft bg-white p-6 shadow-sm sm:p-8">
+                  <div className="text-[11px] font-bold uppercase tracking-widest text-navy-2">Opção secundária</div>
+                  <h3 className="mt-2 font-display text-2xl font-extrabold text-navy">Primeiro Dia</h3>
+                  <ul className="mt-5 space-y-2 text-sm text-foreground/80">
+                    {["Um e-book digital", "30 mapas mentais", "Linguagens", "Redação", "Ciências Humanas", "Acesso após confirmação do pagamento"].map((i) => (
+                      <li key={i} className="flex items-start gap-2">
+                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-green" />
+                        {i}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="mt-6 border-t border-border-soft pt-6">
+                    <div className="text-sm text-muted-fg">A partir de</div>
+                    <div className="font-display text-3xl font-black text-navy">{CONFIG.firstDayPrice}</div>
+                  </div>
+                  {CONFIG.firstDayCheckoutUrl && (
+                    <div className="mt-5">
+                      <CTAButton kind="firstDay" event="cta_first_day_click" variant="outline" size="md" className="w-full">
+                        Quero apenas o Primeiro Dia
+                      </CTAButton>
+                    </div>
+                  )}
+                </div>
+              )}
+
+              <div className="relative flex flex-col rounded-3xl border-2 border-green bg-white p-6 shadow-xl shadow-green/10 sm:p-8 lg:scale-[1.02]">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                  <span className="rounded-full bg-green px-4 py-1 text-[11px] font-bold uppercase tracking-widest text-white shadow-md">
+                    Oferta mais completa
+                  </span>
+                </div>
+                <div className="text-[11px] font-bold uppercase tracking-widest text-green">Combo completo</div>
+                <h3 className="mt-2 font-display text-2xl font-extrabold text-navy">Rota Visual 70</h3>
+                <ul className="mt-5 space-y-2 text-sm text-foreground/80">
+                  {[
+                    "Primeiro Dia (30 mapas mentais)",
+                    "Segundo Dia (30 mapas mentais)",
+                    "Atualidades 2026 (10 mapas mentais)",
+                    "Três e-books digitais",
+                    "70 mapas mentais no total",
+                    "Acesso após confirmação do pagamento",
+                  ].map((i) => (
+                    <li key={i} className="flex items-start gap-2">
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-green" />
+                      {i}
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-6 border-t border-border-soft pt-6">
+                  <div className="text-sm text-muted-fg">Combo completo</div>
+                  <div className="font-display text-4xl font-black text-navy">{CONFIG.comboPrice}</div>
+                </div>
+                <div className="mt-5">
+                  <CTAButton event="cta_combo_click" className="w-full">
+                    Quero os 70 mapas mentais
+                  </CTAButton>
+                </div>
+                <p className="mt-3 text-center text-xs text-muted-fg">
+                  Produto digital. Acesso após a confirmação do pagamento.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Value justification */}
+        <section className="py-16 sm:py-20">
+          <div className="mx-auto max-w-3xl px-4 text-center sm:px-6">
+            <h2 className="font-display text-2xl font-extrabold text-navy sm:text-3xl">
+              Uma única estrutura visual pode evitar horas procurando o mesmo conteúdo em materiais diferentes.
+            </h2>
+            <p className="mt-4 text-muted-fg">
+              Você não está adquirindo apenas arquivos digitais. Está recebendo uma rota organizada para consultar
+              conteúdos, recuperar conceitos e decidir o que precisa ser estudado depois.
+            </p>
+          </div>
+        </section>
+
+        {/* Access steps */}
+        <section className="bg-surface py-16 sm:py-20">
+          <div className="mx-auto max-w-4xl px-4 sm:px-6">
+            <div className="text-center">
+              <SectionEyebrow>Como você recebe</SectionEyebrow>
+              <h2 className="mt-4 font-display text-2xl font-extrabold text-navy sm:text-3xl">Passo a passo do acesso</h2>
+            </div>
+            <ol className="mt-10 grid gap-5 sm:grid-cols-3">
+              {[
+                { n: "1", t: "Escolha a opção", d: "Combo completo ou apenas o Primeiro Dia." },
+                { n: "2", t: "Finalize a compra", d: "Preencha os dados no checkout seguro." },
+                { n: "3", t: "Acesse os materiais", d: "Receba os PDFs após a confirmação do pagamento." },
+              ].map((s) => (
+                <li key={s.n} className="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-border-soft">
+                  <div className="font-display text-3xl font-black text-gold">{s.n}</div>
+                  <div className="mt-1 font-display text-base font-extrabold text-navy">{s.t}</div>
+                  <p className="mt-1 text-sm text-muted-fg">{s.d}</p>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+
+        {/* FAQ */}
+        <section id="faq" className="py-16 sm:py-24">
+          <div className="mx-auto max-w-3xl px-4 sm:px-6">
+            <div className="text-center">
+              <SectionEyebrow>Dúvidas frequentes</SectionEyebrow>
+              <h2 className="mt-4 font-display text-3xl font-extrabold text-navy sm:text-4xl">Perguntas comuns</h2>
+            </div>
+            <FAQ />
+          </div>
+        </section>
+
+        {/* Final CTA */}
+        <section className="relative overflow-hidden bg-gradient-to-br from-navy via-navy to-green-dark py-20 text-white">
+          <div className="pointer-events-none absolute inset-0 opacity-20">
+            <div className="absolute -top-24 -left-16 h-72 w-72 rounded-full bg-gold blur-3xl" />
+            <div className="absolute -bottom-24 -right-16 h-80 w-80 rounded-full bg-green blur-3xl" />
+          </div>
+          <div className="relative mx-auto max-w-3xl px-4 text-center sm:px-6">
+            <SectionEyebrow>Última seção</SectionEyebrow>
+            <h2 className="mt-4 font-display text-3xl font-extrabold leading-tight sm:text-4xl">
+              Transforme materiais espalhados em uma <span className="text-gold">rota visual de revisão</span>.
+            </h2>
+            <p className="mx-auto mt-4 max-w-2xl text-white/85">
+              Tenha acesso aos três e-books e consulte 70 mapas mentais organizados entre o Primeiro Dia, Segundo Dia e
+              Atualidades 2026.
+            </p>
+            <ul className="mx-auto mt-6 flex max-w-md flex-col gap-2 text-left text-sm text-white/90">
+              {[
+                "Três e-books digitais",
+                "70 mapas mentais",
+                "Acesso após confirmação do pagamento",
+                "Leitura em diferentes dispositivos",
+              ].map((i) => (
+                <li key={i} className="flex items-start gap-2">
+                  <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-gold" />
+                  {i}
+                </li>
+              ))}
+            </ul>
+            <div className="mt-8 flex flex-col items-center gap-3">
+              <div className="text-sm text-white/80">
+                Combo completo por <span className="text-lg font-extrabold text-gold">{CONFIG.comboPrice}</span>
+              </div>
+              <CTAButton event="cta_combo_click" variant="gold">
+                Quero acessar os 70 mapas mentais
+              </CTAButton>
+              <p className="text-xs text-white/70">Produto digital. Nenhum material físico será enviado.</p>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer ref={footerRef} className="border-t border-border-soft bg-surface pb-24 pt-14 sm:pb-14">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <div className="grid gap-8 lg:grid-cols-[1.4fr_1fr_1fr]">
+            <div>
+              <div className="flex items-center gap-2 font-display text-lg font-extrabold text-navy">
+                <span className="grid h-9 w-9 place-items-center rounded-xl bg-navy text-white">
+                  <MapIcon className="h-5 w-5" />
+                </span>
+                {CONFIG.companyName}
+              </div>
+              <p className="mt-3 max-w-md text-sm text-muted-fg">
+                Este é um material educacional independente. Não possui vínculo, patrocínio, autorização ou endosso do
+                Inep, Ministério da Educação ou Governo Federal.
+              </p>
+            </div>
+
+            <div>
+              <div className="text-xs font-bold uppercase tracking-widest text-navy-2">Suporte</div>
+              <ul className="mt-3 space-y-2 text-sm text-muted-fg">
+                {CONFIG.supportEmail && (
+                  <li>
+                    E-mail:{" "}
+                    <a href={`mailto:${CONFIG.supportEmail}`} className="text-navy hover:underline">
+                      {CONFIG.supportEmail}
+                    </a>
+                  </li>
+                )}
+                {CONFIG.supportHours && <li>Horário: {CONFIG.supportHours}</li>}
+                {!CONFIG.supportEmail && !CONFIG.supportHours && (
+                  <li className="italic">Canais de suporte serão publicados em breve.</li>
+                )}
+              </ul>
+            </div>
+
+            <div>
+              <div className="text-xs font-bold uppercase tracking-widest text-navy-2">Institucional</div>
+              <ul className="mt-3 space-y-2 text-sm text-muted-fg">
+                {CONFIG.termsUrl && (
+                  <li>
+                    <a href={CONFIG.termsUrl} className="hover:text-navy">
+                      Termos de Uso
+                    </a>
+                  </li>
+                )}
+                {CONFIG.privacyUrl && (
+                  <li>
+                    <a href={CONFIG.privacyUrl} className="hover:text-navy">
+                      Política de Privacidade
+                    </a>
+                  </li>
+                )}
+                {CONFIG.refundUrl && (
+                  <li>
+                    <a href={CONFIG.refundUrl} className="hover:text-navy">
+                      Política de Reembolso
+                    </a>
+                  </li>
+                )}
+              </ul>
+            </div>
+          </div>
+
+          <div className="mt-10 flex flex-col gap-3 border-t border-border-soft pt-6 text-xs text-muted-fg sm:flex-row sm:items-center sm:justify-between">
+            <div>© {new Date().getFullYear()} {CONFIG.companyName}. Todos os direitos reservados.</div>
+            <div className="flex items-center gap-1.5">
+              <ListChecks className="h-3.5 w-3.5" />
+              Produto 100% digital.
+            </div>
+          </div>
+        </div>
+      </footer>
+
+      {/* Mobile sticky CTA */}
+      {showSticky && (
+        <div
+          className="fixed inset-x-0 bottom-0 z-50 border-t border-border-soft bg-white/95 backdrop-blur lg:hidden"
+          style={{ paddingBottom: "env(safe-area-inset-bottom)" }}
+        >
+          <div className="mx-auto flex max-w-6xl items-center justify-between gap-3 px-4 py-3">
+            <div className="min-w-0">
+              <div className="truncate text-[11px] font-bold uppercase tracking-widest text-navy-2">70 mapas mentais</div>
+              <div className="font-display text-lg font-extrabold text-navy">{CONFIG.comboPrice}</div>
+            </div>
+            <CTAButton event="cta_combo_click" size="md">
+              Quero acessar
+            </CTAButton>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+// ─────────────────────────────── FAQ component
+function FAQ() {
+  const [open, setOpen] = useState<number | null>(0);
+  const items = useMemo(() => FAQ_ITEMS, []);
+  return (
+    <div className="mt-10 divide-y divide-border-soft overflow-hidden rounded-3xl border border-border-soft bg-white">
+      {items.map((f, i) => {
+        const isOpen = open === i;
+        return (
+          <div key={f.q}>
+            <button
+              type="button"
+              onClick={() => {
+                setOpen(isOpen ? null : i);
+                if (!isOpen) trackEvent("faq_open", { index: i });
+              }}
+              aria-expanded={isOpen}
+              className="flex w-full items-center justify-between gap-4 px-5 py-4 text-left transition hover:bg-cream/50"
+            >
+              <span className="font-display text-base font-bold text-navy">{f.q}</span>
+              <ChevronDown
+                className={`h-5 w-5 shrink-0 text-navy-2 transition-transform ${isOpen ? "rotate-180" : ""}`}
+                aria-hidden
+              />
+            </button>
+            {isOpen && <div className="px-5 pb-5 text-sm text-muted-fg">{f.a}</div>}
+          </div>
+        );
+      })}
     </div>
   );
 }
