@@ -1,5 +1,5 @@
 export const CONFIG = {
-  comboPrice: "R$ 37,90",
+  comboPrice: "R$ 27,90",
   firstDayPrice: "R$ 19,90",
 
   comboCheckoutUrl: "",

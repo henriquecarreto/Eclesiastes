@@ -70,7 +70,7 @@ export const Route = createFileRoute("/")({
           category: "Educação",
           offers: {
             "@type": "Offer",
-            price: "37.90",
+            price: "27.90",
             priceCurrency: "BRL",
             availability: "https://schema.org/InStock",
           },
@@ -116,14 +116,14 @@ const ROUTES = [
       "Filosofia",
       "Sociologia",
     ],
-    color: "from-[#123A63] to-[#245B8E]",
+    color: "from-[#0F172A] to-[#2563EB]",
   },
   {
     tag: "ROTA 2",
     title: "Segundo Dia",
     count: "30 mapas mentais",
     subjects: ["Matemática", "Física", "Química", "Biologia"],
-    color: "from-[#0F6654] to-[#16856B]",
+    color: "from-[#047857] to-[#10B981]",
   },
   {
     tag: "ROTA 3",
@@ -137,7 +137,7 @@ const ROUTES = [
       "Debates econômicos",
       "Tecnologia e geopolítica",
     ],
-    color: "from-[#F4B942] to-[#e5a627]",
+    color: "from-[#EA580C] to-[#FF6B00]",
   },
 ];
 
@@ -482,18 +482,17 @@ function LandingPage() {
               </div>
             </div>
 
-            {/* Mockup placeholder (only visible in dev — hidden in prod as briefed) */}
-            {import.meta.env.DEV && (
-              <div className="mx-auto mt-12 max-w-4xl">
-                <div className="relative mx-auto grid aspect-[16/9] w-full place-items-center rounded-3xl border border-dashed border-navy-2/30 bg-white/60 text-sm text-muted-fg">
-                  <div className="text-center">
-                    <BookOpen className="mx-auto h-8 w-8 text-navy-2" />
-                    <p className="mt-2">Espaço reservado para o mockup dos três e-books</p>
-                    <p className="text-xs">(imagens serão adicionadas posteriormente)</p>
-                  </div>
-                </div>
+            {/* Mockup image */}
+            <div className="mx-auto mt-8 max-w-xl">
+              <div className="relative mx-auto overflow-hidden rounded-3xl border border-navy/10 bg-white/80 p-2 shadow-xl backdrop-blur transition-all duration-300 hover:shadow-2xl">
+                <img
+                  src="/ebooks-mockup.jpg"
+                  alt="Guia Visual para o ENEM 2026 - Mockup dos 3 E-books e Mapas Mentais"
+                  className="h-auto w-full rounded-2xl object-cover"
+                  loading="eager"
+                />
               </div>
-            )}
+            </div>
           </div>
         </section>
 
@@ -840,28 +839,39 @@ function LandingPage() {
 
             <div className={`mx-auto mt-12 grid max-w-5xl gap-6 ${CONFIG.showFirstDayOffer ? "lg:grid-cols-2" : "lg:grid-cols-1"}`}>
               {CONFIG.showFirstDayOffer && (
-                <div className="flex flex-col rounded-3xl border border-border-soft bg-white p-6 shadow-sm sm:p-8">
-                  <div className="text-[11px] font-bold uppercase tracking-widest text-navy-2">Opção secundária</div>
-                  <h3 className="mt-2 font-display text-2xl font-extrabold text-navy">Primeiro Dia</h3>
-                  <ul className="mt-5 space-y-2 text-sm text-foreground/80">
-                    {["Um e-book digital", "30 mapas mentais", "Linguagens", "Redação", "Ciências Humanas", "Acesso após confirmação do pagamento"].map((i) => (
-                      <li key={i} className="flex items-start gap-2">
-                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-green" />
-                        {i}
-                      </li>
-                    ))}
-                  </ul>
-                  <div className="mt-6 border-t border-border-soft pt-6">
-                    <div className="text-sm text-muted-fg">A partir de</div>
-                    <div className="font-display text-3xl font-black text-navy">{CONFIG.firstDayPrice}</div>
+                <div className="flex flex-col justify-between rounded-3xl border border-border-soft bg-white p-6 shadow-sm sm:p-8">
+                  <div>
+                    <div className="text-[11px] font-bold uppercase tracking-widest text-navy-2">Opção primária</div>
+                    <h3 className="mt-2 font-display text-2xl font-extrabold text-navy">Primeiro Dia + Segundo Dia</h3>
+                    <ul className="mt-5 space-y-2 text-sm text-foreground/80">
+                      {[
+                        "PDF do Primeiro Dia e Segundo Dia",
+                        "60 mapas mentais no total",
+                        "Linguagens, Redação e Ciências Humanas",
+                        "Matemática e Ciências da Natureza",
+                        "Acesso após confirmação do pagamento",
+                      ].map((i) => (
+                        <li key={i} className="flex items-start gap-2">
+                          <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-green" />
+                          {i}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                  {CONFIG.firstDayCheckoutUrl && (
+                  <div>
+                    <div className="mt-6 border-t border-border-soft pt-6">
+                      <div className="text-sm text-muted-fg">Opção primária</div>
+                      <div className="font-display text-4xl font-black text-navy">{CONFIG.firstDayPrice}</div>
+                    </div>
                     <div className="mt-5">
-                      <CTAButton kind="firstDay" event="cta_first_day_click" variant="outline" size="md" className="w-full">
-                        Quero apenas o Primeiro Dia
+                      <CTAButton kind="firstDay" event="cta_first_day_click" className="w-full">
+                        Quero Primeiro + Segundo Dia
                       </CTAButton>
                     </div>
-                  )}
+                    <p className="mt-3 text-center text-xs text-muted-fg">
+                      Produto digital. Acesso após a confirmação do pagamento.
+                    </p>
+                  </div>
                 </div>
               )}
 

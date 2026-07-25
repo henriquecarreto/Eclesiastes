@@ -49,18 +49,18 @@
 :root {
   --radius: 0.875rem;
   --background: #ffffff;
-  --foreground: #172033;
-  --muted-fg: #536273;
+  --foreground: #0F172A;
+  --muted-fg: #475569;
 
-  --navy: #123A63;
-  --navy-2: #245B8E;
-  --green: #16856B;
-  --green-dark: #0F6654;
-  --gold: #F4B942;
-  --gold-soft: #FFF2C7;
-  --cream: #FFF9EC;
-  --surface: #F5F7FA;
-  --border-soft: #DCE3EA;
+  --navy: #0F172A;
+  --navy-2: #1E293B;
+  --green: #10B981;
+  --green-dark: #059669;
+  --gold: #FF6B00;
+  --gold-soft: #FFEDD5;
+  --cream: #FFFBEB;
+  --surface: #F8FAFC;
+  --border-soft: #E2E8F0;
 }
 
 @layer base {
