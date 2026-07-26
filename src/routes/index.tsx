@@ -390,10 +390,8 @@ function LandingPage() {
         }`}
       >
         <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
-          <a href="#top" className="flex items-center gap-2 font-display text-base font-extrabold text-navy sm:text-lg">
-            <span className="grid h-9 w-9 shrink-0 place-items-center rounded-xl bg-navy text-white">
-              <MapIcon className="h-5 w-5" aria-hidden />
-            </span>
+          <a href="#top" className="flex items-center gap-2.5 font-display text-base font-extrabold text-navy sm:text-lg">
+            <img src="/logo.png" alt="Acervo Seguro Logo" className="h-9 w-auto object-contain shrink-0" />
             <span className="tracking-tight">Guia Visual ENEM 2026</span>
           </a>
 
