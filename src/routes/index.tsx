@@ -9,6 +9,7 @@ import {
   ChevronDown,
   ChevronLeft,
   ChevronRight,
+  CreditCard,
   FileText,
   Focus,
   Layers,
@@ -16,8 +17,11 @@ import {
   Mail,
   Map as MapIcon,
   Menu,
+  RefreshCw,
   Route as RouteIcon,
   Search,
+  ShieldCheck,
+  Smartphone,
   Sparkles,
   Target,
   X,
@@ -218,47 +222,32 @@ const BONUSES = [
 
 const FAQ_ITEMS = [
   {
-    q: "Quantos mapas mentais estão incluídos?",
-    a: "O combo completo reúne 70 mapas mentais: 30 no Primeiro Dia, 30 no Segundo Dia e 10 no material de Atualidades 2026.",
+    q: "O material é físico ou digital?",
+    a: "O produto é 100% digital em formato PDF. Nenhum material físico será enviado para a sua residência.",
   },
   {
-    q: "Quais disciplinas fazem parte?",
-    a: "O Primeiro Dia reúne Linguagens, Língua Portuguesa, Literatura, Redação, História, Geografia, Filosofia e Sociologia. O Segundo Dia reúne Matemática, Física, Química e Biologia.",
+    q: "Como receberei os arquivos?",
+    a: "O acesso aos arquivos é disponibilizado imediatamente após a confirmação do pagamento, direto no seu e-mail de compra.",
   },
   {
-    q: "É um curso ou um material em PDF?",
-    a: "É uma coleção de três e-books digitais em PDF. Não se trata de um curso completo em vídeo.",
+    q: "Posso acessar pelo celular?",
+    a: "Sim! Os arquivos em PDF podem ser abertos e consultados perfeitamente pelo celular, tablet ou computador.",
   },
   {
-    q: "O material substitui aulas e exercícios?",
-    a: "Não necessariamente. Ele foi desenvolvido como ferramenta de revisão, organização e identificação de lacunas. Aulas, questões e aprofundamentos continuam sendo importantes quando surgirem dificuldades.",
+    q: "Preciso estudar todo o material de uma vez?",
+    a: "Não. O material foi organizado em 3 rotas (Primeiro Dia, Segundo Dia e Atualidades) justamente para você consultar por partes, de acordo com a sua prioridade de revisão.",
   },
   {
-    q: "Posso estudar pelo celular?",
-    a: "Sim. Os arquivos podem ser consultados pelo celular, tablet ou computador, conforme as condições de acesso e download apresentadas após a compra.",
-  },
-  { q: "Receberei algum material físico?", a: "Não. O produto é totalmente digital e nenhum material físico será enviado." },
-  { q: "Posso imprimir?", a: "Os arquivos poderão ser impressos quando essa opção estiver disponível. Os custos de impressão não estão incluídos." },
-  {
-    q: "Como devo utilizar os mapas?",
-    a: "Escolha uma rota, analise o mapa, tente recuperar os conceitos sem consultar, identifique suas lacunas e direcione o próximo estudo para os pontos que precisam de reforço.",
+    q: "Os mapas substituem aulas e exercícios?",
+    a: "Não. Os mapas funcionam como uma ferramenta de organização visual e identificação de lacunas. Aulas, resolução de questões e simulados continuam sendo fundamentais.",
   },
   {
-    q: "O material garante aprovação?",
-    a: "Não. Nenhum material isolado pode garantir aprovação ou determinada nota. O resultado depende da rotina, da prática, da resolução de questões e do desempenho individual.",
+    q: "Por quanto tempo terei acesso?",
+    a: "Você poderá baixar os arquivos em PDF para o seu dispositivo e manter o acesso para consultar sempre que precisar durante sua preparação.",
   },
-  ...(CONFIG.showEditorialDate && CONFIG.editorialClosingDate
-    ? [
-        {
-          q: "O material de Atualidades será atualizado?",
-          a: `Data de fechamento editorial: ${CONFIG.editorialClosingDate}. Eventuais atualizações dependerão das condições informadas no momento da compra.`,
-        },
-      ]
-    : []),
-  { q: "Posso compartilhar os arquivos?", a: "Não. O acesso é individual e destinado ao comprador, conforme os Termos de Uso." },
   {
-    q: "Como funciona o suporte?",
-    a: "O suporte é realizado pelo e-mail informado no rodapé, dentro dos horários e condições apresentados.",
+    q: "Quais formas de pagamento estão disponíveis?",
+    a: "O pagamento é processado com segurança via PIX ou Cartão de Crédito.",
   },
 ];
 
