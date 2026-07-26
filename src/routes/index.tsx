@@ -498,28 +498,82 @@ function LandingPage() {
           <MindMapCarousel />
         </section>
 
-        {/* Trust strip */}
-        <section className="border-y border-border-soft bg-surface">
-          <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
-            <p className="text-center font-display text-lg font-bold text-navy sm:text-xl">
-              Receba os materiais digitais após a confirmação do pagamento.
-            </p>
-            <div className="mt-6 grid gap-4 sm:grid-cols-3">
-              {[
-                { icon: FileText, title: "Acesso digital", text: "Arquivos em PDF disponibilizados após a confirmação." },
-                { icon: Layers, title: "Arquivos organizados", text: "Três e-books separados por rota de revisão." },
-                { icon: Mail, title: "Suporte por e-mail", text: "Atendimento pelo canal informado no rodapé." },
-              ].map((i) => (
-                <div key={i.title} className="flex items-start gap-3 rounded-2xl bg-white p-4 shadow-sm">
-                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-cream text-navy">
-                    <i.icon className="h-5 w-5" />
-                  </span>
-                  <div>
-                    <div className="text-sm font-bold text-navy">{i.title}</div>
-                    <div className="text-sm text-muted-fg">{i.text}</div>
-                  </div>
+        {/* Trust strip (Faixa de Confiança Redesenhada) */}
+        <section className="border-y border-border-soft bg-gradient-to-b from-[#FFFDF8] via-[#FFFDF5] to-[#F8FAFC] py-14 sm:py-16">
+          <div className="mx-auto max-w-[1240px] px-5 sm:px-6">
+            <div className="mx-auto max-w-3xl text-center mb-8 sm:mb-10">
+              <h2 className="font-display text-2xl sm:text-[30px] font-extrabold text-navy tracking-tight uppercase">
+                TUDO PREPARADO PARA VOCÊ COMEÇAR SUA REVISÃO
+              </h2>
+              <p className="mt-2 text-base sm:text-[17px] text-muted-fg leading-relaxed">
+                Acesso digital, materiais separados por rota e leitura em diferentes dispositivos.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-5">
+              {/* CARD 1 */}
+              <div className="relative overflow-hidden rounded-[18px] border border-border-soft/80 bg-white p-5 sm:p-6 shadow-md shadow-navy/5 min-h-[115px] flex items-start gap-4 transition hover:shadow-lg">
+                <div className="absolute top-0 inset-x-0 h-1 bg-green" />
+                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-emerald-50 text-green shadow-xs">
+                  <FileText className="h-6 w-6" />
+                </span>
+                <div className="min-w-0">
+                  <h3 className="font-display text-[17px] font-bold text-navy leading-snug">
+                    Acesso digital
+                  </h3>
+                  <p className="mt-1 text-sm sm:text-[15px] text-muted-fg leading-relaxed">
+                    PDFs liberados após a confirmação do pagamento.
+                  </p>
                 </div>
-              ))}
+              </div>
+
+              {/* CARD 2 */}
+              <div className="relative overflow-hidden rounded-[18px] border border-border-soft/80 bg-white p-5 sm:p-6 shadow-md shadow-navy/5 min-h-[115px] flex items-start gap-4 transition hover:shadow-lg">
+                <div className="absolute top-0 inset-x-0 h-1 bg-navy" />
+                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-slate-100 text-navy shadow-xs">
+                  <BookOpen className="h-6 w-6" />
+                </span>
+                <div className="min-w-0">
+                  <h3 className="font-display text-[17px] font-bold text-navy leading-snug">
+                    3 e-books organizados
+                  </h3>
+                  <p className="mt-1 text-sm sm:text-[15px] text-muted-fg leading-relaxed">
+                    Primeiro Dia, Segundo Dia e Atualidades.
+                  </p>
+                </div>
+              </div>
+
+              {/* CARD 3 */}
+              <div className="relative overflow-hidden rounded-[18px] border border-border-soft/80 bg-white p-5 sm:p-6 shadow-md shadow-navy/5 min-h-[115px] flex items-start gap-4 transition hover:shadow-lg">
+                <div className="absolute top-0 inset-x-0 h-1 bg-gold" />
+                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-amber-50 text-amber-600 shadow-xs">
+                  <Brain className="h-6 w-6" />
+                </span>
+                <div className="min-w-0">
+                  <h3 className="font-display text-[17px] font-bold text-navy leading-snug">
+                    70 mapas mentais
+                  </h3>
+                  <p className="mt-1 text-sm sm:text-[15px] text-muted-fg leading-relaxed">
+                    Conteúdos distribuídos por áreas e rotas de revisão.
+                  </p>
+                </div>
+              </div>
+
+              {/* CARD 4 */}
+              <div className="relative overflow-hidden rounded-[18px] border border-border-soft/80 bg-white p-5 sm:p-6 shadow-md shadow-navy/5 min-h-[115px] flex items-start gap-4 transition hover:shadow-lg">
+                <div className="absolute top-0 inset-x-0 h-1 bg-green" />
+                <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-emerald-50 text-green shadow-xs">
+                  <Smartphone className="h-6 w-6" />
+                </span>
+                <div className="min-w-0">
+                  <h3 className="font-display text-[17px] font-bold text-navy leading-snug">
+                    Acesse onde preferir
+                  </h3>
+                  <p className="mt-1 text-sm sm:text-[15px] text-muted-fg leading-relaxed">
+                    Utilize pelo celular, tablet ou computador.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </section>
