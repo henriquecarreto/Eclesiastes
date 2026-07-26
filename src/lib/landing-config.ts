@@ -6,6 +6,8 @@ export const CONFIG = {
   firstDayCheckoutUrl: "",
 
   companyName: "Acervo Seguro",
+  domain: "acervoseguro.com.br",
+  siteUrl: "https://acervoseguro.com.br",
   supportEmail: "aprovavisual@gmail.com",
   supportHours: "",
 

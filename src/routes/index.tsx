@@ -42,7 +42,7 @@ export const Route = createFileRoute("/")({
           "Uma rota visual com 70 mapas mentais para organizar sua revisão do ENEM 2026 — Primeiro Dia, Segundo Dia e Atualidades.",
       },
       { property: "og:type", content: "product" },
-      { property: "og:url", content: "/" },
+      { property: "og:url", content: CONFIG.siteUrl },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "Guia Visual para o ENEM 2026 | 70 Mapas Mentais" },
       {
@@ -52,7 +52,7 @@ export const Route = createFileRoute("/")({
       },
     ],
     links: [
-      { rel: "canonical", href: "/" },
+      { rel: "canonical", href: CONFIG.siteUrl },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "" },
       {
