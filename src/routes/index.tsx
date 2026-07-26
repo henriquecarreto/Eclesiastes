@@ -883,91 +883,235 @@ function LandingPage() {
           </div>
         </section>
 
-        {/* Pricing */}
-        <section id="oferta" className="bg-gradient-to-b from-white to-cream py-16 sm:py-24">
-          <div className="mx-auto max-w-6xl px-4 sm:px-6">
-            <div className="mx-auto max-w-3xl text-center">
-              <SectionEyebrow>Oferta</SectionEyebrow>
-              <h2 className="mt-4 font-display text-3xl font-extrabold text-navy sm:text-4xl">
-                Escolha a opção que combina com sua revisão
+        {/* Pricing / Oferta (Redesenhada) */}
+        <section id="oferta" className="bg-gradient-to-b from-white via-surface to-cream/40 py-16 sm:py-24 border-t border-border-soft">
+          <div className="mx-auto max-w-[1150px] px-4 sm:px-6">
+            <div className="mx-auto max-w-3xl text-center mb-12">
+              <SectionEyebrow>ESCOLHA SUA ROTA DE REVISÃO</SectionEyebrow>
+              <h2 className="mt-4 font-display text-3xl sm:text-4xl font-extrabold text-navy leading-tight">
+                Comece pelas áreas centrais ou leve a coleção completa
               </h2>
+              <p className="mt-4 text-base sm:text-lg text-muted-fg leading-relaxed">
+                Escolha a opção que melhor acompanha sua preparação. Todos os materiais são digitais e disponibilizados após a confirmação do pagamento.
+              </p>
             </div>
 
-            <div className={`mx-auto mt-12 grid max-w-5xl gap-6 ${CONFIG.showFirstDayOffer ? "lg:grid-cols-2" : "lg:grid-cols-1"}`}>
-              {CONFIG.showFirstDayOffer && (
-                <div className="flex flex-col justify-between rounded-3xl border border-border-soft bg-white p-6 shadow-sm sm:p-8">
-                  <div>
-                    <div className="text-[11px] font-bold uppercase tracking-widest text-navy-2">Opção primária</div>
-                    <h3 className="mt-2 font-display text-2xl font-extrabold text-navy">Primeiro Dia + Segundo Dia</h3>
-                    <ul className="mt-5 space-y-2 text-sm text-foreground/80">
-                      {[
-                        "PDF do Primeiro Dia e Segundo Dia",
-                        "60 mapas mentais no total",
-                        "Linguagens, Redação e Ciências Humanas",
-                        "Matemática e Ciências da Natureza",
-                        "Acesso após confirmação do pagamento",
-                      ].map((i) => (
-                        <li key={i} className="flex items-start gap-2">
-                          <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-green" />
-                          {i}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div>
-                    <div className="mt-6 border-t border-border-soft pt-6">
-                      <div className="text-sm text-muted-fg">Opção primária</div>
-                      <div className="font-display text-4xl font-black text-navy">{CONFIG.firstDayPrice}</div>
-                    </div>
-                    <div className="mt-5">
-                      <CTAButton kind="firstDay" event="cta_first_day_click" className="w-full">
-                        Quero Primeiro + Segundo Dia
-                      </CTAButton>
-                    </div>
-                    <p className="mt-3 text-center text-xs text-muted-fg">
-                      Produto digital. Acesso após a confirmação do pagamento.
-                    </p>
-                  </div>
-                </div>
-              )}
+            {/* Grid dos Cards (Mobile: Rota Visual 70 Primeiro; Desktop: Lado a Lado) */}
+            <div className="flex flex-col-reverse lg:grid lg:grid-cols-2 gap-8 lg:gap-10 items-stretch max-w-[1150px] mx-auto">
+              
+              {/* CARD 1 — ROTA ESSENCIAL */}
+              <div className="flex flex-col justify-between rounded-3xl border border-border-soft/80 bg-white p-6 sm:p-8 shadow-sm transition hover:shadow-md h-full">
+                <div>
+                  <div className="text-xs font-bold uppercase tracking-widest text-navy-2">ROTA ESSENCIAL</div>
+                  <h3 className="mt-1 font-display text-2xl font-extrabold text-navy">Rota Essencial</h3>
+                  <p className="mt-1 text-sm text-muted-fg font-medium">Para revisar os dois dias principais da prova</p>
 
-              <div className="relative flex flex-col rounded-3xl border-2 border-green bg-white p-6 shadow-xl shadow-green/10 sm:p-8 lg:scale-[1.02]">
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                  {/* Capas Reais */}
+                  <div className="mt-5 flex items-center justify-center gap-3 bg-surface p-3.5 rounded-2xl border border-border-soft/60">
+                    <img src="/carousel/mapa-1.jpg" alt="Capa Primeiro Dia" className="h-28 sm:h-32 w-auto object-contain rounded-lg shadow-xs" />
+                    <img src="/carousel/mapa-4.jpg" alt="Capa Segundo Dia" className="h-28 sm:h-32 w-auto object-contain rounded-lg shadow-xs" />
+                  </div>
+
+                  <div className="mt-5 inline-flex items-center gap-1.5 rounded-full bg-slate-100 px-3.5 py-1 text-xs font-bold text-navy">
+                    60 MAPAS MENTAIS
+                  </div>
+
+                  <ul className="mt-4 space-y-2.5 text-sm text-foreground/80 font-medium">
+                    {[
+                      "1 e-book do Primeiro Dia",
+                      "1 e-book do Segundo Dia",
+                      "Linguagens, Redação e Ciências Humanas",
+                      "Matemática e Ciências da Natureza",
+                      "Arquivos digitais organizados por rota",
+                      "Acesso pelo celular, tablet ou computador",
+                    ].map((item) => (
+                      <li key={item} className="flex items-start gap-2">
+                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-green" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="mt-8 border-t border-border-soft pt-6">
+                  <div className="text-xs font-semibold text-muted-fg uppercase tracking-wider">Investimento único</div>
+                  <div className="font-display text-4xl font-black text-navy mt-1">{CONFIG.firstDayPrice}</div>
+                  <div className="mt-5">
+                    <CTAButton kind="firstDay" event="cta_first_day_click" className="w-full min-h-[50px]">
+                      QUERO ACESSAR OS 60 MAPAS
+                    </CTAButton>
+                  </div>
+                  <p className="mt-2.5 text-center text-xs text-muted-fg">
+                    Produto digital. Nenhum material físico será enviado.
+                  </p>
+                </div>
+              </div>
+
+              {/* CARD 2 — ROTA VISUAL 70 (MELHOR CUSTO-BENEFÍCIO) */}
+              <div className="relative flex flex-col justify-between rounded-3xl border-2 border-green bg-white p-6 sm:p-8 shadow-xl shadow-green/10 lg:scale-[1.04] z-10 h-full">
+                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
                   <span className="rounded-full bg-green px-4 py-1 text-[11px] font-bold uppercase tracking-widest text-white shadow-md">
-                    Oferta mais completa
+                    MELHOR CUSTO-BENEFÍCIO
                   </span>
                 </div>
-                <div className="text-[11px] font-bold uppercase tracking-widest text-green">Combo completo</div>
-                <h3 className="mt-2 font-display text-2xl font-extrabold text-navy">Rota Visual 70</h3>
-                <ul className="mt-5 space-y-2 text-sm text-foreground/80">
-                  {[
-                    "Primeiro Dia (30 mapas mentais)",
-                    "Segundo Dia (30 mapas mentais)",
-                    "Atualidades 2026 (10 mapas mentais)",
-                    "Três e-books digitais",
-                    "70 mapas mentais no total",
-                    "Acesso após confirmação do pagamento",
-                  ].map((i) => (
-                    <li key={i} className="flex items-start gap-2">
-                      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-green" />
-                      {i}
-                    </li>
-                  ))}
-                </ul>
+                <div>
+                  <div className="text-xs font-bold uppercase tracking-widest text-green">ROTA VISUAL 70</div>
+                  <h3 className="mt-1 font-display text-2xl font-extrabold text-navy">Rota Visual 70</h3>
+                  <p className="mt-1 text-sm text-muted-fg font-medium">A coleção completa para uma revisão mais abrangente</p>
+
+                  {/* Capas Reais - 3 Capas */}
+                  <div className="mt-5 flex items-center justify-center gap-2 sm:gap-3 bg-emerald-50/50 p-3.5 rounded-2xl border border-emerald-100">
+                    <img src="/carousel/mapa-1.jpg" alt="Capa Primeiro Dia" className="h-24 sm:h-28 w-auto object-contain rounded-lg shadow-xs" />
+                    <img src="/carousel/mapa-4.jpg" alt="Capa Segundo Dia" className="h-24 sm:h-28 w-auto object-contain rounded-lg shadow-xs" />
+                    <img src="/carousel/mapa-6.jpg" alt="Capa Atualidades" className="h-24 sm:h-28 w-auto object-contain rounded-lg shadow-xs" />
+                  </div>
+
+                  <div className="mt-5 inline-flex items-center gap-1.5 rounded-full bg-green/10 px-3.5 py-1 text-xs font-bold text-green">
+                    70 MAPAS MENTAIS
+                  </div>
+
+                  <ul className="mt-4 space-y-2.5 text-sm text-foreground/80 font-medium">
+                    {[
+                      "Tudo o que está incluído na Rota Essencial",
+                      "1 e-book adicional de Atualidades",
+                      "10 mapas sobre temas contemporâneos",
+                      "Conteúdos nacionais e internacionais",
+                      "Meio ambiente, sociedade e tecnologia",
+                      "Os três materiais organizados em um único acesso",
+                    ].map((item) => (
+                      <li key={item} className="flex items-start gap-2">
+                        <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-green" />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* Faixa de valorização */}
+                  <div className="mt-5 rounded-2xl bg-amber-50 border border-amber-200/80 p-3 text-center text-xs font-bold text-amber-900 leading-snug">
+                    ⚡ Por apenas R$ 8,00 a mais, você adiciona a rota de Atualidades e recebe a coleção completa.
+                  </div>
+                </div>
+
                 <div className="mt-6 border-t border-border-soft pt-6">
-                  <div className="text-sm text-muted-fg">Combo completo</div>
-                  <div className="font-display text-4xl font-black text-navy">{CONFIG.comboPrice}</div>
+                  <div className="text-xs font-semibold text-muted-fg uppercase tracking-wider">Investimento completo</div>
+                  <div className="font-display text-4xl sm:text-5xl font-black text-navy mt-1">{CONFIG.comboPrice}</div>
+                  <div className="mt-5">
+                    <CTAButton kind="combo" event="cta_combo_click" className="w-full min-h-[50px]">
+                      QUERO A ROTA VISUAL 70 COMPLETA
+                    </CTAButton>
+                  </div>
+                  <p className="mt-2.5 text-center text-xs text-muted-fg">
+                    Produto digital. Acesso após a confirmação do pagamento.
+                  </p>
                 </div>
-                <div className="mt-5">
-                  <CTAButton event="cta_combo_click" className="w-full">
-                    Quero os 70 mapas mentais
-                  </CTAButton>
-                </div>
-                <p className="mt-3 text-center text-xs text-muted-fg">
-                  Produto digital. Acesso após a confirmação do pagamento.
-                </p>
               </div>
             </div>
+
+            {/* Tabela Comparativa de Planos */}
+            <div className="mt-16 sm:mt-24">
+              <div className="text-center mb-8">
+                <h3 className="font-display text-xl sm:text-2xl font-extrabold text-navy">
+                  Comparação rápida entre as opções
+                </h3>
+                <p className="mt-1 text-sm text-muted-fg">
+                  Veja em detalhes a diferença de conteúdo entre cada rota.
+                </p>
+              </div>
+
+              {/* Desktop Table */}
+              <div className="hidden sm:block overflow-hidden rounded-3xl border border-border-soft bg-white shadow-sm">
+                <table className="w-full text-left text-sm border-collapse">
+                  <thead>
+                    <tr className="border-b border-border-soft bg-surface">
+                      <th className="p-4 font-extrabold text-navy">Recurso / Conteúdo</th>
+                      <th className="p-4 font-extrabold text-navy text-center w-1/3">Rota Essencial</th>
+                      <th className="p-4 font-extrabold text-green text-center w-1/3 bg-emerald-50/50">Rota Visual 70 (Completa)</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-border-soft text-foreground/80">
+                    <tr>
+                      <td className="p-4 font-medium">E-book Primeiro Dia (Linguagens & Humanas)</td>
+                      <td className="p-4 text-center font-bold text-green">✓ Incluído</td>
+                      <td className="p-4 text-center font-bold text-green bg-emerald-50/30">✓ Incluído</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 font-medium">E-book Segundo Dia (Matemática & Natureza)</td>
+                      <td className="p-4 text-center font-bold text-green">✓ Incluído</td>
+                      <td className="p-4 text-center font-bold text-green bg-emerald-50/30">✓ Incluído</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 font-medium">E-book Atualidades 2026</td>
+                      <td className="p-4 text-center text-muted-fg font-medium">—</td>
+                      <td className="p-4 text-center font-bold text-green bg-emerald-50/30">✓ Incluído</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 font-medium">Quantidade total de mapas mentais</td>
+                      <td className="p-4 text-center font-bold text-navy">60 mapas</td>
+                      <td className="p-4 text-center font-extrabold text-green bg-emerald-50/30">70 mapas</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 font-medium">Rotas de revisão</td>
+                      <td className="p-4 text-center font-bold text-navy">2 rotas</td>
+                      <td className="p-4 text-center font-extrabold text-green bg-emerald-50/30">3 rotas</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 font-medium">Acesso digital em PDF</td>
+                      <td className="p-4 text-center font-bold text-green">✓ Incluído</td>
+                      <td className="p-4 text-center font-bold text-green bg-emerald-50/30">✓ Incluído</td>
+                    </tr>
+                    <tr>
+                      <td className="p-4 font-medium">Leitura no celular, tablet ou PC</td>
+                      <td className="p-4 text-center font-bold text-green">✓ Incluído</td>
+                      <td className="p-4 text-center font-bold text-green bg-emerald-50/30">✓ Incluído</td>
+                    </tr>
+                    <tr className="bg-surface/50 border-t-2 border-border-soft">
+                      <td className="p-4 font-bold text-navy">Investimento</td>
+                      <td className="p-4 text-center font-extrabold text-navy text-lg">{CONFIG.firstDayPrice}</td>
+                      <td className="p-4 text-center font-extrabold text-green text-xl bg-emerald-50/50">{CONFIG.comboPrice}</td>
+                    </tr>
+                    <tr className="bg-surface">
+                      <td className="p-4 font-bold text-navy">Ação</td>
+                      <td className="p-4 text-center">
+                        <CTAButton kind="firstDay" event="cta_first_day_click" size="md" className="w-full text-xs">
+                          QUERO OS 60 MAPAS
+                        </CTAButton>
+                      </td>
+                      <td className="p-4 text-center bg-emerald-50/50">
+                        <CTAButton kind="combo" event="cta_combo_click" size="md" className="w-full text-xs">
+                          QUERO A ROTA COMPLETA
+                        </CTAButton>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              {/* Mobile Comparison Cards */}
+              <div className="sm:hidden space-y-4">
+                <div className="rounded-2xl border-2 border-green bg-emerald-50/30 p-5 shadow-sm">
+                  <div className="font-display text-lg font-extrabold text-green">Rota Visual 70 (70 mapas)</div>
+                  <div className="mt-1 text-xs text-muted-fg">Coleção completa • 3 rotas (Primeiro Dia, Segundo Dia e Atualidades)</div>
+                  <div className="mt-3 font-display text-2xl font-black text-navy">{CONFIG.comboPrice}</div>
+                  <div className="mt-3">
+                    <CTAButton kind="combo" event="cta_combo_click" size="md" className="w-full min-h-[48px]">
+                      QUERO A ROTA COMPLETA
+                    </CTAButton>
+                  </div>
+                </div>
+
+                <div className="rounded-2xl border border-border-soft bg-white p-5 shadow-xs">
+                  <div className="font-display text-lg font-extrabold text-navy">Rota Essencial (60 mapas)</div>
+                  <div className="mt-1 text-xs text-muted-fg">Áreas centrais • 2 rotas (Primeiro Dia e Segundo Dia)</div>
+                  <div className="mt-3 font-display text-2xl font-black text-navy">{CONFIG.firstDayPrice}</div>
+                  <div className="mt-3">
+                    <CTAButton kind="firstDay" event="cta_first_day_click" size="md" className="w-full min-h-[48px]">
+                      QUERO OS 60 MAPAS
+                    </CTAButton>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
         </section>
 
