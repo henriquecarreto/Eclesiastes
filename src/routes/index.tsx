@@ -968,7 +968,7 @@ function LandingPage() {
                   <div className="mt-5 flex items-center justify-center gap-2 sm:gap-3 bg-emerald-50/40 p-3.5 rounded-2xl border border-emerald-100">
                     <img src="/carousel/mapa-1.jpg" alt="Capa Primeiro Dia" className="h-24 sm:h-28 w-auto object-contain rounded-lg shadow-xs" />
                     <img src="/carousel/mapa-4.jpg" alt="Capa Segundo Dia" className="h-24 sm:h-28 w-auto object-contain rounded-lg shadow-xs" />
-                    <img src="/carousel/mapa-6.jpg" alt="Capa Atualidades" className="h-24 sm:h-28 w-auto object-contain rounded-lg shadow-xs" />
+                    <img src="/carousel/mapa-atualidades.png" alt="Capa Atualidades 2026" className="h-24 sm:h-28 w-auto object-contain rounded-lg shadow-xs" />
                   </div>
 
                   <div className="mt-5 flex items-center gap-2 flex-wrap">
