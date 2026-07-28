@@ -2,8 +2,8 @@ export const CONFIG = {
   comboPrice: "R$ 27,90",
   firstDayPrice: "R$ 19,90",
 
-  comboCheckoutUrl: "",
-  firstDayCheckoutUrl: "",
+  comboCheckoutUrl: "https://pay.wiapy.com/q45k0ZZ3jKv0",
+  firstDayCheckoutUrl: "https://pay.wiapy.com/BNptMYXX9RxQ",
 
   companyName: "Acervo Seguro",
   domain: "acervoseguro.com.br",
