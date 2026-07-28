@@ -897,19 +897,19 @@ function LandingPage() {
             </div>
 
             {/* Grid dos Cards (Mobile: Rota Visual 70 Primeiro; Desktop: Lado a Lado) */}
-            <div className="flex flex-col-reverse lg:grid lg:grid-cols-[1fr_1.08fr] gap-8 lg:gap-8 items-start max-w-[1150px] mx-auto">
+            <div className="flex flex-col-reverse lg:grid lg:grid-cols-[1fr_1.08fr] gap-8 lg:gap-8 items-stretch max-w-[1150px] mx-auto w-full">
               
               {/* CARD 1 — ROTA ESSENCIAL */}
-              <div className="flex flex-col justify-between rounded-3xl border border-border-soft/80 bg-white p-6 sm:p-8 shadow-sm transition hover:shadow-md h-full">
+              <div className="flex flex-col justify-between rounded-3xl border border-border-soft/80 bg-white p-5 sm:p-8 shadow-sm transition hover:shadow-md h-full w-full max-w-full">
                 <div>
                   <div className="text-xs font-bold uppercase tracking-widest text-navy-2">ROTA ESSENCIAL</div>
                   <h3 className="mt-1 font-display text-2xl font-extrabold text-navy">Rota Essencial</h3>
                   <p className="mt-1 text-sm text-muted-fg font-medium">Para revisar os dois dias principais da prova</p>
 
                   {/* Capas Reais */}
-                  <div className="mt-5 flex items-center justify-center gap-3 bg-surface p-3.5 rounded-2xl border border-border-soft/60">
-                    <img src="/carousel/mapa-1.jpg" alt="Capa Primeiro Dia" className="h-28 sm:h-32 w-auto object-contain rounded-lg shadow-xs" />
-                    <img src="/carousel/mapa-4.jpg" alt="Capa Segundo Dia" className="h-28 sm:h-32 w-auto object-contain rounded-lg shadow-xs" />
+                  <div className="mt-5 flex items-center justify-center gap-2 sm:gap-3 bg-surface p-3 sm:p-3.5 rounded-2xl border border-border-soft/60 max-w-full">
+                    <img src="/carousel/mapa-1.jpg" alt="Capa Primeiro Dia" className="h-20 sm:h-32 max-w-[45%] w-auto object-contain rounded-lg shadow-xs" />
+                    <img src="/carousel/mapa-4.jpg" alt="Capa Segundo Dia" className="h-20 sm:h-32 max-w-[45%] w-auto object-contain rounded-lg shadow-xs" />
                   </div>
 
                   <div className="mt-5 inline-flex items-center gap-1.5 rounded-full bg-slate-100 px-3.5 py-1 text-xs font-bold text-navy">
@@ -951,28 +951,28 @@ function LandingPage() {
               </div>
 
               {/* CARD 2 — ROTA VISUAL 70 COMPLETA (DESTAQUE PRINCIPAL) */}
-              <div className="relative flex flex-col justify-between rounded-3xl border-2 border-green bg-white p-6 sm:p-8 shadow-xl shadow-green/10 lg:scale-[1.05] z-10 h-full">
-                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
-                  <span className="rounded-full bg-green px-4 py-1 text-[11px] font-bold uppercase tracking-widest text-white shadow-md">
+              <div className="relative flex flex-col justify-between rounded-3xl border-2 border-green bg-white p-5 sm:p-8 pt-8 sm:pt-8 shadow-xl shadow-green/10 lg:scale-[1.05] z-10 h-full w-full max-w-full">
+                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 z-20 w-max max-w-[90%]">
+                  <span className="inline-block rounded-full bg-red-600 px-4 py-1.5 text-[11px] sm:text-xs font-black uppercase tracking-widest text-white shadow-md shadow-red-600/30 whitespace-nowrap">
                     MELHOR CUSTO-BENEFÍCIO
                   </span>
                 </div>
                 <div>
-                  <div className="inline-block rounded-md bg-emerald-50 px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider text-green border border-emerald-200/60 mb-2">
+                  <div className="inline-block rounded-md bg-emerald-50 px-2.5 py-1 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-green border border-emerald-200/60 mb-2 leading-tight max-w-full">
                     COLEÇÃO COMPLETA + 4 MATERIAIS COMPLEMENTARES
                   </div>
                   <h3 className="font-display text-2xl sm:text-3xl font-black text-navy">Rota Visual 70</h3>
                   <p className="mt-1 text-sm text-muted-fg font-medium">Uma revisão visual mais abrangente para o ENEM 2026</p>
 
-                  {/* Capas Reais - 3 Capas */}
-                  <div className="mt-5 flex items-center justify-center gap-2 sm:gap-3 bg-emerald-50/40 p-3.5 rounded-2xl border border-emerald-100">
-                    <img src="/carousel/mapa-1.jpg" alt="Capa Primeiro Dia" className="h-24 sm:h-28 w-auto object-contain rounded-lg shadow-xs" />
-                    <img src="/carousel/mapa-4.jpg" alt="Capa Segundo Dia" className="h-24 sm:h-28 w-auto object-contain rounded-lg shadow-xs" />
-                    <img src="/carousel/mapa-atualidades.png" alt="Capa Atualidades 2026" className="h-24 sm:h-28 w-auto object-contain rounded-lg shadow-xs" />
+                  {/* Capas Reais - 3 Capas (Ajustadas para caber perfeitamente no celular) */}
+                  <div className="mt-5 flex items-center justify-center gap-1.5 sm:gap-3 bg-emerald-50/40 p-2.5 sm:p-3.5 rounded-2xl border border-emerald-100 max-w-full overflow-hidden">
+                    <img src="/carousel/mapa-1.jpg" alt="Capa Primeiro Dia" className="h-16 xs:h-20 sm:h-28 max-w-[31%] w-auto object-contain rounded-lg shadow-xs" />
+                    <img src="/carousel/mapa-4.jpg" alt="Capa Segundo Dia" className="h-16 xs:h-20 sm:h-28 max-w-[31%] w-auto object-contain rounded-lg shadow-xs" />
+                    <img src="/carousel/mapa-atualidades.png" alt="Capa Atualidades 2026" className="h-16 xs:h-20 sm:h-28 max-w-[31%] w-auto object-contain rounded-lg shadow-xs" />
                   </div>
 
-                  <div className="mt-5 flex items-center gap-2 flex-wrap">
-                    <span className="rounded-full bg-green/10 px-3.5 py-1 text-xs font-bold text-green">
+                  <div className="mt-5 flex items-center gap-2 flex-wrap max-w-full">
+                    <span className="rounded-full bg-green/10 px-3.5 py-1 text-xs font-bold text-green shrink-0">
                       70 MAPAS MENTAIS
                     </span>
                     <span className="text-xs font-semibold text-navy-2">
@@ -1003,20 +1003,20 @@ function LandingPage() {
                   </div>
 
                   {/* MATERIAIS COMPLEMENTARES (BÔNUS) */}
-                  <div className="mt-6 rounded-2xl bg-gradient-to-b from-amber-50/70 via-orange-50/40 to-cream/60 p-4 border border-amber-200/80 shadow-xs">
+                  <div className="mt-6 rounded-2xl bg-gradient-to-b from-amber-50/70 via-orange-50/40 to-cream/60 p-3.5 sm:p-4 border border-amber-200/80 shadow-xs max-w-full">
                     <div className="flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-amber-900 mb-3">
-                      <Sparkles className="h-4 w-4 text-amber-600" />
+                      <Sparkles className="h-4 w-4 text-amber-600 shrink-0" />
                       VOCÊ TAMBÉM RECEBE:
                     </div>
 
                     <div className="space-y-3.5 divide-y divide-amber-200/50">
                       {/* BÔNUS 1 */}
                       <div className="pt-2 first:pt-0">
-                        <div className="flex items-center justify-between">
-                          <span className="rounded-md bg-amber-500 px-2 py-0.5 text-[10px] font-black uppercase text-white tracking-wide">
+                        <div className="flex items-center justify-between gap-2 flex-wrap sm:flex-nowrap">
+                          <span className="rounded-md bg-amber-500 px-2 py-0.5 text-[10px] font-black uppercase text-white tracking-wide shrink-0">
                             BÔNUS 1
                           </span>
-                          <span className="text-[11px] font-bold text-amber-800 bg-amber-100 px-2 py-0.5 rounded-full">
+                          <span className="text-[10px] sm:text-[11px] font-bold text-amber-800 bg-amber-100 px-2 py-0.5 rounded-full shrink-0">
                             5 mapas por dia
                           </span>
                         </div>
@@ -1028,11 +1028,11 @@ function LandingPage() {
 
                       {/* BÔNUS 2 */}
                       <div className="pt-3">
-                        <div className="flex items-center justify-between">
-                          <span className="rounded-md bg-orange-500 px-2 py-0.5 text-[10px] font-black uppercase text-white tracking-wide">
+                        <div className="flex items-center justify-between gap-2 flex-wrap sm:flex-nowrap">
+                          <span className="rounded-md bg-orange-500 px-2 py-0.5 text-[10px] font-black uppercase text-white tracking-wide shrink-0">
                             BÔNUS 2
                           </span>
-                          <span className="text-[11px] font-bold text-orange-800 bg-orange-100 px-2 py-0.5 rounded-full">
+                          <span className="text-[10px] sm:text-[11px] font-bold text-orange-800 bg-orange-100 px-2 py-0.5 rounded-full shrink-0">
                             Revisado • Reforço • Questões
                           </span>
                         </div>
@@ -1044,11 +1044,11 @@ function LandingPage() {
 
                       {/* BÔNUS 3 */}
                       <div className="pt-3">
-                        <div className="flex items-center justify-between">
-                          <span className="rounded-md bg-amber-600 px-2 py-0.5 text-[10px] font-black uppercase text-white tracking-wide">
+                        <div className="flex items-center justify-between gap-2 flex-wrap sm:flex-nowrap">
+                          <span className="rounded-md bg-amber-600 px-2 py-0.5 text-[10px] font-black uppercase text-white tracking-wide shrink-0">
                             BÔNUS 3
                           </span>
-                          <span className="text-[11px] font-bold text-amber-800 bg-amber-100 px-2 py-0.5 rounded-full">
+                          <span className="text-[10px] sm:text-[11px] font-bold text-amber-800 bg-amber-100 px-2 py-0.5 rounded-full shrink-0">
                             40 termos essenciais
                           </span>
                         </div>
@@ -1060,11 +1060,11 @@ function LandingPage() {
 
                       {/* BÔNUS 4 */}
                       <div className="pt-3">
-                        <div className="flex items-center justify-between">
-                          <span className="rounded-md bg-purple-600 px-2 py-0.5 text-[10px] font-black uppercase text-white tracking-wide">
+                        <div className="flex items-center justify-between gap-2 flex-wrap sm:flex-nowrap">
+                          <span className="rounded-md bg-purple-600 px-2 py-0.5 text-[10px] font-black uppercase text-white tracking-wide shrink-0">
                             BÔNUS 4
                           </span>
-                          <span className="text-[11px] font-bold text-purple-800 bg-purple-100 px-2 py-0.5 rounded-full">
+                          <span className="text-[10px] sm:text-[11px] font-bold text-purple-800 bg-purple-100 px-2 py-0.5 rounded-full shrink-0">
                             Identifique • Priorize • Aja
                           </span>
                         </div>
