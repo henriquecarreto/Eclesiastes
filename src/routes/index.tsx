@@ -271,6 +271,14 @@ function CTAButton({
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     trackEvent(event);
+    if (typeof window !== "undefined" && typeof (window as unknown as { fbq?: Function }).fbq === "function") {
+      (window as unknown as { fbq: Function }).fbq("track", "InitiateCheckout", {
+        content_name: "Guia Visual ENEM 2026",
+        content_category: "Produto Digital",
+        content_type: "product",
+        currency: "BRL",
+      });
+    }
     if (url) {
       window.location.href = url;
     } else {
@@ -319,6 +327,16 @@ function LandingPage() {
   const [showSticky, setShowSticky] = useState(false);
   const heroRef = useRef<HTMLDivElement | null>(null);
   const footerRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && typeof (window as unknown as { fbq?: Function }).fbq === "function") {
+      (window as unknown as { fbq: Function }).fbq("track", "ViewContent", {
+        content_name: "Guia Visual ENEM 2026",
+        content_category: "Produto Digital",
+        content_type: "product",
+      });
+    }
+  }, []);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
