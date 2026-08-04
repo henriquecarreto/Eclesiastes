@@ -5,8 +5,8 @@
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-display: "Manrope", "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Cormorant Garamond", "Cinzel", "Libre Baskerville", Georgia, serif;
+  --font-sans: "Inter", "Source Sans 3", "Manrope", ui-sans-serif, system-ui, sans-serif;
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
@@ -15,71 +15,70 @@
   --radius-2xl: calc(var(--radius) + 8px);
   --radius-3xl: calc(var(--radius) + 12px);
 
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-muted-fg: var(--muted-fg);
-  --color-navy: var(--navy);
-  --color-navy-2: var(--navy-2);
-  --color-green: var(--green);
-  --color-green-dark: var(--green-dark);
-  --color-gold: var(--gold);
-  --color-gold-soft: var(--gold-soft);
-  --color-cream: var(--cream);
-  --color-surface: var(--surface);
-  --color-border-soft: var(--border-soft);
+  --color-navy-950: var(--navy-950);
+  --color-navy-900: var(--navy-900);
+  --color-navy-800: var(--navy-800);
+  --color-gold-600: var(--gold-600);
+  --color-gold-500: var(--gold-500);
+  --color-gold-300: var(--gold-300);
+  --color-cream-50: var(--cream-50);
+  --color-cream-100: var(--cream-100);
+  --color-parchment-200: var(--parchment-200);
+  --color-ink-900: var(--ink-900);
+  --color-ink-700: var(--ink-700);
+  --color-success-700: var(--success-700);
+  --color-white: var(--white);
 
-  --color-primary: var(--navy);
-  --color-primary-foreground: #ffffff;
-  --color-border: var(--border-soft);
-  --color-ring: var(--green);
-  --color-card: #ffffff;
-  --color-card-foreground: var(--foreground);
-  --color-muted: var(--surface);
-  --color-muted-foreground: var(--muted-fg);
-  --color-accent: var(--gold-soft);
-  --color-accent-foreground: var(--foreground);
-  --color-destructive: oklch(0.577 0.245 27.325);
-  --color-input: var(--border-soft);
-  --color-popover: #ffffff;
-  --color-popover-foreground: var(--foreground);
-  --color-secondary: var(--surface);
-  --color-secondary-foreground: var(--foreground);
+  --color-background: var(--cream-50);
+  --color-foreground: var(--ink-900);
+  --color-muted-fg: var(--ink-700);
+  --color-navy: var(--navy-900);
+  --color-gold: var(--gold-500);
+  --color-border-soft: var(--parchment-200);
+
+  --color-primary: var(--gold-500);
+  --color-primary-foreground: var(--navy-950);
+  --color-border: var(--parchment-200);
+  --color-ring: var(--gold-500);
+  --color-card: #FFFFFF;
+  --color-card-foreground: var(--ink-900);
 }
 
 :root {
-  --radius: 0.875rem;
-  --background: #ffffff;
-  --foreground: #0F172A;
-  --muted-fg: #475569;
+  --radius: 0.75rem;
 
-  --navy: #0F172A;
-  --navy-2: #1E293B;
-  --green: #10B981;
-  --green-dark: #059669;
-  --gold: #FF6B00;
-  --gold-soft: #FFEDD5;
-  --cream: #FFFBEB;
-  --surface: #F8FAFC;
-  --border-soft: #E2E8F0;
+  --navy-950: #071E32;
+  --navy-900: #0B2D4A;
+  --navy-800: #123B5D;
+  --gold-600: #A97924;
+  --gold-500: #C0923E;
+  --gold-300: #DEC28B;
+  --cream-50: #FFFDF7;
+  --cream-100: #F8F0DE;
+  --parchment-200: #EAD9B5;
+  --ink-900: #1D252C;
+  --ink-700: #46515B;
+  --success-700: #285B45;
+  --white: #FFFFFF;
 }
 
 @layer base {
   * {
-    border-color: var(--color-border);
+    border-color: var(--parchment-200);
   }
   html {
     scroll-behavior: smooth;
     overflow-x: hidden;
   }
   body {
-    background-color: var(--color-background);
-    color: var(--color-foreground);
+    background-color: var(--cream-50);
+    color: var(--ink-900);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     overflow-x: hidden;
     max-width: 100vw;
   }
-  h1, h2, h3, h4 {
+  h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-display);
     letter-spacing: -0.01em;
   }
@@ -93,13 +92,38 @@
   }
 }
 
+/* Leaf ornament dividers & styling */
+.ornament-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  color: var(--gold-500);
+}
+.ornament-divider::before,
+.ornament-divider::after {
+  content: "";
+  height: 1px;
+  width: 4rem;
+  background: linear-gradient(90deg, transparent, var(--gold-300), transparent);
+}
+
+.gold-glow {
+  box-shadow: 0 0 25px -5px rgba(192, 146, 62, 0.25);
+}
+
+.parchment-card {
+  background: linear-gradient(135deg, #FFFDF7 0%, #F8F0DE 100%);
+  border: 1px solid var(--parchment-200);
+}
+
 @utility marker-underline {
-  background-image: linear-gradient(120deg, rgba(16, 185, 129, 0.28) 0%, rgba(16, 185, 129, 0.32) 100%);
+  background-image: linear-gradient(120deg, rgba(192, 146, 62, 0.22) 0%, rgba(192, 146, 62, 0.35) 100%);
   background-repeat: no-repeat;
-  background-size: 100% 50%;
+  background-size: 100% 45%;
   background-position: 0 88%;
-  padding: 0 0.2em;
-  border-radius: 4px;
+  padding: 0 0.15em;
+  border-radius: 2px;
 }
 
 @utility fade-up {
@@ -109,13 +133,4 @@
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(12px); }
   to { opacity: 1; transform: translateY(0); }
-}
-
-/* Scoped post-carousel styles */
-.conteudo-pos-carrossel {
-  width: 100%;
-}
-.conteudo-pos-carrossel section,
-.conteudo-pos-carrossel div {
-  box-sizing: border-box;
 }
