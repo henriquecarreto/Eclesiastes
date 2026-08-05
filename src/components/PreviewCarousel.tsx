@@ -7,7 +7,7 @@ import { ImageModal } from "./ImageModal";
 export function PreviewCarousel() {
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: true,
-    align: "center",
+    align: "start",
     skipSnaps: false,
   });
 
@@ -52,7 +52,7 @@ export function PreviewCarousel() {
 
   return (
     <section className="py-16 sm:py-24 bg-[#FFFDF7] text-[#1D252C]">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6">
         
         {/* Header */}
         <div className="mx-auto max-w-3xl text-center">
@@ -69,60 +69,39 @@ export function PreviewCarousel() {
         </div>
 
         {/* Carousel Container */}
-        <div className="relative mt-12">
+        <div className="relative mt-10">
           
           {/* Main Embla Viewport */}
-          <div className="overflow-hidden rounded-2xl" ref={emblaRef}>
-            <div className="flex gap-6">
+          <div className="overflow-hidden py-4" ref={emblaRef}>
+            <div className="flex -ml-3 sm:-ml-4">
               {PREVIEW_PAGES.map((page, idx) => (
                 <div
                   key={idx}
-                  className="flex-[0_0_85%] sm:flex-[0_0_45%] lg:flex-[0_0_32%] min-w-0"
+                  className="flex-[0_0_72%] sm:flex-[0_0_38%] md:flex-[0_0_28%] lg:flex-[0_0_22%] min-w-0 pl-3 sm:pl-4"
                 >
-                  <div className="group relative overflow-hidden rounded-2xl border border-[#EAD9B5] bg-[#FFFDF7] p-3 shadow-md transition-all duration-300 hover:shadow-xl hover:border-[#C0923E]">
-                    
-                    {/* Image Aspect Box */}
-                    <div className="relative overflow-hidden rounded-xl bg-[#1D252C] aspect-[3/4.5] flex items-center justify-center">
+                  <div
+                    onClick={() => setSelectedImage({ src: page.src, title: `Página ${page.num}: ${page.title}` })}
+                    className="group relative cursor-pointer overflow-hidden rounded-2xl border border-[#EAD9B5]/80 bg-[#FFFDF7] p-1.5 shadow-md transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:border-[#C0923E]"
+                  >
+                    {/* Visual Card Image */}
+                    <div className="relative overflow-hidden rounded-xl bg-[#FFFDF7]">
                       <img
                         src={page.src}
                         alt={`Página ${page.num} — ${page.title}`}
-                        className="h-full w-full object-cover object-center transition duration-300 group-hover:scale-[1.02]"
+                        className="w-full h-auto block rounded-lg object-contain transition duration-300 group-hover:brightness-95"
                         loading="lazy"
                       />
 
-                      {/* Discreta Marca d'água */}
-                      <div className="absolute top-2 right-2 bg-[#071E32]/90 border border-[#C0923E]/40 px-2.5 py-0.5 rounded-full text-[9px] font-bold uppercase tracking-widest text-[#DEC28B] backdrop-blur-md">
-                        PRÉVIA
-                      </div>
-
                       {/* Botão de Ampliação ao passar o mouse */}
-                      <button
-                        onClick={() => setSelectedImage({ src: page.src, title: `Página ${page.num}: ${page.title}` })}
-                        className="absolute inset-0 flex flex-col items-center justify-center bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-white font-medium gap-2"
-                        aria-label={`Ampliar página ${page.num}`}
-                      >
-                        <span className="grid h-12 w-12 place-items-center rounded-full bg-[#071E32]/90 text-[#DEC28B] border border-[#C0923E]/40 shadow-lg">
-                          <Maximize2 className="h-5 w-5" />
+                      <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-white font-medium gap-1.5 rounded-lg backdrop-blur-[1px]">
+                        <span className="grid h-10 w-10 place-items-center rounded-full bg-[#0F172A]/90 text-[#DEC28B] border border-[#C0923E]/50 shadow-lg">
+                          <Maximize2 className="h-4 w-4" />
                         </span>
-                        <span className="text-xs font-serif tracking-wider uppercase bg-[#071E32]/90 px-3 py-1 rounded-full text-[#DEC28B] border border-[#C0923E]/30">
+                        <span className="text-[11px] font-semibold tracking-wider uppercase bg-[#0F172A]/90 px-3 py-1 rounded-full text-[#DEC28B] border border-[#C0923E]/40 shadow-md">
                           Ampliar Página
                         </span>
-                      </button>
-                    </div>
-
-                    {/* Descrição em rodapé do card */}
-                    <div className="mt-3 px-1 text-left">
-                      <div className="text-xs font-bold uppercase tracking-wider text-[#A97924]">
-                        Página {page.num}
                       </div>
-                      <h3 className="font-serif text-base font-bold text-[#0B2D4A]">
-                        {page.title}
-                      </h3>
-                      <p className="text-xs text-[#46515B] line-clamp-1 mt-0.5">
-                        {page.desc}
-                      </p>
                     </div>
-
                   </div>
                 </div>
               ))}
@@ -132,7 +111,7 @@ export function PreviewCarousel() {
           {/* Seta Esquerda */}
           <button
             onClick={scrollPrev}
-            className="absolute left-2 top-1/2 -translate-y-1/2 z-10 grid h-11 w-11 place-items-center rounded-full bg-[#071E32]/90 text-[#DEC28B] border border-[#C0923E]/40 shadow-lg transition hover:bg-[#C0923E] hover:text-[#071E32] focus:outline-none focus:ring-2 focus:ring-[#C0923E]"
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-3 sm:-translate-x-5 z-10 grid h-11 w-11 place-items-center rounded-full bg-[#0F172A]/90 text-[#DEC28B] border border-[#C0923E]/40 shadow-xl transition hover:bg-[#C0923E] hover:text-[#0F172A] focus:outline-none focus:ring-2 focus:ring-[#C0923E]"
             aria-label="Página anterior"
           >
             <ChevronLeft className="h-6 w-6" />
@@ -141,14 +120,14 @@ export function PreviewCarousel() {
           {/* Seta Direita */}
           <button
             onClick={scrollNext}
-            className="absolute right-2 top-1/2 -translate-y-1/2 z-10 grid h-11 w-11 place-items-center rounded-full bg-[#071E32]/90 text-[#DEC28B] border border-[#C0923E]/40 shadow-lg transition hover:bg-[#C0923E] hover:text-[#071E32] focus:outline-none focus:ring-2 focus:ring-[#C0923E]"
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-3 sm:translate-x-5 z-10 grid h-11 w-11 place-items-center rounded-full bg-[#0F172A]/90 text-[#DEC28B] border border-[#C0923E]/40 shadow-xl transition hover:bg-[#C0923E] hover:text-[#0F172A] focus:outline-none focus:ring-2 focus:ring-[#C0923E]"
             aria-label="Próxima página"
           >
             <ChevronRight className="h-6 w-6" />
           </button>
 
           {/* Indicadores Dots */}
-          <div className="mt-6 flex justify-center gap-2">
+          <div className="mt-4 flex justify-center gap-2">
             {scrollSnaps.map((_, idx) => (
               <button
                 key={idx}
@@ -165,8 +144,13 @@ export function PreviewCarousel() {
 
         </div>
 
+        {/* Legenda Informativa no Rodapé do Carrossel */}
+        <p className="mt-6 text-center text-sm sm:text-base text-[#46515B] max-w-2xl mx-auto font-sans leading-relaxed">
+          O <span className="font-semibold text-[#0B2D4A]">E-book Visual Eclesiastes</span> foi pensado para transformar um assunto profundo em um material mais simples e inspirador de visualizar.
+        </p>
+
         {/* CTA do Carrossel */}
-        <div className="mt-10 text-center">
+        <div className="mt-8 text-center">
           <a
             href="#ofertas"
             onClick={scrollToOffers}
