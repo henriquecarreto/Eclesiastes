@@ -1,7 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { AnnouncementBar } from "../components/AnnouncementBar";
 import { Hero } from "../components/Hero";
-import { TrustStrip } from "../components/TrustStrip";
 import { ProblemSolution } from "../components/ProblemSolution";
 import { BeliefBreak } from "../components/BeliefBreak";
 import { FourMovements } from "../components/FourMovements";
@@ -23,17 +22,17 @@ export const Route = createFileRoute("/")({
   component: LandingPage,
   head: () => ({
     meta: [
-      { title: "Jornada Debaixo do Sol | 4 Guias Visuais Baseados em Eclesiastes" },
+      { title: "Jornada Debaixo do Sol | 4 Materiais Digitais Baseados em Eclesiastes" },
       {
         name: "description",
         content:
-          "Uma jornada bíblica em quatro movimentos para compreender fases de espera, sair do automático e reorganizar prioridades com mais sabedoria.",
+          "Uma jornada bíblica em quatro movimentos para compreender fases de espera, interromper o automático e reorganizar prioridades com mais sabedoria.",
       },
-      { property: "og:title", content: "Jornada Debaixo do Sol | 4 Guias Visuais Baseados em Eclesiastes" },
+      { property: "og:title", content: "Jornada Debaixo do Sol | 4 Materiais Digitais Baseados em Eclesiastes" },
       {
         property: "og:description",
         content:
-          "Uma jornada bíblica em quatro movimentos para compreender fases de espera, sair do automático e reorganizar prioridades com mais sabedoria.",
+          "Uma jornada bíblica em quatro movimentos para compreender fases de espera, interromper o automático e reorganizar prioridades com mais sabedoria.",
       },
       { property: "og:type", content: "product" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -46,9 +45,9 @@ export const Route = createFileRoute("/")({
           "@type": "Product",
           name: "Jornada Debaixo do Sol",
           description:
-            "Uma jornada bíblica em quatro movimentos para compreender fases de espera, sair do automático e reorganizar prioridades com mais sabedoria.",
+            "Uma jornada bíblica em quatro movimentos para compreender fases de espera, interromper o automático e reorganizar prioridades com mais sabedoria.",
           brand: { "@type": "Brand", name: editableFields.companyName },
-          category: "Livros e Literatura Bíblica",
+          category: "Literatura Bíblica e Recursos Digitais",
           offers: {
             "@type": "Offer",
             price: "19.90",
@@ -75,7 +74,7 @@ export const Route = createFileRoute("/")({
 
 function LandingPage() {
   return (
-    <div className="min-h-screen bg-[#FFFDF8] text-[#1F272D] selection:bg-[#B8892E]/30 selection:text-[#0B2942]">
+    <div className="min-h-screen bg-[#FFFDF8] text-[#26343B] selection:bg-[#2F6B4F]/20 selection:text-[#163142]">
       {/* 1. Barra Superior */}
       <AnnouncementBar />
 
@@ -84,53 +83,50 @@ function LandingPage() {
         {/* 2. Primeira Dobra (Hero) */}
         <Hero />
 
-        {/* 3. Faixa de Confiança */}
-        <TrustStrip />
-
-        {/* 4. Identificação com a Dor */}
+        {/* 3. Identificação com a Dor */}
         <ProblemSolution />
 
-        {/* 5. Quebra de Crença */}
+        {/* 4. Quebra de Crença */}
         <BeliefBreak />
 
-        {/* 6. Mecanismo dos Quatro Movimentos */}
+        {/* 5. Mecanismo dos Quatro Movimentos */}
         <FourMovements />
 
-        {/* 7. Apresentação dos Quatro Materiais */}
+        {/* 6. Apresentação dos Quatro Materiais Digitais */}
         <ProductDetails />
 
-        {/* 8. Como Utilizar (Método) */}
+        {/* 7. Como Utilizar (Método) */}
         <UsageSteps />
 
-        {/* 9. Prévia do Material */}
+        {/* 8. Prévia do Material Principal */}
         <PreviewCarousel />
 
-        {/* 10. Benefícios */}
+        {/* 9. Benefícios */}
         <Benefits />
 
-        {/* 11. Para Quem É / Para Quem Não É */}
+        {/* 10. Para Quem Foi Criado */}
         <Audience />
 
-        {/* 12. Apresentação Consolidada da Oferta */}
+        {/* 11. Apresentação Consolidada da Oferta */}
         <Offers />
 
-        {/* 13. Garantia */}
+        {/* 12. Garantia */}
         <Guarantee />
 
-        {/* 14. Perguntas Frequentes */}
+        {/* 13. Perguntas Frequentes */}
         <FAQ />
 
-        {/* 15. Chamada Final */}
+        {/* 14. Chamada Final */}
         <FinalCTA />
       </main>
 
-      {/* 16. Rodapé */}
+      {/* 15. Rodapé */}
       <Footer />
 
-      {/* 17. CTA Fixo Celular */}
+      {/* 16. CTA Fixo Celular */}
       <MobileStickyCTA />
 
-      {/* 18. Botão Voltar ao Topo */}
+      {/* 17. Botão Voltar ao Topo */}
       <BackToTop />
     </div>
   );

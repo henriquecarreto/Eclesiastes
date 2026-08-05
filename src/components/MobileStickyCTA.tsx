@@ -59,7 +59,7 @@ export function MobileStickyCTA() {
           <a
             href="#ofertas"
             onClick={handleClick}
-            className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-[#C76545] px-4 py-2.5 text-xs font-extrabold uppercase tracking-wider text-[#FFFDF8] shadow-md terracota-glow"
+            className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-[#2F6B4F] px-4 py-2.5 text-xs font-extrabold uppercase tracking-wider text-[#FFFDF8] shadow-md btn-green-glow"
           >
             <Lock className="h-3.5 w-3.5" />
             <span>QUERO COMEÇAR A JORNADA</span>
@@ -69,7 +69,7 @@ export function MobileStickyCTA() {
             href={checkoutUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-[#C76545] px-4 py-2.5 text-xs font-extrabold uppercase tracking-wider text-[#FFFDF8] shadow-md terracota-glow"
+            className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-[#2F6B4F] px-4 py-2.5 text-xs font-extrabold uppercase tracking-wider text-[#FFFDF8] shadow-md btn-green-glow"
           >
             <Lock className="h-3.5 w-3.5" />
             <span>QUERO COMEÇAR A JORNADA</span>

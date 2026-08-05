@@ -8,9 +8,9 @@ export function Offers() {
 
   return (
     <section id="ofertas" className="py-16 sm:py-24 bg-[#163142] text-[#FFFDF8] relative overflow-hidden">
-      {/* Iluminação suave em tons quentes de fundo */}
+      {/* Iluminação suave no fundo */}
       <div className="pointer-events-none absolute inset-0 opacity-20" aria-hidden="true">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[650px] w-[650px] rounded-full bg-[#C76545] blur-[150px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[650px] w-[650px] rounded-full bg-[#2F6B4F] blur-[150px]" />
       </div>
 
       <div className="relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
@@ -48,25 +48,25 @@ export function Offers() {
             </div>
           </div>
 
-          {/* Materiais Incluídos */}
+          {/* Os 4 Materiais com Capas Reais em Grade */}
           <div className="mt-6">
             <h4 className="text-xs font-bold uppercase tracking-wider text-[#D1A653] mb-3">
               Materiais digitais incluídos na jornada:
             </h4>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
               {JOURNEY_MATERIALS.map((mat) => (
-                <div key={mat.id} className="flex items-center gap-3 rounded-xl bg-[#FFFDF8]/10 p-3 border border-[#D1A653]/20">
-                  <span className="grid h-6 w-6 shrink-0 place-items-center rounded-full bg-[#C76545] text-[#FFFDF8] text-xs font-bold font-serif">
-                    {mat.id}
+                <div key={mat.id} className="flex flex-col items-center text-center rounded-xl bg-[#FFFDF8]/10 p-2.5 border border-[#D1A653]/20">
+                  <img
+                    src={mat.coverImage}
+                    alt={mat.title}
+                    className="w-full h-auto block rounded-md object-contain aspect-[3/4] mb-2"
+                  />
+                  <span className="text-[9px] font-bold text-[#D1A653] uppercase tracking-wider block">
+                    {mat.movement.split(" — ")[0]}
                   </span>
-                  <div>
-                    <span className="text-[10px] font-bold text-[#D1A653] uppercase tracking-wider block">
-                      {mat.movement.split(" — ")[0]}
-                    </span>
-                    <span className="font-serif text-sm font-bold text-[#FFFDF8] leading-tight block">
-                      {mat.title}
-                    </span>
-                  </div>
+                  <span className="font-serif text-xs font-bold text-[#FFFDF8] leading-tight line-clamp-1">
+                    {mat.title}
+                  </span>
                 </div>
               ))}
             </div>
@@ -90,12 +90,12 @@ export function Offers() {
             </ul>
           </div>
 
-          {/* Botão Terracota de Checkout */}
+          {/* Botão Verde Profundo de Checkout */}
           <div className="mt-8">
             {isPending ? (
               <a
                 href="#ofertas"
-                className="w-full inline-flex min-h-[54px] items-center justify-center gap-3 rounded-xl bg-[#C76545] px-8 py-4 text-base font-bold uppercase tracking-wider text-[#FFFDF8] terracota-glow hover:bg-[#AD4F35] transition-all hover:scale-[1.01] active:scale-[0.99]"
+                className="w-full inline-flex min-h-[54px] items-center justify-center gap-3 rounded-xl bg-[#2F6B4F] px-8 py-4 text-base font-bold uppercase tracking-wider text-[#FFFDF8] btn-green-glow hover:bg-[#24563F] transition-all hover:scale-[1.01] active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-[#9BC8A8]"
               >
                 <Lock className="h-5 w-5" />
                 <span>Quero os 4 materiais por {editableFields.singleOfferPrice}</span>
@@ -106,7 +106,7 @@ export function Offers() {
                 href={checkoutUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full inline-flex min-h-[54px] items-center justify-center gap-3 rounded-xl bg-[#C76545] px-8 py-4 text-base font-bold uppercase tracking-wider text-[#FFFDF8] terracota-glow hover:bg-[#AD4F35] transition-all hover:scale-[1.01] active:scale-[0.99]"
+                className="w-full inline-flex min-h-[54px] items-center justify-center gap-3 rounded-xl bg-[#2F6B4F] px-8 py-4 text-base font-bold uppercase tracking-wider text-[#FFFDF8] btn-green-glow hover:bg-[#24563F] transition-all hover:scale-[1.01] active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-[#9BC8A8]"
               >
                 <Lock className="h-5 w-5" />
                 <span>Quero os 4 materiais por {editableFields.singleOfferPrice}</span>

@@ -50,15 +50,15 @@ export function PreviewCarousel() {
         
         {/* Header */}
         <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-flex items-center gap-2 rounded-full border border-[#C76545]/30 bg-[#FFFDF8] px-3.5 py-1.5 text-xs font-bold uppercase tracking-widest text-[#C76545]">
-            <Sparkles className="h-3.5 w-3.5 text-[#C76545]" />
-            VEJA POR DENTRO
+          <span className="inline-flex items-center gap-2 rounded-full border border-[#2F6B4F]/30 bg-[#FFFDF8] px-3.5 py-1.5 text-xs font-bold uppercase tracking-widest text-[#2F6B4F]">
+            <Sparkles className="h-3.5 w-3.5 text-[#2F6B4F]" />
+            VEJA POR DENTRO DO MATERIAL PRINCIPAL
           </span>
           <h2 className="mt-5 font-serif text-3xl sm:text-4xl lg:text-4.5xl font-normal text-[#163142] tracking-tight">
-            Uma experiência visual criada para facilitar a reflexão
+            Veja por dentro do material principal
           </h2>
           <p className="mt-3 text-base text-[#60686C]">
-            Explore algumas páginas reais e observe como os conteúdos foram organizados para tornar a leitura mais clara, contemplativa e aplicável.
+            Explore algumas páginas reais de <em>Quando Nada Parece Fazer Sentido</em> e observe como o conteúdo foi organizado de forma visual, clara e aplicável.
           </p>
         </div>
 
@@ -73,7 +73,7 @@ export function PreviewCarousel() {
                 >
                   <div
                     onClick={() => setSelectedImage({ src: page.src, title: `Página ${page.num}: ${page.title}` })}
-                    className="group relative cursor-pointer overflow-hidden rounded-2xl border border-[#EADBC4] bg-[#FFFDF8] p-1.5 shadow-md transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:border-[#C76545]"
+                    className="group relative cursor-pointer overflow-hidden rounded-2xl border border-[#EADBC4] bg-[#FFFDF8] p-1.5 shadow-md transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:border-[#2F6B4F]"
                   >
                     <div className="relative overflow-hidden rounded-xl bg-[#FFFDF8]">
                       <img
@@ -102,7 +102,7 @@ export function PreviewCarousel() {
           {/* Seta Esquerda */}
           <button
             onClick={scrollPrev}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-3 sm:-translate-x-5 z-10 grid h-11 w-11 place-items-center rounded-full bg-[#163142]/90 text-[#D1A653] border border-[#D1A653]/40 shadow-xl transition hover:bg-[#C76545] hover:text-white focus:outline-none focus:ring-2 focus:ring-[#C76545]"
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-3 sm:-translate-x-5 z-10 grid h-11 w-11 place-items-center rounded-full bg-[#163142]/90 text-[#D1A653] border border-[#D1A653]/40 shadow-xl transition hover:bg-[#2F6B4F] hover:text-white focus:outline-none focus:ring-2 focus:ring-[#9BC8A8]"
             aria-label="Página anterior"
           >
             <ChevronLeft className="h-6 w-6" />
@@ -111,7 +111,7 @@ export function PreviewCarousel() {
           {/* Seta Direita */}
           <button
             onClick={scrollNext}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-3 sm:translate-x-5 z-10 grid h-11 w-11 place-items-center rounded-full bg-[#163142]/90 text-[#D1A653] border border-[#D1A653]/40 shadow-xl transition hover:bg-[#C76545] hover:text-white focus:outline-none focus:ring-2 focus:ring-[#C76545]"
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-3 sm:translate-x-5 z-10 grid h-11 w-11 place-items-center rounded-full bg-[#163142]/90 text-[#D1A653] border border-[#D1A653]/40 shadow-xl transition hover:bg-[#2F6B4F] hover:text-white focus:outline-none focus:ring-2 focus:ring-[#9BC8A8]"
             aria-label="Próxima página"
           >
             <ChevronRight className="h-6 w-6" />
@@ -125,8 +125,8 @@ export function PreviewCarousel() {
                 onClick={() => scrollTo(idx)}
                 className={`h-2.5 rounded-full transition-all duration-200 ${
                   idx === selectedIndex
-                    ? "w-8 bg-[#C76545]"
-                    : "w-2.5 bg-[#EADBC4] hover:bg-[#C76545]/50"
+                    ? "w-8 bg-[#2F6B4F]"
+                    : "w-2.5 bg-[#EADBC4] hover:bg-[#2F6B4F]/50"
                 }`}
                 aria-label={`Ir para a prévia ${idx + 1}`}
               />
@@ -140,12 +140,12 @@ export function PreviewCarousel() {
           Cada página foi pensada para transformar uma leitura profunda em uma experiência mais organizada e acessível.
         </p>
 
-        {/* Botão CTA Terracota */}
+        {/* Botão Verde Profundo */}
         <div className="mt-8 text-center">
           <a
             href="#ofertas"
             onClick={scrollToOffers}
-            className="inline-flex min-h-[52px] items-center justify-center gap-2 rounded-xl bg-[#C76545] px-8 py-3.5 text-base font-bold uppercase tracking-wider text-[#FFFDF8] terracota-glow transition-all duration-200 hover:bg-[#AD4F35] hover:scale-[1.01] active:scale-[0.99]"
+            className="inline-flex min-h-[54px] items-center justify-center gap-2.5 rounded-xl bg-[#2F6B4F] px-8 py-4 text-base font-bold uppercase tracking-wider text-[#FFFDF8] btn-green-glow transition-all duration-200 hover:bg-[#24563F] hover:scale-[1.01] active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-[#9BC8A8]"
           >
             <span>Quero começar minha jornada</span>
             <ArrowRight className="h-4 w-4" />

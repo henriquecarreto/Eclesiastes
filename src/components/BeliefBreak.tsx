@@ -10,13 +10,13 @@ export function BeliefBreak() {
 
       <div className="relative mx-auto max-w-4xl px-4 sm:px-6 text-center">
         
-        {/* Pequena etiqueta dourada */}
-        <span className="inline-flex items-center gap-2 rounded-full border border-[#D1A653]/40 bg-[#D1A653]/10 px-4 py-1.5 text-xs font-bold uppercase tracking-widest text-[#D1A653]">
-          NEM TODA FASE PEDE MAIS VELOCIDADE
-        </span>
+        {/* Texto editorial sem aspas sobre Eclesiastes */}
+        <p className="text-xs sm:text-sm font-bold uppercase tracking-widest text-[#D1A653] mb-6">
+          Eclesiastes nos confronta com a brevidade da vida e nos ensina a discernir o tempo.
+        </p>
 
         {/* Frase Principal Grande Centralizada */}
-        <h2 className="mt-8 font-serif text-3xl sm:text-4.5xl lg:text-5.5xl font-normal leading-tight text-[#FFFDF8] tracking-tight">
+        <h2 className="font-serif text-3xl sm:text-4.5xl lg:text-5.5xl font-normal leading-tight text-[#FFFDF8] tracking-tight">
           Talvez você não precise correr mais. Talvez precise compreender para onde está correndo.
         </h2>
 

@@ -15,13 +15,14 @@
   --radius-2xl: calc(var(--radius) + 8px);
   --radius-3xl: calc(var(--radius) + 12px);
 
-  /* Novas Cores do Design System */
+  /* Cores do Design System */
   --color-azul-profundo: #163142;
   --color-creme-quente: #FBF5E9;
   --color-branco-quente: #FFFDF8;
   --color-areia-clara: #EADBC4;
-  --color-terracota: #C76545;
-  --color-terracota-dark: #AD4F35;
+  --color-verde-principal: #2F6B4F;
+  --color-verde-hover: #24563F;
+  --color-verde-foco: #9BC8A8;
   --color-dourado-quente: #D1A653;
   --color-verde-salvia: #78836A;
   --color-grafite-azulado: #26343B;
@@ -38,8 +39,9 @@
   --creme-quente: #FBF5E9;
   --branco-quente: #FFFDF8;
   --areia-clara: #EADBC4;
-  --terracota: #C76545;
-  --terracota-dark: #AD4F35;
+  --verde-principal: #2F6B4F;
+  --verde-hover: #24563F;
+  --verde-foco: #9BC8A8;
   --dourado-quente: #D1A653;
   --verde-salvia: #78836A;
   --grafite-azulado: #26343B;
@@ -78,9 +80,13 @@
   }
 }
 
-/* Sombra e Efeitos do Design System */
-.terracota-glow {
-  box-shadow: 0 10px 25px rgba(199, 101, 69, 0.20);
+/* Sombra e Efeitos dos Botões de Compra em Verde Profundo */
+.btn-green-glow {
+  box-shadow: 0 10px 26px rgba(36, 86, 63, 0.24);
+}
+
+.btn-green-glow:hover {
+  box-shadow: 0 14px 32px rgba(36, 86, 63, 0.30);
 }
 
 .gold-glow {
@@ -92,7 +98,7 @@
   border: 1px solid var(--areia-clara);
 }
 
-/* Animação Flutuante Sutil para Capas */
+/* Animação Flutuante Sutil */
 @keyframes floatSlow {
   0%, 100% {
     transform: translateY(0px);

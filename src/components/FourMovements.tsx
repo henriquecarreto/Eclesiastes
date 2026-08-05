@@ -19,14 +19,14 @@ export function FourMovements() {
         
         {/* Header */}
         <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-flex items-center gap-2 rounded-full border border-[#C76545]/30 bg-[#FFFDF8] px-3.5 py-1.5 text-xs font-bold uppercase tracking-widest text-[#C76545]">
+          <span className="inline-flex items-center gap-2 rounded-full border border-[#2F6B4F]/30 bg-[#FFFDF8] px-3.5 py-1.5 text-xs font-bold uppercase tracking-widest text-[#2F6B4F]">
             UMA JORNADA, QUATRO MOVIMENTOS
           </span>
           <h2 className="mt-5 font-serif text-3xl sm:text-4xl lg:text-4.5xl font-normal text-[#163142] tracking-tight">
             Da confusão à clareza, um passo de cada vez
           </h2>
           <p className="mt-4 text-base sm:text-lg text-[#60686C] font-sans">
-            Os quatro materiais foram organizados como uma sequência. Cada movimento ajuda você a observar uma parte diferente da fase que está vivendo.
+            Os quatro materiais digitais foram organizados como uma sequência. Cada movimento ajuda você a observar uma parte diferente da fase que está vivendo.
           </p>
         </div>
 
@@ -35,7 +35,7 @@ export function FourMovements() {
           
           {/* Conector Dourado no Desktop */}
           <div
-            className="hidden md:block absolute top-1/2 left-4 right-4 h-0.5 bg-gradient-to-r from-[#163142] via-[#C76545] to-[#0284C7] -translate-y-12 z-0 opacity-40"
+            className="hidden md:block absolute top-1/2 left-4 right-4 h-0.5 bg-gradient-to-r from-[#163142] via-[#C76545] via-[#78836A] to-[#0284C7] -translate-y-12 z-0 opacity-40"
             aria-hidden="true"
           />
 
@@ -93,12 +93,12 @@ export function FourMovements() {
 
         </div>
 
-        {/* CTA ao final do mecanismo */}
+        {/* CTA com Botão Verde Profundo ao final do mecanismo */}
         <div className="mt-14 text-center">
           <a
             href="#ofertas"
             onClick={scrollToOffers}
-            className="inline-flex min-h-[52px] items-center justify-center gap-2 rounded-xl bg-[#C76545] px-8 py-3.5 text-base font-bold uppercase tracking-wider text-[#FFFDF8] terracota-glow transition-all duration-200 hover:bg-[#AD4F35] hover:scale-[1.01] active:scale-[0.99]"
+            className="inline-flex min-h-[54px] items-center justify-center gap-2.5 rounded-xl bg-[#2F6B4F] px-8 py-4 text-base font-bold uppercase tracking-wider text-[#FFFDF8] btn-green-glow transition-all duration-200 hover:bg-[#24563F] hover:scale-[1.01] active:scale-[0.99]"
           >
             <span>Quero começar minha jornada</span>
             <ArrowRight className="h-4 w-4" />

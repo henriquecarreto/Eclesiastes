@@ -15,7 +15,7 @@ export function FinalCTA() {
     <section className="py-20 sm:py-28 bg-gradient-to-b from-[#163142] via-[#1a3a4e] to-[#163142] text-[#FFFDF8] relative overflow-hidden">
       {/* Iluminação de horizonte radiante no fundo */}
       <div className="pointer-events-none absolute inset-0 opacity-25" aria-hidden="true">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[550px] w-[550px] rounded-full bg-[#C76545] blur-[150px]" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[550px] w-[550px] rounded-full bg-[#2F6B4F] blur-[150px]" />
       </div>
 
       <div className="relative mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center">
@@ -35,12 +35,12 @@ export function FinalCTA() {
           </span>
         </div>
 
-        {/* Botão Terracota */}
+        {/* Botão Verde Profundo */}
         <div className="mt-8 flex justify-center">
           <a
             href="#ofertas"
             onClick={scrollToOffers}
-            className="inline-flex min-h-[54px] w-full sm:w-auto items-center justify-center gap-3 rounded-xl bg-[#C76545] px-9 py-4 text-base sm:text-lg font-bold uppercase tracking-wider text-[#FFFDF8] terracota-glow transition-all hover:bg-[#AD4F35] hover:scale-[1.01] active:scale-[0.99]"
+            className="inline-flex min-h-[54px] w-full sm:w-auto items-center justify-center gap-3 rounded-xl bg-[#2F6B4F] px-9 py-4 text-base sm:text-lg font-bold uppercase tracking-wider text-[#FFFDF8] btn-green-glow transition-all hover:bg-[#24563F] hover:scale-[1.01] active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-[#9BC8A8]"
           >
             <span>Quero começar minha jornada</span>
             <ArrowRight className="h-5 w-5" />

@@ -1,16 +1,19 @@
 export interface JourneyMaterial {
   id: number;
   title: string;
+  subtitle?: string;
   movement: string;
   movementNum: string;
+  formatName: string;
+  coverImage: string;
   colorHex: string;
   bgTagColor: string;
   desc: string;
+  usageSituation: string;
   highlightText?: string;
   isMain?: boolean;
   pagesInfo?: string;
   lessonsInfo?: string;
-  symbol: string;
 }
 
 export interface MovementItem {
@@ -53,48 +56,60 @@ export const JOURNEY_MATERIALS: JourneyMaterial[] = [
   {
     id: 1,
     title: "Quando Nada Parece Fazer Sentido",
+    subtitle: "Uma jornada visual pelo livro de Eclesiastes",
     movement: "MOVIMENTO 1 — COMPREENDER",
     movementNum: "01",
+    formatName: "E-book visual",
+    coverImage: "/images/capa-quando-nada-parece-fazer-sentido.jpg",
     colorHex: "#163142",
     bgTagColor: "bg-[#163142] text-[#FFFDF8]",
     desc: "Um e-book visual de 50 páginas com 20 lições para compreender as principais ideias de Eclesiastes e relacioná-las ao tempo, ao trabalho, às escolhas, aos relacionamentos e ao propósito.",
+    usageSituation: "Use para compreender a confusão, organizar seus pensamentos e observar a fase atual com clareza bíblica.",
     isMain: true,
     pagesInfo: "50 páginas visualmente organizadas",
     lessonsInfo: "20 lições práticas com reflexão e oração",
-    symbol: "Caminho com névoa",
   },
   {
     id: 2,
     title: "Esperando sem Desperdiçar a Vida",
+    subtitle: "Jornada bíblica de 14 dias com Eclesiastes",
     movement: "MOVIMENTO 2 — ESPERAR",
     movementNum: "02",
+    formatName: "Jornada bíblica de 14 dias",
+    coverImage: "/images/capa-esperando-sem-desperdicar-a-vida.jpg",
     colorHex: "#C76545",
     bgTagColor: "bg-[#C76545] text-[#FFFDF8]",
-    desc: "Reflexões para atravessar períodos de espera sem colocar toda a vida em pausa e sem perder de vista aquilo que ainda pode ser vivido no presente.",
+    desc: "Uma jornada de reflexão para atravessar períodos de espera sem colocar toda a vida em pausa e sem perder de vista aquilo que ainda pode ser vivido no presente.",
+    usageSituation: "Use quando perceber que está adiando sua alegria, seus planos e sua presença enquanto espera uma resposta.",
     highlightText: "A espera pode fazer parte da sua história sem precisar ocupar toda a sua vida.",
-    symbol: "Ampulheta / Janela",
   },
   {
     id: 3,
     title: "Pause Debaixo do Sol",
+    subtitle: "27 cartas de sabedoria para dias de pressa, cansaço e espera",
     movement: "MOVIMENTO 3 — PAUSAR",
     movementNum: "03",
+    formatName: "27 cartas de reflexão",
+    coverImage: "/images/capa-pausa-debaixo-do-sol.jpg",
     colorHex: "#78836A",
     bgTagColor: "bg-[#78836A] text-[#FFFDF8]",
     desc: "Um material de pausa e reflexão para diminuir o ritmo, sair do automático e observar com mais atenção a vida que está acontecendo agora.",
+    usageSituation: "Use quando perceber que a rotina está funcionando, mas você já não consegue descansar, refletir ou estar presente.",
     highlightText: "Nem toda pausa é atraso. Algumas pausas devolvem clareza.",
-    symbol: "Sombra da árvore / Folha",
   },
   {
     id: 4,
     title: "Mapa do Vento",
+    subtitle: "Para quem sente que está sustentando responsabilidades demais",
     movement: "MOVIMENTO 4 — REORIENTAR",
     movementNum: "04",
+    formatName: "Caderno prático de reflexão",
+    coverImage: "/images/capa-mapa-do-vento.jpg",
     colorHex: "#0284C7",
     bgTagColor: "bg-[#0284C7] text-[#FFFDF8]",
-    desc: "Um guia de reflexão para reconhecer buscas, cobranças e movimentos que consomem energia sem produzir clareza, presença ou direção.",
+    desc: "Um guia para reconhecer buscas, cobranças e movimentos que consomem energia sem produzir clareza, presença ou direção.",
+    usageSituation: "Use quando estiver fazendo muitas coisas, mas não conseguir identificar quais delas realmente merecem continuar ocupando seu tempo.",
     highlightText: "Antes de continuar correndo, observe o que está levando sua energia.",
-    symbol: "Bússola / Coordenadas",
   },
 ];
 
@@ -113,7 +128,7 @@ export const FOUR_MOVEMENTS: MovementItem[] = [
     desc: "Reconhecer que algumas respostas ainda não chegaram sem transformar a vida inteira em uma sala de espera.",
     materialTitle: "Esperando sem Desperdiçar a Vida",
     colorHex: "#C76545",
-    colorName: "Terracota",
+    colorName: "Terracota suave",
   },
   {
     number: "03",
@@ -129,7 +144,7 @@ export const FOUR_MOVEMENTS: MovementItem[] = [
     desc: "Perceber quais movimentos e cobranças estão consumindo energia sem produzir direção verdadeira.",
     materialTitle: "Mapa do Vento",
     colorHex: "#0284C7",
-    colorName: "Azul claro com dourado",
+    colorName: "Azul-petróleo",
   },
 ];
 
