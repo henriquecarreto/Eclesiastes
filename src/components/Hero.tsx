@@ -18,17 +18,17 @@ export function Hero() {
         <div className="absolute -top-32 left-1/2 -translate-x-1/2 h-[500px] w-[500px] rounded-full bg-[#B8892E]/15 blur-[120px]" />
       </div>
 
-      <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 xl:gap-14 items-center">
           
           {/* Coluna Texto (Mobile: Primeira) */}
-          <div className="lg:col-span-7 flex flex-col items-start text-left">
+          <div className="lg:col-span-6 xl:col-span-6 flex flex-col items-start text-left">
             <span className="inline-flex items-center gap-2 rounded-full border border-[#B8892E]/40 bg-[#FFFDF8] px-3.5 py-1.5 text-xs font-bold uppercase tracking-widest text-[#B8892E] shadow-sm">
               <span className="h-2 w-2 rounded-full bg-[#B8892E]" />
               UMA JORNADA BÍBLICA EM 4 MOVIMENTOS
             </span>
 
-            <h1 className="mt-5 font-serif text-3.5xl sm:text-4.5xl lg:text-5.5xl font-normal leading-[1.15] text-[#0B2942] tracking-tight">
+            <h1 className="mt-5 font-serif text-3.5xl sm:text-4.5xl lg:text-5xl xl:text-5.5xl font-normal leading-[1.15] text-[#0B2942] tracking-tight">
               Quando a vida parece parada, você não precisa colocar tudo em pausa.
             </h1>
 
@@ -100,10 +100,10 @@ export function Hero() {
           </div>
 
           {/* Coluna Visual dos 4 Materiais (Mobile: Segunda) */}
-          <div className="lg:col-span-5 flex justify-center">
-            <div className="relative w-full max-w-lg">
+          <div className="lg:col-span-6 xl:col-span-6 flex justify-center w-full">
+            <div className="relative w-full max-w-xl xl:max-w-2xl">
               {/* Moldura Dourada Suave e Sombra */}
-              <div className="relative mx-auto overflow-hidden rounded-2xl border border-[#B8892E]/40 bg-[#FFFDF8] p-2.5 sm:p-3 shadow-2xl backdrop-blur-sm gold-glow">
+              <div className="relative mx-auto overflow-hidden rounded-2xl border border-[#B8892E]/40 bg-[#FFFDF8] p-2.5 sm:p-3.5 shadow-2xl backdrop-blur-sm gold-glow">
                 <div className="relative overflow-hidden rounded-xl bg-[#FFFDF8]">
                   <img
                     src="/jornada-mockup.jpg"
