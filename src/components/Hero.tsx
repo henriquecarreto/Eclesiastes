@@ -101,71 +101,24 @@ export function Hero() {
 
           {/* Coluna Visual dos 4 Materiais (Mobile: Segunda) */}
           <div className="lg:col-span-5 flex justify-center">
-            <div className="relative w-full max-w-md">
-              {/* Card Container com Grade dos 4 Materiais */}
-              <div className="relative mx-auto rounded-2xl border border-[#B8892E]/40 bg-[#FFFDF8] p-4 shadow-xl gold-glow">
-                <div className="flex items-center justify-between border-b border-[#EADDC5] pb-3 mb-4">
-                  <span className="text-xs font-bold uppercase tracking-wider text-[#B8892E] flex items-center gap-1.5">
-                    <Layers className="h-4 w-4 text-[#B8892E]" />
-                    4 MATERIAIS DIGITAIS INCLUÍDOS
-                  </span>
-                  <span className="text-[11px] font-semibold bg-[#0B2942] text-[#FFFDF8] px-2.5 py-0.5 rounded-full">
-                    R$ 19,90
-                  </span>
-                </div>
-
-                {/* Grade 2x2 dos 4 Materiais */}
-                <div className="grid grid-cols-2 gap-3">
-                  {JOURNEY_MATERIALS.map((mat) => (
-                    <div
-                      key={mat.id}
-                      className="group relative flex flex-col justify-between overflow-hidden rounded-xl border border-[#EADDC5] bg-[#F7F0E3]/60 p-2.5 transition hover:border-[#B8892E] shadow-sm"
-                    >
-                      {mat.isMain ? (
-                        <div className="relative overflow-hidden rounded-lg bg-[#0B2942]">
-                          <img
-                            src="/images/page-1.webp"
-                            alt="Quando Nada Parece Fazer Sentido — Capa E-book"
-                            className="w-full h-auto block rounded-lg object-contain"
-                            loading="eager"
-                          />
-                        </div>
-                      ) : (
-                        <div className="flex flex-col justify-between h-36 rounded-lg border border-dashed border-[#B8892E]/40 bg-[#FFFDF8] p-2.5 text-center">
-                          <span className="text-[9px] font-bold uppercase tracking-wider text-[#B8892E] bg-[#F7F0E3] py-0.5 px-1.5 rounded">
-                            {mat.movement.split(" — ")[0]}
-                          </span>
-                          <div className="my-auto">
-                            <h4 className="font-serif text-xs font-bold leading-snug text-[#0B2942]">
-                              {mat.title}
-                            </h4>
-                          </div>
-                          <span className="text-[8px] font-semibold text-[#5C6062] uppercase tracking-wide">
-                            Material Digital (PDF)
-                          </span>
-                        </div>
-                      )}
-                      
-                      <div className="mt-2 text-left">
-                        <span className="text-[9px] font-bold uppercase tracking-wider text-[#B8892E] block">
-                          {mat.movement.split(" — ")[0]}
-                        </span>
-                        <h4 className="font-serif text-xs font-bold text-[#0B2942] leading-tight line-clamp-1">
-                          {mat.title}
-                        </h4>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="mt-4 pt-3 border-t border-[#EADDC5] text-center">
-                  <p className="text-xs text-[#5C6062]">
-                    Acesso imediato e download permanente no celular ou PC.
-                  </p>
+            <div className="relative w-full max-w-lg">
+              {/* Moldura Dourada Suave e Sombra */}
+              <div className="relative mx-auto overflow-hidden rounded-2xl border border-[#B8892E]/40 bg-[#FFFDF8] p-2.5 sm:p-3 shadow-2xl backdrop-blur-sm gold-glow">
+                <div className="relative overflow-hidden rounded-xl bg-[#FFFDF8]">
+                  <img
+                    src="/jornada-mockup.jpg"
+                    alt="A Jornada Debaixo do Sol — 4 Livros Digitais Inclusos"
+                    className="w-full h-auto block rounded-lg object-contain shadow-inner"
+                    loading="eager"
+                  />
+                  {/* Badge Discreta */}
+                  <div className="absolute top-3 right-3 bg-[#0B2942]/90 border border-[#B8892E]/50 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest text-[#D6B76C] backdrop-blur-md shadow-md">
+                    4 LIVROS INCLUÍDOS
+                  </div>
                 </div>
               </div>
 
-              {/* Decorativo de fundo */}
+              {/* Elementos decorativos vintage atrás do mockup */}
               <div className="absolute -bottom-3 -left-3 -z-10 h-full w-full rounded-2xl border border-[#B8892E]/20 bg-[#B8892E]/5" />
             </div>
           </div>
