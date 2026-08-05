@@ -15,9 +15,9 @@ export function Footer() {
           <div className="flex flex-col items-start">
             <div className="flex items-center gap-3">
               <img
-                src="/logo-escudo.png"
+                src="/logo-acervo-oficial.jpg"
                 alt="Acervo Seguro"
-                className="h-10 sm:h-11 w-10 sm:w-11 rounded-full object-contain"
+                className="h-10 sm:h-11 w-10 sm:w-11 rounded-full object-cover shadow-sm border border-[#D1A653]/40"
               />
               <span className="text-xl sm:text-2xl font-bold text-white tracking-tight">
                 {editableFields.companyName}
