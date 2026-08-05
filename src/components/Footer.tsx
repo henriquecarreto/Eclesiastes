@@ -11,21 +11,14 @@ export function Footer() {
         {/* Parte Superior */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 pb-8">
           
-          {/* Logo & Descrição da Marca */}
+          {/* Logo AS & Marca */}
           <div className="flex flex-col items-start">
             <div className="flex items-center gap-3">
               <img
-                src="/logo.png"
-                alt="Logo Acervo Seguro"
-                className="h-10 w-10 rounded-full object-contain border border-[#B8892E]/40"
-                onError={(e) => {
-                  // Fallback se logo.png não estiver no caminho
-                  (e.target as HTMLElement).style.display = 'none';
-                }}
+                src="/logo-as.png"
+                alt="Acervo Seguro"
+                className="h-10 sm:h-11 w-auto object-contain"
               />
-              <span className="text-xl font-bold text-white tracking-tight">
-                {editableFields.companyName}
-              </span>
             </div>
 
             <p className="mt-3 text-xs sm:text-sm text-zinc-400 max-w-md leading-relaxed">
