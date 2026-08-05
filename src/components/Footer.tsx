@@ -35,7 +35,7 @@ export function Footer() {
               E-mail de suporte:{" "}
               <a
                 href={`mailto:${supportEmail}`}
-                className="font-bold text-[#D6B76C] hover:underline"
+                className="font-bold text-[#D1A653] hover:underline"
               >
                 {supportEmail}
               </a>

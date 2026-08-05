@@ -1,9 +1,9 @@
 import React from "react";
 import { FOUR_MOVEMENTS, editableFields } from "../data/siteContent";
-import { Eye, Hourglass, Pause, Compass } from "lucide-react";
+import { ArrowRight, Compass, Eye, Hourglass, Leaf } from "lucide-react";
 
 export function FourMovements() {
-  const icons = [Eye, Hourglass, Pause, Compass];
+  const icons = [Eye, Hourglass, Leaf, Compass];
 
   const scrollToOffers = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
@@ -14,82 +14,98 @@ export function FourMovements() {
   };
 
   return (
-    <section id="movimentos" className="py-16 sm:py-24 bg-[#F7F0E3] text-[#1F272D] border-b border-[#EADDC5]">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+    <section id="movimentos" className="py-16 sm:py-24 bg-[#FBF5E9] text-[#26343B] border-b border-[#EADBC4] relative">
+      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
         <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-flex items-center gap-2 rounded-full border border-[#B8892E]/30 bg-[#FFFDF8] px-3.5 py-1.5 text-xs font-bold uppercase tracking-widest text-[#B8892E]">
+          <span className="inline-flex items-center gap-2 rounded-full border border-[#C76545]/30 bg-[#FFFDF8] px-3.5 py-1.5 text-xs font-bold uppercase tracking-widest text-[#C76545]">
             UMA JORNADA, QUATRO MOVIMENTOS
           </span>
-          
-          <h2 className="mt-5 font-serif text-3xl sm:text-4xl lg:text-4.5xl font-normal leading-tight text-[#0B2942] tracking-tight">
+          <h2 className="mt-5 font-serif text-3xl sm:text-4xl lg:text-4.5xl font-normal text-[#163142] tracking-tight">
             Da confusão à clareza, um passo de cada vez
           </h2>
+          <p className="mt-4 text-base sm:text-lg text-[#60686C] font-sans">
+            Os quatro materiais foram organizados como uma sequência. Cada movimento ajuda você a observar uma parte diferente da fase que está vivendo.
+          </p>
         </div>
 
-        {/* Fluxo dos 4 Movimentos */}
-        <div className="relative mt-16">
-          {/* Linha Conectora Dourada (Desktop) */}
-          <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 bg-[#B8892E]/30 -translate-y-1/2 z-0" aria-hidden="true" />
+        {/* Grade do Caminho Visual */}
+        <div className="mt-14 relative">
+          
+          {/* Conector Dourado no Desktop */}
+          <div
+            className="hidden md:block absolute top-1/2 left-4 right-4 h-0.5 bg-gradient-to-r from-[#163142] via-[#C76545] to-[#0284C7] -translate-y-12 z-0 opacity-40"
+            aria-hidden="true"
+          />
 
-          {/* Cards dos Movimentos */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
             {FOUR_MOVEMENTS.map((mov, idx) => {
               const Icon = icons[idx] || Eye;
               return (
                 <div
-                  key={idx}
-                  className="flex flex-col justify-between rounded-2xl border border-[#EADDC5] bg-[#FFFDF8] p-6 shadow-md transition hover:-translate-y-1 hover:border-[#B8892E]"
+                  key={mov.number}
+                  className="flex flex-col justify-between rounded-2xl border border-[#EADBC4] bg-[#FFFDF8] p-6 shadow-md transition-all duration-300 hover:scale-[1.02] hover:shadow-xl"
+                  style={{ borderTopColor: mov.colorHex, borderTopWidth: "4px" }}
                 >
                   <div>
-                    {/* Badge do Passo e Ícone */}
+                    {/* Número e Ícone */}
                     <div className="flex items-center justify-between mb-4">
-                      <span className="grid h-10 w-10 place-items-center rounded-full bg-[#0B2942] text-[#FFFDF8] font-serif font-bold text-sm">
-                        {mov.step}
+                      <span
+                        className="font-serif text-3xl font-bold tracking-tight"
+                        style={{ color: mov.colorHex }}
+                      >
+                        {mov.number}
                       </span>
-                      <span className="grid h-10 w-10 place-items-center rounded-full bg-[#F7F0E3] text-[#B8892E] border border-[#B8892E]/30">
-                        <Icon className="h-5 w-5 stroke-[1.75]" />
+                      <span
+                        className="grid h-10 w-10 place-items-center rounded-full text-white shadow-sm"
+                        style={{ backgroundColor: mov.colorHex }}
+                      >
+                        <Icon className="h-5 w-5" />
                       </span>
                     </div>
 
-                    <span className="text-[10px] font-bold uppercase tracking-widest text-[#B8892E] block">
-                      {mov.label}
-                    </span>
-
-                    <h3 className="mt-2 font-serif text-lg font-bold text-[#0B2942] leading-snug">
+                    <h3 className="font-serif text-xl font-bold text-[#163142]">
                       {mov.title}
                     </h3>
 
-                    <p className="mt-3 text-sm text-[#5C6062] leading-relaxed">
+                    <p className="mt-3 text-xs sm:text-sm text-[#60686C] leading-relaxed">
                       {mov.desc}
                     </p>
                   </div>
 
-                  {/* Material Relacionado */}
-                  <div className="mt-6 pt-4 border-t border-[#EADDC5]">
-                    <span className="text-[10px] font-semibold text-[#5C6062] uppercase block">
-                      Material da Jornada:
+                  {/* Nome do Material Correspondente */}
+                  <div className="mt-6 pt-4 border-t border-[#EADBC4]/60">
+                    <span className="text-[10px] font-bold uppercase tracking-wider text-[#60686C] block">
+                      Material Digital
                     </span>
-                    <span className="font-serif text-xs font-bold text-[#0B2942]">
-                      {mov.material}
+                    <span
+                      className="font-serif text-sm font-bold block leading-tight mt-0.5"
+                      style={{ color: mov.colorHex }}
+                    >
+                      {mov.materialTitle}
                     </span>
                   </div>
                 </div>
               );
             })}
           </div>
+
         </div>
 
-        {/* Botão ao Final */}
-        <div className="mt-12 text-center">
+        {/* CTA ao final do mecanismo */}
+        <div className="mt-14 text-center">
           <a
             href="#ofertas"
             onClick={scrollToOffers}
-            className="inline-flex min-h-[52px] items-center justify-center gap-2 rounded-xl bg-[#0B2942] px-8 py-3.5 text-base font-bold uppercase tracking-wider text-[#FFFDF8] shadow-md transition-all hover:bg-[#153B59] hover:scale-[1.01] active:scale-[0.99]"
+            className="inline-flex min-h-[52px] items-center justify-center gap-2 rounded-xl bg-[#C76545] px-8 py-3.5 text-base font-bold uppercase tracking-wider text-[#FFFDF8] terracota-glow transition-all duration-200 hover:bg-[#AD4F35] hover:scale-[1.01] active:scale-[0.99]"
           >
-            Quero iniciar a Jornada por {editableFields.singleOfferPrice}
+            <span>Quero começar minha jornada</span>
+            <ArrowRight className="h-4 w-4" />
           </a>
+          <p className="mt-2 text-xs font-medium text-[#60686C]">
+            Os 4 materiais digitais por {editableFields.singleOfferPrice}
+          </p>
         </div>
 
       </div>

@@ -2,11 +2,10 @@ import React from "react";
 
 export function AnnouncementBar() {
   return (
-    <div className="bg-[#0B2942] text-[#FFFDF8] border-b border-[#B8892E]/25 py-3 px-4 text-center text-xs sm:text-sm font-medium tracking-wide">
-      <div className="mx-auto flex max-w-6xl items-center justify-center text-center">
-        <span className="leading-snug">
-          4 materiais digitais para atravessar períodos de espera, cansaço e falta de direção com sabedoria bíblica.
-        </span>
+    <div className="bg-[#163142] text-[#FFFDF8] py-2.5 px-4 text-center font-sans text-xs sm:text-sm border-b border-[#D1A653]/30">
+      <div className="mx-auto max-w-6xl flex items-center justify-center gap-2 font-medium tracking-wide">
+        <span className="h-1.5 w-1.5 rounded-full bg-[#C76545] shrink-0" />
+        <span>Uma jornada bíblica para quem não quer desperdiçar o presente enquanto espera.</span>
       </div>
     </div>
   );

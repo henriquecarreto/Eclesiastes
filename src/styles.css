@@ -15,48 +15,48 @@
   --radius-2xl: calc(var(--radius) + 8px);
   --radius-3xl: calc(var(--radius) + 12px);
 
-  --color-navy-950: var(--navy-950);
-  --color-navy-900: var(--navy-900);
-  --color-gold-600: var(--gold-600);
-  --color-gold-500: var(--gold-500);
-  --color-cream-50: var(--cream-50);
-  --color-cream-100: var(--cream-100);
-  --color-parchment-200: var(--parchment-200);
-  --color-ink-900: var(--ink-900);
-  --color-ink-700: var(--ink-700);
+  /* Novas Cores do Design System */
+  --color-azul-profundo: #163142;
+  --color-creme-quente: #FBF5E9;
+  --color-branco-quente: #FFFDF8;
+  --color-areia-clara: #EADBC4;
+  --color-terracota: #C76545;
+  --color-terracota-dark: #AD4F35;
+  --color-dourado-quente: #D1A653;
+  --color-verde-salvia: #78836A;
+  --color-grafite-azulado: #26343B;
+  --color-texto-secundario: #60686C;
 
-  --color-background: var(--cream-50);
-  --color-foreground: var(--ink-900);
-  --color-navy: var(--navy-950);
-  --color-gold: var(--gold-600);
+  --color-background: var(--creme-quente);
+  --color-foreground: var(--grafite-azulado);
 }
 
 :root {
   --radius: 0.75rem;
 
-  --navy-950: #0B2942;
-  --navy-900: #153B59;
-  --gold-600: #B8892E;
-  --gold-500: #D6B76C;
-  --cream-50: #FFFDF8;   /* Branco quente */
-  --cream-100: #F7F0E3;  /* Creme principal */
-  --parchment-200: #EADDC5; /* Pergaminho */
-  --ink-900: #1F272D;
-  --ink-700: #5C6062;
-  --white: #FFFFFF;
+  --azul-profundo: #163142;
+  --creme-quente: #FBF5E9;
+  --branco-quente: #FFFDF8;
+  --areia-clara: #EADBC4;
+  --terracota: #C76545;
+  --terracota-dark: #AD4F35;
+  --dourado-quente: #D1A653;
+  --verde-salvia: #78836A;
+  --grafite-azulado: #26343B;
+  --texto-secundario: #60686C;
 }
 
 @layer base {
   * {
-    border-color: var(--parchment-200);
+    border-color: var(--areia-clara);
   }
   html {
     scroll-behavior: smooth;
     overflow-x: hidden;
   }
   body {
-    background-color: var(--cream-50);
-    color: var(--ink-900);
+    background-color: var(--creme-quente);
+    color: var(--grafite-azulado);
     font-family: var(--font-sans);
     font-size: 1.0625rem; /* 17px */
     line-height: 1.6;
@@ -78,11 +78,36 @@
   }
 }
 
+/* Sombra e Efeitos do Design System */
+.terracota-glow {
+  box-shadow: 0 10px 25px rgba(199, 101, 69, 0.20);
+}
+
 .gold-glow {
-  box-shadow: 0 0 25px -5px rgba(184, 137, 46, 0.2);
+  box-shadow: 0 0 25px -5px rgba(209, 166, 83, 0.25);
 }
 
 .parchment-card {
-  background: linear-gradient(135deg, #FFFDF8 0%, #F7F0E3 100%);
-  border: 1px solid var(--parchment-200);
+  background: linear-gradient(135deg, #FFFDF8 0%, #FBF5E9 100%);
+  border: 1px solid var(--areia-clara);
+}
+
+/* Animação Flutuante Sutil para Capas */
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+.animate-float-slow {
+  animation: floatSlow 6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float-slow {
+    animation: none !important;
+  }
 }

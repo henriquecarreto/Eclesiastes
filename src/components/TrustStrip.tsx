@@ -26,19 +26,19 @@ export function TrustStrip() {
   ];
 
   return (
-    <section className="border-y border-[#EADDC5] bg-[#F7F0E3] py-8 sm:py-10">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6">
+    <section className="border-y border-[#EADBC4] bg-[#FBF5E9] py-8 sm:py-10">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
           {items.map((item, idx) => (
             <div key={idx} className="flex items-start gap-4">
-              <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl border border-[#B8892E]/30 bg-[#FFFDF8] text-[#B8892E] shadow-sm">
+              <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl border border-[#D1A653]/40 bg-[#FFFDF8] text-[#C76545] shadow-sm">
                 <item.icon className="h-6 w-6 stroke-[1.75]" />
               </span>
               <div>
-                <h3 className="font-serif text-base font-bold text-[#0B2942] tracking-tight">
+                <h3 className="font-serif text-base font-bold text-[#163142] tracking-tight">
                   {item.title}
                 </h3>
-                <p className="mt-0.5 text-xs sm:text-sm text-[#5C6062] leading-relaxed">
+                <p className="mt-0.5 text-xs sm:text-sm text-[#60686C] leading-relaxed">
                   {item.desc}
                 </p>
               </div>

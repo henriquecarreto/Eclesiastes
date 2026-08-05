@@ -44,10 +44,10 @@ export function MobileStickyCTA() {
   };
 
   return (
-    <div className="md:hidden fixed bottom-0 inset-x-0 z-40 bg-[#0B2942]/95 border-t border-[#B8892E]/40 p-3 shadow-2xl backdrop-blur-md pb-[max(0.75rem,env(safe-area-inset-bottom))]">
+    <div className="md:hidden fixed bottom-0 inset-x-0 z-40 bg-[#163142]/95 border-t border-[#D1A653]/40 p-3 shadow-2xl backdrop-blur-md pb-[max(0.75rem,env(safe-area-inset-bottom))]">
       <div className="flex items-center justify-between gap-3">
         <div className="flex flex-col text-left">
-          <span className="text-[10px] font-bold uppercase tracking-wider text-[#D6B76C]">
+          <span className="text-[10px] font-bold uppercase tracking-wider text-[#D1A653]">
             Jornada Debaixo do Sol
           </span>
           <span className="text-base font-bold text-[#FFFDF8]">
@@ -59,20 +59,20 @@ export function MobileStickyCTA() {
           <a
             href="#ofertas"
             onClick={handleClick}
-            className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-[#B8892E] px-4 py-2.5 text-xs font-extrabold uppercase tracking-wider text-[#0B2942] shadow-md"
+            className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-[#C76545] px-4 py-2.5 text-xs font-extrabold uppercase tracking-wider text-[#FFFDF8] shadow-md terracota-glow"
           >
             <Lock className="h-3.5 w-3.5" />
-            <span>QUERO INICIAR</span>
+            <span>QUERO COMEÇAR A JORNADA</span>
           </a>
         ) : (
           <a
             href={checkoutUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-[#B8892E] px-4 py-2.5 text-xs font-extrabold uppercase tracking-wider text-[#0B2942] shadow-md"
+            className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-[#C76545] px-4 py-2.5 text-xs font-extrabold uppercase tracking-wider text-[#FFFDF8] shadow-md terracota-glow"
           >
             <Lock className="h-3.5 w-3.5" />
-            <span>QUERO INICIAR</span>
+            <span>QUERO COMEÇAR A JORNADA</span>
           </a>
         )}
       </div>

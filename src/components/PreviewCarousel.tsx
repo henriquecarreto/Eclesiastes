@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useCallback } from "react";
 import useEmblaCarousel from "embla-carousel-react";
-import { ChevronLeft, ChevronRight, Maximize2, Sparkles } from "lucide-react";
+import { ChevronLeft, ChevronRight, Maximize2, Sparkles, ArrowRight } from "lucide-react";
 import { PREVIEW_PAGES, editableFields } from "../data/siteContent";
 import { ImageModal } from "./ImageModal";
 
@@ -31,12 +31,7 @@ export function PreviewCarousel() {
     emblaApi.on("select", onSelect);
     emblaApi.on("reInit", onSelect);
 
-    const interval = setInterval(() => {
-      if (emblaApi) emblaApi.scrollNext();
-    }, 5000);
-
     return () => {
-      clearInterval(interval);
       emblaApi.off("select", onSelect);
     };
   }, [emblaApi, onSelect]);
@@ -50,39 +45,36 @@ export function PreviewCarousel() {
   };
 
   return (
-    <section className="py-16 sm:py-24 bg-[#F7F0E3] text-[#1F272D] border-b border-[#EADDC5]">
-      <div className="mx-auto max-w-7xl px-4 sm:px-6">
+    <section className="py-16 sm:py-24 bg-[#FBF5E9] text-[#26343B] border-b border-[#EADBC4]">
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         
         {/* Header */}
         <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-flex items-center gap-2 rounded-full border border-[#B8892E]/30 bg-[#FFFDF8] px-3.5 py-1.5 text-xs font-bold uppercase tracking-widest text-[#B8892E]">
-            <Sparkles className="h-3.5 w-3.5 text-[#B8892E]" />
+          <span className="inline-flex items-center gap-2 rounded-full border border-[#C76545]/30 bg-[#FFFDF8] px-3.5 py-1.5 text-xs font-bold uppercase tracking-widest text-[#C76545]">
+            <Sparkles className="h-3.5 w-3.5 text-[#C76545]" />
             VEJA POR DENTRO
           </span>
-          <h2 className="mt-5 font-serif text-3xl sm:text-4xl lg:text-4.5xl font-normal text-[#0B2942] tracking-tight">
-            Conheça a experiência visual da jornada
+          <h2 className="mt-5 font-serif text-3xl sm:text-4xl lg:text-4.5xl font-normal text-[#163142] tracking-tight">
+            Uma experiência visual criada para facilitar a reflexão
           </h2>
-          <p className="mt-3 text-base text-[#5C6062]">
-            Explore algumas páginas reais e observe como as reflexões, os mapas e as aplicações foram organizados.
+          <p className="mt-3 text-base text-[#60686C]">
+            Explore algumas páginas reais e observe como os conteúdos foram organizados para tornar a leitura mais clara, contemplativa e aplicável.
           </p>
         </div>
 
         {/* Carousel Container */}
         <div className="relative mt-10">
-          
-          {/* Main Embla Viewport */}
           <div className="overflow-hidden py-4" ref={emblaRef}>
             <div className="flex -ml-3 sm:-ml-4">
               {PREVIEW_PAGES.map((page, idx) => (
                 <div
                   key={idx}
-                  className="flex-[0_0_72%] sm:flex-[0_0_38%] md:flex-[0_0_28%] lg:flex-[0_0_22%] min-w-0 pl-3 sm:pl-4"
+                  className="flex-[0_0_75%] sm:flex-[0_0_40%] md:flex-[0_0_30%] lg:flex-[0_0_24%] min-w-0 pl-3 sm:pl-4"
                 >
                   <div
                     onClick={() => setSelectedImage({ src: page.src, title: `Página ${page.num}: ${page.title}` })}
-                    className="group relative cursor-pointer overflow-hidden rounded-2xl border border-[#EADDC5] bg-[#FFFDF8] p-1.5 shadow-md transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:border-[#B8892E]"
+                    className="group relative cursor-pointer overflow-hidden rounded-2xl border border-[#EADBC4] bg-[#FFFDF8] p-1.5 shadow-md transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:border-[#C76545]"
                   >
-                    {/* Visual Card Image */}
                     <div className="relative overflow-hidden rounded-xl bg-[#FFFDF8]">
                       <img
                         src={page.src}
@@ -91,12 +83,12 @@ export function PreviewCarousel() {
                         loading="lazy"
                       />
 
-                      {/* Botão de Ampliação ao passar o mouse */}
+                      {/* Botão de Ampliação */}
                       <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity duration-200 text-white font-medium gap-1.5 rounded-lg backdrop-blur-[1px]">
-                        <span className="grid h-10 w-10 place-items-center rounded-full bg-[#0B2942]/90 text-[#D6B76C] border border-[#B8892E]/50 shadow-lg">
+                        <span className="grid h-10 w-10 place-items-center rounded-full bg-[#163142]/90 text-[#D1A653] border border-[#D1A653]/50 shadow-lg">
                           <Maximize2 className="h-4 w-4" />
                         </span>
-                        <span className="text-[11px] font-semibold tracking-wider uppercase bg-[#0B2942]/90 px-3 py-1 rounded-full text-[#D6B76C] border border-[#B8892E]/40 shadow-md">
+                        <span className="text-[11px] font-semibold tracking-wider uppercase bg-[#163142]/90 px-3 py-1 rounded-full text-[#FFFDF8] border border-[#D1A653]/40 shadow-md">
                           Ampliar Página
                         </span>
                       </div>
@@ -110,7 +102,7 @@ export function PreviewCarousel() {
           {/* Seta Esquerda */}
           <button
             onClick={scrollPrev}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-3 sm:-translate-x-5 z-10 grid h-11 w-11 place-items-center rounded-full bg-[#0B2942]/90 text-[#D6B76C] border border-[#B8892E]/40 shadow-xl transition hover:bg-[#B8892E] hover:text-[#0B2942] focus:outline-none focus:ring-2 focus:ring-[#B8892E]"
+            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-3 sm:-translate-x-5 z-10 grid h-11 w-11 place-items-center rounded-full bg-[#163142]/90 text-[#D1A653] border border-[#D1A653]/40 shadow-xl transition hover:bg-[#C76545] hover:text-white focus:outline-none focus:ring-2 focus:ring-[#C76545]"
             aria-label="Página anterior"
           >
             <ChevronLeft className="h-6 w-6" />
@@ -119,13 +111,13 @@ export function PreviewCarousel() {
           {/* Seta Direita */}
           <button
             onClick={scrollNext}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-3 sm:translate-x-5 z-10 grid h-11 w-11 place-items-center rounded-full bg-[#0B2942]/90 text-[#D6B76C] border border-[#B8892E]/40 shadow-xl transition hover:bg-[#B8892E] hover:text-[#0B2942] focus:outline-none focus:ring-2 focus:ring-[#B8892E]"
+            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-3 sm:translate-x-5 z-10 grid h-11 w-11 place-items-center rounded-full bg-[#163142]/90 text-[#D1A653] border border-[#D1A653]/40 shadow-xl transition hover:bg-[#C76545] hover:text-white focus:outline-none focus:ring-2 focus:ring-[#C76545]"
             aria-label="Próxima página"
           >
             <ChevronRight className="h-6 w-6" />
           </button>
 
-          {/* Indicadores Dots */}
+          {/* Dots */}
           <div className="mt-4 flex justify-center gap-2">
             {scrollSnaps.map((_, idx) => (
               <button
@@ -133,8 +125,8 @@ export function PreviewCarousel() {
                 onClick={() => scrollTo(idx)}
                 className={`h-2.5 rounded-full transition-all duration-200 ${
                   idx === selectedIndex
-                    ? "w-8 bg-[#B8892E]"
-                    : "w-2.5 bg-[#EADDC5] hover:bg-[#B8892E]/50"
+                    ? "w-8 bg-[#C76545]"
+                    : "w-2.5 bg-[#EADBC4] hover:bg-[#C76545]/50"
                 }`}
                 aria-label={`Ir para a prévia ${idx + 1}`}
               />
@@ -143,20 +135,24 @@ export function PreviewCarousel() {
 
         </div>
 
-        {/* Legenda Explicativa no Rodapé da Galeria */}
-        <p className="mt-8 text-center text-sm sm:text-base text-[#5C6062] max-w-2xl mx-auto font-sans leading-relaxed">
-          Cada página foi pensada para transformar uma leitura profunda em uma experiência mais clara, organizada e aplicável.
+        {/* Rodapé da Galeria */}
+        <p className="mt-8 text-center text-sm sm:text-base text-[#60686C] max-w-2xl mx-auto font-sans leading-relaxed">
+          Cada página foi pensada para transformar uma leitura profunda em uma experiência mais organizada e acessível.
         </p>
 
-        {/* Botão de Ação Padronizado */}
+        {/* Botão CTA Terracota */}
         <div className="mt-8 text-center">
           <a
             href="#ofertas"
             onClick={scrollToOffers}
-            className="inline-flex min-h-[52px] items-center justify-center gap-2 rounded-xl bg-[#0B2942] px-8 py-3.5 text-base font-bold uppercase tracking-wider text-[#FFFDF8] shadow-md transition-all hover:bg-[#153B59] hover:scale-[1.01] active:scale-[0.99]"
+            className="inline-flex min-h-[52px] items-center justify-center gap-2 rounded-xl bg-[#C76545] px-8 py-3.5 text-base font-bold uppercase tracking-wider text-[#FFFDF8] terracota-glow transition-all duration-200 hover:bg-[#AD4F35] hover:scale-[1.01] active:scale-[0.99]"
           >
-            Quero iniciar a Jornada por {editableFields.singleOfferPrice}
+            <span>Quero começar minha jornada</span>
+            <ArrowRight className="h-4 w-4" />
           </a>
+          <p className="mt-2 text-xs font-medium text-[#60686C]">
+            4 materiais digitais por {editableFields.singleOfferPrice}
+          </p>
         </div>
 
       </div>
