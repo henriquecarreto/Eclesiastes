@@ -11,14 +11,17 @@ export function Footer() {
         {/* Parte Superior */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 pb-8">
           
-          {/* Logo AS & Marca */}
+          {/* Logo Escudo Dourado & Marca */}
           <div className="flex flex-col items-start">
             <div className="flex items-center gap-3">
               <img
-                src="/logo-as.png"
+                src="/logo-escudo.png"
                 alt="Acervo Seguro"
-                className="h-10 sm:h-11 w-auto object-contain"
+                className="h-10 sm:h-11 w-10 sm:w-11 rounded-full object-contain"
               />
+              <span className="text-xl sm:text-2xl font-bold text-white tracking-tight">
+                {editableFields.companyName}
+              </span>
             </div>
 
             <p className="mt-3 text-xs sm:text-sm text-zinc-400 max-w-md leading-relaxed">
