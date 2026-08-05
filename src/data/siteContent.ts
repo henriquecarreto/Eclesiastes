@@ -47,7 +47,7 @@ export const editableFields = {
 
   // Preço Único da Oferta Consolidada
   singleOfferPrice: "R$ 19,90",
-  singleOfferCheckoutUrl: "https://pay.kiwify.com.br/checkout/link-placeholder",
+  singleOfferCheckoutUrl: "https://pay.wiapy.com/Vi7TBLHjR1U0",
 
   guaranteeDays: 7,
 };

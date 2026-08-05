@@ -1,15 +1,9 @@
 import React from "react";
 import { editableFields } from "../data/siteContent";
-import { ShieldCheck, Smartphone, BookOpen, ArrowRight } from "lucide-react";
+import { ShieldCheck, Smartphone, BookOpen, ArrowRight, Lock } from "lucide-react";
 
 export function FinalCTA() {
-  const scrollToOffers = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    e.preventDefault();
-    const el = document.getElementById("ofertas");
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+  const checkoutUrl = editableFields.singleOfferCheckoutUrl;
 
   return (
     <section className="py-20 sm:py-28 bg-gradient-to-b from-[#163142] via-[#1a3a4e] to-[#163142] text-[#FFFDF8] relative overflow-hidden">
@@ -35,13 +29,15 @@ export function FinalCTA() {
           </span>
         </div>
 
-        {/* Botão Verde Profundo */}
+        {/* Botão Verde Profundo com link direto de checkout */}
         <div className="mt-8 flex justify-center">
           <a
-            href="#ofertas"
-            onClick={scrollToOffers}
+            href={checkoutUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex min-h-[54px] w-full sm:w-auto items-center justify-center gap-3 rounded-xl bg-[#2F6B4F] px-9 py-4 text-base sm:text-lg font-bold uppercase tracking-wider text-[#FFFDF8] btn-green-glow transition-all hover:bg-[#24563F] hover:scale-[1.01] active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-[#9BC8A8]"
           >
+            <Lock className="h-5 w-5" />
             <span>Quero começar minha jornada</span>
             <ArrowRight className="h-5 w-5" />
           </a>
