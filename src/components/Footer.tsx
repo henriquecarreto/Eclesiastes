@@ -3,7 +3,7 @@ import { editableFields } from "../data/siteContent";
 
 export function Footer() {
   return (
-    <footer className="bg-[#071E32] text-[#F8F0DE]/70 border-t border-[#C0923E]/20 py-12 px-4 sm:px-6 font-sans text-xs sm:text-sm">
+    <footer className="bg-[#0F172A] text-[#F8F0DE]/70 border-t border-[#C0923E]/20 py-12 px-4 sm:px-6 font-sans text-xs sm:text-sm">
       <div className="mx-auto max-w-6xl">
         <div className="flex flex-col md:flex-row justify-between items-center gap-6 border-b border-[#C0923E]/10 pb-8">
           

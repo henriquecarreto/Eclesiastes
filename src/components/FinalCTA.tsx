@@ -14,7 +14,7 @@ export function FinalCTA() {
   };
 
   return (
-    <section className="py-16 sm:py-24 bg-gradient-to-b from-[#071E32] via-[#0B2D4A] to-[#071E32] text-[#FFFDF7] relative overflow-hidden">
+    <section className="py-16 sm:py-24 bg-gradient-to-b from-[#0F172A] via-[#1E293B] to-[#0F172A] text-[#FFFDF7] relative overflow-hidden">
       <div className="relative mx-auto max-w-4xl px-4 sm:px-6 text-center">
         
         <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal leading-tight text-[#FFFDF7]">
@@ -36,7 +36,7 @@ export function FinalCTA() {
           <a
             href="#ofertas"
             onClick={scrollToOffers}
-            className="inline-flex items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-[#C0923E] to-[#A97924] px-8 py-4 text-base sm:text-lg font-bold uppercase tracking-wider text-[#071E32] shadow-xl hover:scale-[1.02] hover:brightness-110 active:scale-[0.99]"
+            className="inline-flex items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-[#16A34A] via-[#22C55E] to-[#15803D] px-8 py-4 text-base sm:text-lg font-extrabold uppercase tracking-wider text-white shadow-xl shadow-green-900/40 hover:scale-[1.02] hover:brightness-110 active:scale-[0.99]"
           >
             <Lock className="h-5 w-5" />
             <span>QUERO ACESSAR O MATERIAL</span>

@@ -32,7 +32,7 @@ export function Guarantee() {
             <a
               href="#ofertas"
               onClick={scrollToOffers}
-              className="inline-flex items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-[#C0923E] to-[#A97924] px-8 py-3.5 text-base font-bold uppercase tracking-wider text-[#071E32] shadow-md transition hover:scale-[1.02] hover:brightness-110 active:scale-[0.99]"
+              className="inline-flex items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-[#16A34A] via-[#22C55E] to-[#15803D] px-8 py-3.5 text-base font-extrabold uppercase tracking-wider text-white shadow-xl shadow-green-900/30 transition hover:scale-[1.02] hover:brightness-110 active:scale-[0.99]"
             >
               QUERO CONHECER A JORNADA
             </a>

@@ -12,10 +12,10 @@ export function Hero() {
   };
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-[#071E32] via-[#0B2D4A] to-[#123B5D] text-[#FFFDF7] py-12 sm:py-20 lg:py-24">
+    <section className="relative overflow-hidden bg-gradient-to-b from-[#0F172A] via-[#1E293B] to-[#0F172A] text-[#FFFDF7] py-12 sm:py-20 lg:py-24">
       {/* Decorative background glow */}
-      <div className="pointer-events-none absolute inset-0 opacity-20" aria-hidden="true">
-        <div className="absolute -top-32 left-1/2 -translate-x-1/2 h-[500px] w-[500px] rounded-full bg-[#C0923E] blur-[120px]" />
+      <div className="pointer-events-none absolute inset-0 opacity-25" aria-hidden="true">
+        <div className="absolute -top-32 left-1/2 -translate-x-1/2 h-[500px] w-[500px] rounded-full bg-[#C0923E]/20 blur-[130px]" />
       </div>
 
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
@@ -67,7 +67,7 @@ export function Hero() {
               <a
                 href="#ofertas"
                 onClick={scrollToOffers}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-[#C0923E] to-[#A97924] px-8 py-4 text-base sm:text-lg font-bold uppercase tracking-wider text-[#071E32] shadow-lg shadow-[#A97924]/20 transition-all hover:scale-[1.02] hover:brightness-110 active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-[#C0923E]"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-[#16A34A] via-[#22C55E] to-[#15803D] px-8 py-4 text-base sm:text-lg font-extrabold uppercase tracking-wider text-white shadow-xl shadow-green-900/40 transition-all hover:scale-[1.02] hover:brightness-110 active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-[#22C55E]"
               >
                 QUERO CONHECER O MATERIAL
               </a>
@@ -92,16 +92,16 @@ export function Hero() {
           <div className="lg:col-span-5 flex justify-center">
             <div className="relative w-full max-w-md">
               {/* Moldura Dourada Suave e Sombra */}
-              <div className="relative mx-auto overflow-hidden rounded-2xl border border-[#C0923E]/30 bg-[#071E32]/60 p-3 shadow-2xl backdrop-blur-sm gold-glow">
-                <div className="relative overflow-hidden rounded-xl bg-[#1D252C] aspect-[3/4]">
+              <div className="relative mx-auto overflow-hidden rounded-2xl border border-[#C0923E]/40 bg-[#0F172A]/80 p-2.5 sm:p-3 shadow-2xl backdrop-blur-sm gold-glow">
+                <div className="relative overflow-hidden rounded-xl bg-[#0F172A]">
                   <img
                     src="/images/page-1.webp"
                     alt="Capa do E-book Eclesiastes — Quando Nada Parece Fazer Sentido"
-                    className="h-full w-full object-cover object-center shadow-inner"
+                    className="w-full h-auto block rounded-lg object-contain shadow-inner"
                     loading="eager"
                   />
                   {/* Badge Discreta */}
-                  <div className="absolute top-3 right-3 bg-[#071E32]/90 border border-[#C0923E]/40 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest text-[#DEC28B] backdrop-blur-md">
+                  <div className="absolute top-3 right-3 bg-[#0F172A]/90 border border-[#C0923E]/50 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest text-[#DEC28B] backdrop-blur-md shadow-md">
                     PRÉVIA DO MATERIAL
                   </div>
                 </div>

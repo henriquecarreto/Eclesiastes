@@ -32,10 +32,10 @@ export function Offers() {
         href={url}
         target="_blank"
         rel="noopener noreferrer"
-        className={`w-full inline-flex items-center justify-center gap-2 rounded-xl py-4 px-6 text-base font-bold uppercase tracking-wider transition-all duration-200 ${
+        className={`w-full inline-flex items-center justify-center gap-2 rounded-xl py-4 px-6 text-base font-extrabold uppercase tracking-wider transition-all duration-200 ${
           variant === "primary"
-            ? "bg-gradient-to-r from-[#C0923E] to-[#A97924] text-[#071E32] shadow-lg shadow-[#A97924]/20 hover:scale-[1.02] hover:brightness-110 active:scale-[0.99]"
-            : "bg-[#0B2D4A] text-[#FFFDF7] hover:bg-[#071E32] hover:scale-[1.02] active:scale-[0.99]"
+            ? "bg-gradient-to-r from-[#16A34A] via-[#22C55E] to-[#15803D] text-white shadow-xl shadow-green-900/40 hover:scale-[1.02] hover:brightness-110 active:scale-[0.99]"
+            : "bg-[#1E293B] text-[#FFFDF7] border border-[#C0923E]/30 hover:bg-[#0F172A] hover:scale-[1.02] active:scale-[0.99]"
         }`}
       >
         <Lock className="h-4 w-4" />
@@ -45,7 +45,7 @@ export function Offers() {
   };
 
   return (
-    <section id="ofertas" className="py-16 sm:py-24 bg-[#071E32] text-[#FFFDF7] relative overflow-hidden">
+    <section id="ofertas" className="py-16 sm:py-24 bg-[#0F172A] text-[#FFFDF7] relative overflow-hidden">
       {/* Glow background */}
       <div className="pointer-events-none absolute inset-0 opacity-15" aria-hidden="true">
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[600px] w-[600px] rounded-full bg-[#C0923E] blur-[140px]" />

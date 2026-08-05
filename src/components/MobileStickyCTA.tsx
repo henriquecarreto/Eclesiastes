@@ -46,7 +46,7 @@ export function MobileStickyCTA() {
   };
 
   return (
-    <div className="md:hidden fixed bottom-0 inset-x-0 z-40 bg-[#071E32]/95 border-t border-[#C0923E]/40 p-3 shadow-2xl backdrop-blur-md pb-[max(0.75rem,env(safe-area-inset-bottom))]">
+    <div className="md:hidden fixed bottom-0 inset-x-0 z-40 bg-[#0F172A]/95 border-t border-[#C0923E]/40 p-3 shadow-2xl backdrop-blur-md pb-[max(0.75rem,env(safe-area-inset-bottom))]">
       <div className="flex items-center justify-between gap-3">
         <div className="flex flex-col text-left">
           <span className="text-[10px] font-bold uppercase tracking-wider text-[#DEC28B]">
@@ -61,7 +61,7 @@ export function MobileStickyCTA() {
           <a
             href="#ofertas"
             onClick={handleClick}
-            className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-gradient-to-r from-[#C0923E] to-[#A97924] px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-[#071E32] shadow-md"
+            className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-gradient-to-r from-[#16A34A] via-[#22C55E] to-[#15803D] px-4 py-2.5 text-xs font-extrabold uppercase tracking-wider text-white shadow-md"
           >
             <Lock className="h-3.5 w-3.5" />
             <span>QUERO ACESSAR</span>
@@ -71,7 +71,7 @@ export function MobileStickyCTA() {
             href={checkoutUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-gradient-to-r from-[#C0923E] to-[#A97924] px-4 py-2.5 text-xs font-bold uppercase tracking-wider text-[#071E32] shadow-md"
+            className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-gradient-to-r from-[#16A34A] via-[#22C55E] to-[#15803D] px-4 py-2.5 text-xs font-extrabold uppercase tracking-wider text-white shadow-md"
           >
             <Lock className="h-3.5 w-3.5" />
             <span>QUERO ACESSAR</span>

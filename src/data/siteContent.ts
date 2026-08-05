@@ -62,14 +62,6 @@ export const PREVIEW_PAGES = [
   { num: 5, title: "O que é Eclesiastes", desc: "Contexto histórico e autoria", src: "/images/page-5.webp" },
   { num: 7, title: "Quatro Chaves de Leitura", desc: "Fundamentos para interpretação", src: "/images/page-7.webp" },
   { num: 8, title: "Mapa da Jornada", desc: "Estrutura visual completa dos temas", src: "/images/page-8.webp" },
-  { num: 11, title: "Hevel: A Vida como Vapor", desc: "Explicação sobre a transitoriedade", src: "/images/page-11.webp" },
-  { num: 19, title: "Trabalho, Cansaço e Legado", desc: "Reflexão sobre limites no trabalho", src: "/images/page-19.webp" },
-  { num: 23, title: "Tempo para Cada Propósito", desc: "Estudo sobre Eclesiastes 3", src: "/images/page-23.webp" },
-  { num: 31, title: "Dois são Melhores do que Um", desc: "Companheirismo e cooperação", src: "/images/page-31.webp" },
-  { num: 35, title: "Quando o Dinheiro Nunca é Suficiente", desc: "Contentamento vs Falsa Segurança", src: "/images/page-35.webp" },
-  { num: 47, title: "Lembre-se do Criador", desc: "Orientação para os dias da juventude e velhice", src: "/images/page-47.webp" },
-  { num: 49, title: "O que Eclesiastes nos Ensina", desc: "Síntese dos aprendizados vitais", src: "/images/page-49.webp" },
-  { num: 50, title: "Oração Final", desc: "Encerramento devocional e reverente", src: "/images/page-50.webp" },
 ];
 
 export const THEMES_LIST = [
