@@ -6,7 +6,6 @@ import { ProblemSolution } from "../components/ProblemSolution";
 import { Methodology } from "../components/Methodology";
 import { PreviewCarousel } from "../components/PreviewCarousel";
 import { ProductDetails } from "../components/ProductDetails";
-import { Themes } from "../components/Themes";
 import { Audience } from "../components/Audience";
 import { UsageSteps } from "../components/UsageSteps";
 import { Benefits } from "../components/Benefits";
@@ -100,10 +99,7 @@ function LandingPage() {
         {/* 7. Apresentação do Produto */}
         <ProductDetails />
 
-        {/* 8. Temas Abordados */}
-        <Themes />
-
-        {/* 9. Para Quem É */}
+        {/* 8. Para Quem É */}
         <Audience />
 
         {/* 10. Como Utilizar */}
