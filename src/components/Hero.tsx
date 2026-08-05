@@ -1,21 +1,21 @@
 import React from "react";
-import { Check, ShieldCheck, Smartphone, BookOpen } from "lucide-react";
-import { editableFields } from "../data/siteContent";
+import { Check, ShieldCheck, Smartphone, BookOpen, Layers } from "lucide-react";
+import { editableFields, JOURNEY_MATERIALS } from "../data/siteContent";
 
 export function Hero() {
-  const scrollToOffers = (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
     e.preventDefault();
-    const el = document.getElementById("ofertas");
+    const el = document.getElementById(targetId);
     if (el) {
       el.scrollIntoView({ behavior: "smooth" });
     }
   };
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-[#0F172A] via-[#1E293B] to-[#0F172A] text-[#FFFDF7] py-12 sm:py-20 lg:py-24">
-      {/* Decorative background glow */}
-      <div className="pointer-events-none absolute inset-0 opacity-25" aria-hidden="true">
-        <div className="absolute -top-32 left-1/2 -translate-x-1/2 h-[500px] w-[500px] rounded-full bg-[#C0923E]/20 blur-[130px]" />
+    <section className="relative overflow-hidden bg-[#F7F0E3] text-[#1F272D] py-12 sm:py-20 lg:py-24 border-b border-[#EADDC5]">
+      {/* Decorative subtle background illumination */}
+      <div className="pointer-events-none absolute inset-0 opacity-40" aria-hidden="true">
+        <div className="absolute -top-32 left-1/2 -translate-x-1/2 h-[500px] w-[500px] rounded-full bg-[#B8892E]/15 blur-[120px]" />
       </div>
 
       <div className="relative mx-auto max-w-6xl px-4 sm:px-6">
@@ -23,92 +23,150 @@ export function Hero() {
           
           {/* Coluna Texto (Mobile: Primeira) */}
           <div className="lg:col-span-7 flex flex-col items-start text-left">
-            <span className="inline-flex items-center gap-2 rounded-full border border-[#C0923E]/40 bg-[#C0923E]/10 px-3.5 py-1.5 text-xs font-semibold uppercase tracking-widest text-[#DEC28B]">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#C0923E]" />
-              UMA JORNADA VISUAL PELO LIVRO DE ECLESIASTES
+            <span className="inline-flex items-center gap-2 rounded-full border border-[#B8892E]/40 bg-[#FFFDF8] px-3.5 py-1.5 text-xs font-bold uppercase tracking-widest text-[#B8892E] shadow-sm">
+              <span className="h-2 w-2 rounded-full bg-[#B8892E]" />
+              UMA JORNADA BÍBLICA EM 4 MOVIMENTOS
             </span>
 
-            <h1 className="mt-5 font-serif text-3xl sm:text-4xl lg:text-5xl font-normal leading-[1.15] text-[#FFFDF7] tracking-tight">
-              Quando nada parece fazer sentido, Eclesiastes ajuda você a{" "}
-              <span className="text-[#DEC28B] italic">enxergar o que realmente importa</span>
+            <h1 className="mt-5 font-serif text-3.5xl sm:text-4.5xl lg:text-5.5xl font-normal leading-[1.15] text-[#0B2942] tracking-tight">
+              Quando a vida parece parada, você não precisa colocar tudo em pausa.
             </h1>
 
-            <p className="mt-5 text-base sm:text-lg text-[#F8F0DE]/90 leading-relaxed font-sans max-w-2xl">
-              Um e-book visual de 50 páginas para compreender as lições de Eclesiastes e aplicá-las ao tempo, ao trabalho, às escolhas, aos relacionamentos e ao propósito.
+            <p className="mt-5 text-base sm:text-lg text-[#5C6062] leading-relaxed font-sans max-w-2xl">
+              A Jornada Debaixo do Sol reúne quatro materiais digitais baseados em Eclesiastes para ajudar você a compreender a fase atual, esperar sem desperdiçar o presente e reorganizar suas prioridades com mais sabedoria.
             </p>
 
-            {/* Bullets */}
-            <ul className="mt-6 space-y-3 font-sans text-sm sm:text-base text-[#F8F0DE]/95">
+            {/* 4 Benefícios Curtos */}
+            <ul className="mt-6 space-y-3 font-sans text-sm sm:text-base text-[#1F272D]">
               {[
-                "20 lições com reflexão e aplicação prática",
-                "Mapas visuais e explicações claras",
-                "Perguntas para aprofundar a leitura",
-                "Práticas e orações para o cotidiano",
-                "Acesso digital pelo celular, tablet ou computador",
+                "Reflexões bíblicas com linguagem clara",
+                "Leitura visual e fácil de acompanhar",
+                "Aplicações possíveis para a vida cotidiana",
+                "Uma jornada para realizar no próprio ritmo",
               ].map((bullet, idx) => (
                 <li key={idx} className="flex items-start gap-3">
-                  <span className="mt-1 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-[#C0923E]/20 text-[#DEC28B]">
+                  <span className="mt-1 grid h-5 w-5 shrink-0 place-items-center rounded-full bg-[#B8892E]/20 text-[#B8892E]">
                     <Check className="h-3.5 w-3.5 stroke-[3]" />
                   </span>
-                  <span>{bullet}</span>
+                  <span className="font-medium text-[#1F272D]">{bullet}</span>
                 </li>
               ))}
             </ul>
 
-            {/* Preço e Botão CTA */}
+            {/* Valor e Botões CTA */}
             <div className="mt-8 w-full sm:w-auto flex flex-col items-start gap-3">
-              <div className="text-xs uppercase tracking-wider text-[#DEC28B]/80 font-medium">
-                A partir de{" "}
-                <span className="text-xl font-bold text-[#FFFDF7]">
+              <div className="text-sm font-semibold uppercase tracking-wider text-[#5C6062]">
+                Os 4 materiais digitais por{" "}
+                <span className="text-2xl font-bold text-[#0B2942]">
                   {editableFields.singleOfferPrice}
                 </span>
               </div>
 
-              <a
-                href="#ofertas"
-                onClick={scrollToOffers}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-[#16A34A] via-[#22C55E] to-[#15803D] px-8 py-4 text-base sm:text-lg font-extrabold uppercase tracking-wider text-white shadow-xl shadow-green-900/40 transition-all hover:scale-[1.02] hover:brightness-110 active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-[#22C55E]"
-              >
-                QUERO CONHECER O MATERIAL
-              </a>
+              <div className="w-full sm:w-auto flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                {/* Botão Principal */}
+                <a
+                  href="#ofertas"
+                  onClick={(e) => scrollToSection(e, "ofertas")}
+                  className="inline-flex min-h-[52px] items-center justify-center gap-2 rounded-xl bg-[#0B2942] px-8 py-3.5 text-base font-bold uppercase tracking-wider text-[#FFFDF8] shadow-md transition-all hover:bg-[#153B59] hover:scale-[1.01] active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-[#B8892E]"
+                >
+                  Quero iniciar a Jornada por {editableFields.singleOfferPrice}
+                </a>
 
-              <div className="mt-1 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-[#DEC28B]/70">
+                {/* Botão Secundário */}
+                <a
+                  href="#materiais"
+                  onClick={(e) => scrollToSection(e, "materiais")}
+                  className="inline-flex min-h-[52px] items-center justify-center gap-2 rounded-xl border border-[#B8892E]/50 bg-[#FFFDF8] px-6 py-3.5 text-base font-bold uppercase tracking-wider text-[#0B2942] shadow-sm transition-all hover:bg-[#F7F0E3] focus:outline-none focus:ring-2 focus:ring-[#B8892E]"
+                >
+                  Ver o que está incluído
+                </a>
+              </div>
+
+              {/* Linha discreta de segurança */}
+              <div className="mt-2 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-[#5C6062]">
                 <span className="flex items-center gap-1">
-                  <ShieldCheck className="h-3.5 w-3.5 text-[#C0923E]" /> Pagamento único
+                  <Smartphone className="h-3.5 w-3.5 text-[#B8892E]" /> Material digital
                 </span>
                 <span>•</span>
                 <span className="flex items-center gap-1">
-                  <Smartphone className="h-3.5 w-3.5 text-[#C0923E]" /> Material digital
+                  <ShieldCheck className="h-3.5 w-3.5 text-[#B8892E]" /> Pagamento único
                 </span>
                 <span>•</span>
                 <span className="flex items-center gap-1">
-                  <BookOpen className="h-3.5 w-3.5 text-[#C0923E]" /> 7 dias de garantia
+                  <BookOpen className="h-3.5 w-3.5 text-[#B8892E]" /> 7 dias de garantia
                 </span>
               </div>
             </div>
           </div>
 
-          {/* Coluna Mockup Visual (Mobile: Segunda) */}
+          {/* Coluna Visual dos 4 Materiais (Mobile: Segunda) */}
           <div className="lg:col-span-5 flex justify-center">
             <div className="relative w-full max-w-md">
-              {/* Moldura Dourada Suave e Sombra */}
-              <div className="relative mx-auto overflow-hidden rounded-2xl border border-[#C0923E]/40 bg-[#0F172A]/80 p-2.5 sm:p-3 shadow-2xl backdrop-blur-sm gold-glow">
-                <div className="relative overflow-hidden rounded-xl bg-[#0F172A]">
-                  <img
-                    src="/images/page-1.webp"
-                    alt="Capa do E-book Eclesiastes — Quando Nada Parece Fazer Sentido"
-                    className="w-full h-auto block rounded-lg object-contain shadow-inner"
-                    loading="eager"
-                  />
-                  {/* Badge Discreta */}
-                  <div className="absolute top-3 right-3 bg-[#0F172A]/90 border border-[#C0923E]/50 px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest text-[#DEC28B] backdrop-blur-md shadow-md">
-                    PRÉVIA DO MATERIAL
-                  </div>
+              {/* Card Container com Grade dos 4 Materiais */}
+              <div className="relative mx-auto rounded-2xl border border-[#B8892E]/40 bg-[#FFFDF8] p-4 shadow-xl gold-glow">
+                <div className="flex items-center justify-between border-b border-[#EADDC5] pb-3 mb-4">
+                  <span className="text-xs font-bold uppercase tracking-wider text-[#B8892E] flex items-center gap-1.5">
+                    <Layers className="h-4 w-4 text-[#B8892E]" />
+                    4 MATERIAIS DIGITAIS INCLUÍDOS
+                  </span>
+                  <span className="text-[11px] font-semibold bg-[#0B2942] text-[#FFFDF8] px-2.5 py-0.5 rounded-full">
+                    R$ 19,90
+                  </span>
+                </div>
+
+                {/* Grade 2x2 dos 4 Materiais */}
+                <div className="grid grid-cols-2 gap-3">
+                  {JOURNEY_MATERIALS.map((mat) => (
+                    <div
+                      key={mat.id}
+                      className="group relative flex flex-col justify-between overflow-hidden rounded-xl border border-[#EADDC5] bg-[#F7F0E3]/60 p-2.5 transition hover:border-[#B8892E] shadow-sm"
+                    >
+                      {mat.isMain ? (
+                        <div className="relative overflow-hidden rounded-lg bg-[#0B2942]">
+                          <img
+                            src="/images/page-1.webp"
+                            alt="Quando Nada Parece Fazer Sentido — Capa E-book"
+                            className="w-full h-auto block rounded-lg object-contain"
+                            loading="eager"
+                          />
+                        </div>
+                      ) : (
+                        <div className="flex flex-col justify-between h-36 rounded-lg border border-dashed border-[#B8892E]/40 bg-[#FFFDF8] p-2.5 text-center">
+                          <span className="text-[9px] font-bold uppercase tracking-wider text-[#B8892E] bg-[#F7F0E3] py-0.5 px-1.5 rounded">
+                            {mat.movement.split(" — ")[0]}
+                          </span>
+                          <div className="my-auto">
+                            <h4 className="font-serif text-xs font-bold leading-snug text-[#0B2942]">
+                              {mat.title}
+                            </h4>
+                          </div>
+                          <span className="text-[8px] font-semibold text-[#5C6062] uppercase tracking-wide">
+                            Material Digital (PDF)
+                          </span>
+                        </div>
+                      )}
+                      
+                      <div className="mt-2 text-left">
+                        <span className="text-[9px] font-bold uppercase tracking-wider text-[#B8892E] block">
+                          {mat.movement.split(" — ")[0]}
+                        </span>
+                        <h4 className="font-serif text-xs font-bold text-[#0B2942] leading-tight line-clamp-1">
+                          {mat.title}
+                        </h4>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="mt-4 pt-3 border-t border-[#EADDC5] text-center">
+                  <p className="text-xs text-[#5C6062]">
+                    Acesso imediato e download permanente no celular ou PC.
+                  </p>
                 </div>
               </div>
 
-              {/* Elementos decorativos vintage atrás do mockup */}
-              <div className="absolute -bottom-4 -left-4 -z-10 h-full w-full rounded-2xl border border-[#C0923E]/20 bg-[#C0923E]/5" />
+              {/* Decorativo de fundo */}
+              <div className="absolute -bottom-3 -left-3 -z-10 h-full w-full rounded-2xl border border-[#B8892E]/20 bg-[#B8892E]/5" />
             </div>
           </div>
 

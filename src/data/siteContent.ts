@@ -1,59 +1,116 @@
 export const editableFields = {
-  productName: "Eclesiastes — Quando Nada Parece Fazer Sentido",
-  productSubtitle: "Uma jornada visual pelo livro de Eclesiastes",
+  productName: "Jornada Debaixo do Sol",
+  productSubtitle: "Uma jornada bíblica em 4 movimentos baseada em Eclesiastes",
   companyName: "Acervo Seguro",
-  supportEmail: "", // Proprietário preencherá
-  privacyUrl: "",   // Proprietário preencherá
-  termsUrl: "",     // Proprietário preencherá
-  contactUrl: "",   // Proprietário preencherá
+  supportEmail: "",
+  privacyUrl: "",
+  termsUrl: "",
+  contactUrl: "",
   guaranteeDays: 7,
-  accessDurationText: "Acesso ilimitado e download permanente dos arquivos em PDF",
+  accessDurationText: "Acesso ilimitado e download permanente dos arquivos em PDF para uso pessoal",
   
-  // Oferta Individual
-  singleOfferPrice: "R$ 14,90",
+  // Oferta Consolidada da Jornada (4 materiais)
+  singleOfferPrice: "R$ 19,90",
   singleOfferOldPrice: "",
-  singleOfferCheckoutUrl: "", // Deixar vazio por padrão
-
-  // Oferta Completa (Bundle)
-  bundleEnabled: false, // Se falso, oculta a segunda oferta
-  bundleName: "Jornada Completa de Eclesiastes",
-  bundleOldPrice: "",
-  bundlePrice: "R$ 19,90",
-  bundleCheckoutUrl: "", // Deixar vazio por padrão
-  bundleMaterials: [] as string[],
+  singleOfferCheckoutUrl: "", // Proprietário preencherá link da plataforma de pagamento
 
   // Rastreamento
   metaPixelId: "",
   googleAnalyticsId: "",
 };
 
-export const offerConfig = {
-  single: {
-    enabled: true,
-    name: "E-book Eclesiastes",
-    price: editableFields.singleOfferPrice,
-    oldPrice: editableFields.singleOfferOldPrice,
-    checkoutUrl: editableFields.singleOfferCheckoutUrl,
-    pages: 50,
-    features: [
-      "E-book digital completo de Eclesiastes",
-      "50 páginas com mapas visuais",
-      "20 lições práticas e contemplativas",
-      "Reflexões, perguntas e orações sugeridas",
-      "Arquivo em formato PDF de alta resolução",
-      "Acesso e leitura pelo celular, tablet ou PC",
-      "Permissão de impressão para uso pessoal",
+export const JOURNEY_MATERIALS = [
+  {
+    id: 1,
+    movement: "MOVIMENTO 1 — COMPREENDER",
+    title: "Quando Nada Parece Fazer Sentido",
+    subtitle: "Compreender o que está acontecendo por dentro",
+    desc: "Um e-book visual de 50 páginas com 20 lições para compreender as principais ideias de Eclesiastes e relacioná-las ao tempo, ao trabalho, às escolhas, aos relacionamentos e ao propósito.",
+    highlights: [
+      "Explicações claras",
+      "Mapas visuais",
+      "Perguntas de reflexão",
+      "Práticas e orações",
     ],
+    pages: 50,
+    lessons: 20,
+    isMain: true,
+    coverSrc: "/images/page-1.webp",
   },
-  bundle: {
-    enabled: editableFields.bundleEnabled,
-    name: editableFields.bundleName,
-    price: editableFields.bundlePrice,
-    oldPrice: editableFields.bundleOldPrice,
-    checkoutUrl: editableFields.bundleCheckoutUrl,
-    materials: editableFields.bundleMaterials,
+  {
+    id: 2,
+    movement: "MOVIMENTO 2 — ESPERAR",
+    title: "Esperando sem Desperdiçar a Vida",
+    subtitle: "Esperar sem abandonar o presente",
+    desc: "Reflexões para atravessar períodos de espera sem colocar toda a vida em pausa e sem perder de vista aquilo que ainda pode ser vivido no presente.",
+    highlights: [
+      "Linguagem simples e direta",
+      "Perspectiva bíblica sobre a espera",
+      "Foco na presença diária",
+    ],
+    isMain: false,
+    coverSrc: null, // Card visual temporário elegante
   },
-};
+  {
+    id: 3,
+    movement: "MOVIMENTO 3 — PAUSAR",
+    title: "Pause Debaixo do Sol",
+    subtitle: "Interromper o automático",
+    desc: "Um material de pausa e reflexão para diminuir o ritmo, sair do automático e observar com mais atenção a vida que está acontecendo agora.",
+    highlights: [
+      "Exercícios de reflexão e pausa",
+      "Identificação do ritmo acelerado",
+      "Momentos de silêncio e presença",
+    ],
+    isMain: false,
+    coverSrc: null, // Card visual temporário elegante
+  },
+  {
+    id: 4,
+    movement: "MOVIMENTO 4 — REORIENTAR",
+    title: "Mapa do Vento",
+    subtitle: "Reorientar prioridades e energia",
+    desc: "Um guia de reflexão para reconhecer buscas, cobranças e movimentos que consomem energia sem produzir clareza, presença ou direção.",
+    highlights: [
+      "Mapeamento de prioridades",
+      "Identificação de buscas vazias",
+      "Redirecionamento de energia",
+    ],
+    isMain: false,
+    coverSrc: null, // Card visual temporário elegante
+  },
+];
+
+export const FOUR_MOVEMENTS = [
+  {
+    step: "1",
+    label: "MOVIMENTO 1 — COMPREENDER",
+    title: "Compreender o que está acontecendo por dentro",
+    desc: "Observar a fase atual com honestidade e compreender as perguntas que Eclesiastes apresenta sobre tempo, trabalho, escolhas e propósito.",
+    material: "Quando Nada Parece Fazer Sentido",
+  },
+  {
+    step: "2",
+    label: "MOVIMENTO 2 — ESPERAR",
+    title: "Esperar sem abandonar o presente",
+    desc: "Reconhecer que uma resposta ainda não chegou sem transformar toda a vida em uma sala de espera.",
+    material: "Esperando sem Desperdiçar a Vida",
+  },
+  {
+    step: "3",
+    label: "MOVIMENTO 3 — PAUSAR",
+    title: "Interromper o automático",
+    desc: "Criar momentos de silêncio, reflexão e presença para perceber aquilo que a pressa normalmente esconde.",
+    material: "Pause Debaixo do Sol",
+  },
+  {
+    step: "4",
+    label: "MOVIMENTO 4 — REORIENTAR",
+    title: "Reorientar prioridades e energia",
+    desc: "Identificar movimentos, expectativas e buscas que ocupam espaço sem produzir direção verdadeira.",
+    material: "Mapa do Vento",
+  },
+];
 
 export const PREVIEW_PAGES = [
   { num: 1, title: "Capa do E-book", desc: "Design elegante com iluminação clássica", src: "/images/page-1.webp" },
@@ -64,76 +121,49 @@ export const PREVIEW_PAGES = [
   { num: 8, title: "Mapa da Jornada", desc: "Estrutura visual completa dos temas", src: "/images/page-8.webp" },
 ];
 
-export const THEMES_LIST = [
-  { id: 1, title: "Quando tudo parece vazio", desc: "Compreender os momentos de frustração e transitoriedade." },
-  { id: 2, title: "Hevel: a vida como vapor", desc: "O conceito bíblico de ilusão, sopro e limitações humanas." },
-  { id: 3, title: "Nada é tão novo quanto parece", desc: "Perspectiva sobre os ciclos históricos e a busca pelo inédito." },
-  { id: 4, title: "Os limites da sabedoria", desc: "Reconhecer que o conhecimento humano não resolve o mistério da vida." },
-  { id: 5, title: "Prazer e conquistas", desc: "Por que acumular bens e entretenimento não preenche a alma." },
-  { id: 6, title: "Trabalho, cansaço e legado", desc: "Trabalhar com propósito sem ser consumido pelo ativismo." },
-  { id: 7, title: "O cotidiano como dom", desc: "Desfrutar do pão, da família e do dia a dia como presente divino." },
-  { id: 8, title: "Um tempo para cada propósito", desc: "Entender as estações da vida sem ansiedade pelo futuro." },
-  { id: 9, title: "Eternidade no coração", desc: "O anseio humano pelo infinito e as respostas em Deus." },
-  { id: 10, title: "Injustiça e temor de Deus", desc: "Como viver com integridade mesmo em um mundo imperfeito." },
-  { id: 11, title: "Comparação e descanso", desc: "Libertar-se da competição e cultivar a quietude interior." },
-  { id: 12, title: "Companheirismo e cooperação", desc: "A força das alianças genuínas: dois são melhores do que um." },
-  { id: 13, title: "Reverência diante de Deus", desc: "Postura nas orações, nos votos e na presença do Criador." },
-  { id: 14, title: "Dinheiro e falsa segurança", desc: "Como a riqueza pode escravizar quando se torna um ídolo." },
-  { id: 15, title: "Contentamento", desc: "A arte de viver satisfeito com o que se possui no presente." },
-  { id: 16, title: "Sabedoria em dias bons e maus", desc: "Equilíbrio emocional nas adversidades e nas alegrias." },
-  { id: 17, title: "Equilíbrio e humildade", desc: "Evitar os extremos do moralismo e da libertinagem." },
-  { id: 18, title: "Autoridade e justiça", desc: "Discernimento diante dos poderes e aparentes demoras de Deus." },
-  { id: 19, title: "Diligência em tempos incertos", desc: "Semear a semente sem tentar controlar o vento ou a chuva." },
-  { id: 20, title: "Lembrar-se do Criador", desc: "Honrar a Deus na juventude antes que venham os dias difíceis." },
-];
-
 export const METHOD_STEPS = [
-  { step: "1", title: "Leia a referência", desc: "Start pelo trecho bíblico indicado na lição." },
-  { step: "2", title: "Observe o mapa", desc: "Identifique a pergunta central, os símbolos e a estrutura visual." },
-  { step: "3", title: "Reflita com sinceridade", desc: "Examine como a mensagem se aplica ao seu trabalho, vínculos e rotina." },
-  { step: "4", title: "Pratique algo pequeno", desc: "Aplique uma mudança simples, concreta e possível no seu dia." },
-  { step: "5", title: "Ore sem pressão", desc: "Encerre conversando com Deus usando a oração sugerida ou suas palavras." },
+  { step: "1", title: "Leia a referência", desc: "Comece pelo trecho bíblico indicado no material." },
+  { step: "2", title: "Observe", desc: "Identifique a pergunta central, os símbolos e as ideias principais." },
+  { step: "3", title: "Reflita com sinceridade", desc: "Relacione a mensagem com suas escolhas, expectativas, vínculos e rotina." },
+  { step: "4", title: "Pratique algo pequeno", desc: "Transforme a reflexão em uma ação concreta e possível." },
+  { step: "5", title: "Ore sem pressão", desc: "Converse com Deus utilizando a oração sugerida ou suas próprias palavras." },
 ];
 
 export const FAQ_ITEMS = [
   {
     question: "O material é físico?",
-    answer: "Não. O produto é 100% digital e entregue em formato PDF. Você poderá acessá-lo instantaneamente em dispositivos compatíveis e imprimir para seu uso pessoal."
+    answer: "Não. A Jornada Debaixo do Sol é composta por materiais digitais, acessíveis em dispositivos compatíveis."
   },
   {
-    question: "Quantas páginas possui?",
-    answer: "O e-book principal possui 50 páginas organizadas com esquemas visuais, ilustrações clássicas, reflexões e orações."
+    question: "O que está incluído?",
+    answer: "Você receberá os quatro materiais da jornada: Quando Nada Parece Fazer Sentido, Esperando sem Desperdiçar a Vida, Pause Debaixo do Sol e Mapa do Vento."
   },
   {
     question: "Preciso conhecer profundamente a Bíblia?",
-    answer: "Não. O material foi estruturado de forma didática para apresentar o contexto, ideias centrais, versículos e aplicações práticas com muita clareza."
+    answer: "Não. O conteúdo foi organizado com uma linguagem clara e visual para facilitar a compreensão. As referências bíblicas permitem que você acompanhe a leitura diretamente na Bíblia."
   },
   {
-    question: "Posso usar em pequenos grupos?",
-    answer: "Sim! É um excelente recurso para apoiar conversas, estudos devocionais e reflexões conduzidas pelo comprador, desde que os arquivos não sejam redistribuídos."
+    question: "Preciso seguir uma ordem?",
+    answer: "A sequência Compreender, Esperar, Pausar e Reorientar foi criada para oferecer uma progressão lógica. Ainda assim, você pode adaptar a leitura ao momento que está vivendo."
   },
   {
-    question: "Posso imprimir o e-book?",
-    answer: "Sim. A impressão para uso pessoal do comprador é totalmente permitida."
+    question: "Posso ler pelo celular?",
+    answer: "Sim. Os materiais digitais podem ser acessados em celular, tablet ou computador compatível."
   },
   {
-    question: "Posso compartilhar o arquivo com outras pessoas?",
-    answer: "Não. A compra concede licença individual e pessoal. A redistribuição, revenda ou compartilhamento público é proibido por lei."
+    question: "Posso imprimir?",
+    answer: "Sim, para uso pessoal, respeitando os direitos autorais dos materiais."
   },
   {
-    question: "Como receberei o material?",
-    answer: "Após a confirmação do pagamento, você receberá um e-mail da plataforma de checkout com o link seguro para download dos arquivos."
-  },
-  {
-    question: "Por quanto tempo terei acesso?",
-    answer: editableFields.accessDurationText,
+    question: "Posso compartilhar os arquivos?",
+    answer: "Não. O acesso é destinado ao uso pessoal. A reprodução, redistribuição ou revenda dos arquivos não é autorizada."
   },
   {
     question: "O material substitui a leitura da Bíblia?",
-    answer: "Não. Trata-se de um recurso visual complementar que ajuda você a compreender e aplicar os ensinamentos do livro de Eclesiastes."
+    answer: "Não. A jornada foi criada como um recurso complementar de estudo, reflexão e aplicação."
   },
   {
-    question: "Quais são as formas de pagamento?",
-    answer: "As opções disponíveis (como Pix, Cartão de Crédito ou Boleto) serão apresentadas na tela segura de checkout."
+    question: "Existe garantia?",
+    answer: "Sim. A oferta possui garantia de 7 dias, conforme as condições apresentadas."
   }
 ];

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { editableFields, offerConfig } from "../data/siteContent";
+import { editableFields } from "../data/siteContent";
 import { Lock } from "lucide-react";
 
 export function MobileStickyCTA() {
@@ -9,9 +9,7 @@ export function MobileStickyCTA() {
     const handleScroll = () => {
       const scrollY = window.scrollY;
       const offersEl = document.getElementById("ofertas");
-      const faqEl = document.getElementById("faq");
       
-      // Hide if user is near top (< 300px) or inside offers/faq
       let isOverOffers = false;
       if (offersEl) {
         const rect = offersEl.getBoundingClientRect();
@@ -46,13 +44,13 @@ export function MobileStickyCTA() {
   };
 
   return (
-    <div className="md:hidden fixed bottom-0 inset-x-0 z-40 bg-[#0F172A]/95 border-t border-[#C0923E]/40 p-3 shadow-2xl backdrop-blur-md pb-[max(0.75rem,env(safe-area-inset-bottom))]">
+    <div className="md:hidden fixed bottom-0 inset-x-0 z-40 bg-[#0B2942]/95 border-t border-[#B8892E]/40 p-3 shadow-2xl backdrop-blur-md pb-[max(0.75rem,env(safe-area-inset-bottom))]">
       <div className="flex items-center justify-between gap-3">
         <div className="flex flex-col text-left">
-          <span className="text-[10px] font-bold uppercase tracking-wider text-[#DEC28B]">
-            E-book Eclesiastes
+          <span className="text-[10px] font-bold uppercase tracking-wider text-[#D6B76C]">
+            Jornada Debaixo do Sol
           </span>
-          <span className="text-base font-bold text-[#FFFDF7]">
+          <span className="text-base font-bold text-[#FFFDF8]">
             {price}
           </span>
         </div>
@@ -61,20 +59,20 @@ export function MobileStickyCTA() {
           <a
             href="#ofertas"
             onClick={handleClick}
-            className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-gradient-to-r from-[#16A34A] via-[#22C55E] to-[#15803D] px-4 py-2.5 text-xs font-extrabold uppercase tracking-wider text-white shadow-md"
+            className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-[#B8892E] px-4 py-2.5 text-xs font-extrabold uppercase tracking-wider text-[#0B2942] shadow-md"
           >
             <Lock className="h-3.5 w-3.5" />
-            <span>QUERO ACESSAR</span>
+            <span>QUERO INICIAR</span>
           </a>
         ) : (
           <a
             href={checkoutUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-gradient-to-r from-[#16A34A] via-[#22C55E] to-[#15803D] px-4 py-2.5 text-xs font-extrabold uppercase tracking-wider text-white shadow-md"
+            className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-[#B8892E] px-4 py-2.5 text-xs font-extrabold uppercase tracking-wider text-[#0B2942] shadow-md"
           >
             <Lock className="h-3.5 w-3.5" />
-            <span>QUERO ACESSAR</span>
+            <span>QUERO INICIAR</span>
           </a>
         )}
       </div>

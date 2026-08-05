@@ -1,10 +1,8 @@
 import React from "react";
-import { editableFields, offerConfig } from "../data/siteContent";
-import { ShieldCheck, Lock } from "lucide-react";
+import { editableFields } from "../data/siteContent";
+import { ShieldCheck, Smartphone, BookOpen, Lock } from "lucide-react";
 
 export function FinalCTA() {
-  const isBundleActive = editableFields.bundleEnabled;
-
   const scrollToOffers = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
     const el = document.getElementById("ofertas");
@@ -14,51 +12,52 @@ export function FinalCTA() {
   };
 
   return (
-    <section className="py-16 sm:py-24 bg-gradient-to-b from-[#0F172A] via-[#1E293B] to-[#0F172A] text-[#FFFDF7] relative overflow-hidden">
+    <section className="py-16 sm:py-24 bg-gradient-to-b from-[#0B2942] via-[#153B59] to-[#0B2942] text-[#FFFDF8] relative overflow-hidden">
+      {/* Background illumination */}
+      <div className="pointer-events-none absolute inset-0 opacity-20" aria-hidden="true">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[500px] rounded-full bg-[#B8892E] blur-[140px]" />
+      </div>
+
       <div className="relative mx-auto max-w-4xl px-4 sm:px-6 text-center">
         
-        <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal leading-tight text-[#FFFDF7]">
-          Descubra o que permanece quando tantas coisas parecem passageiras
+        <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-normal leading-tight text-[#FFFDF8]">
+          Você não precisa ter todas as respostas para começar a viver o presente com mais sabedoria.
         </h2>
 
-        <p className="mt-4 text-base sm:text-lg text-[#F8F0DE]/90 max-w-2xl mx-auto">
-          Percorra Eclesiastes com clareza, reflexão e aplicação prática, uma lição de cada vez.
+        <p className="mt-5 text-base sm:text-lg text-[#F7F0E3]/90 max-w-2xl mx-auto">
+          Comece a Jornada Debaixo do Sol e percorra os quatro movimentos: compreender, esperar, pausar e reorientar.
         </p>
 
-        <div className="mt-6 text-xs uppercase tracking-wider text-[#DEC28B]">
-          A partir de{" "}
-          <span className="text-2xl font-bold text-[#FFFDF7]">
+        <div className="mt-8 text-sm font-semibold uppercase tracking-wider text-[#D6B76C]">
+          Os 4 materiais digitais por{" "}
+          <span className="text-2xl font-bold text-[#FFFDF8]">
             {editableFields.singleOfferPrice}
           </span>
         </div>
 
-        <div className="mt-8 flex flex-col sm:flex-row justify-center gap-4">
+        <div className="mt-6 flex justify-center">
           <a
             href="#ofertas"
             onClick={scrollToOffers}
-            className="inline-flex items-center justify-center gap-3 rounded-xl bg-gradient-to-r from-[#16A34A] via-[#22C55E] to-[#15803D] px-8 py-4 text-base sm:text-lg font-extrabold uppercase tracking-wider text-white shadow-xl shadow-green-900/40 hover:scale-[1.02] hover:brightness-110 active:scale-[0.99]"
+            className="inline-flex min-h-[52px] items-center justify-center gap-3 rounded-xl bg-[#B8892E] px-8 py-4 text-base sm:text-lg font-bold uppercase tracking-wider text-[#0B2942] shadow-xl hover:bg-[#D6B76C] transition-all hover:scale-[1.01] active:scale-[0.99]"
           >
             <Lock className="h-5 w-5" />
-            <span>QUERO ACESSAR O MATERIAL</span>
+            <span>Quero iniciar a Jornada por {editableFields.singleOfferPrice}</span>
           </a>
-
-          {isBundleActive && (
-            <a
-              href="#ofertas"
-              onClick={scrollToOffers}
-              className="inline-flex items-center justify-center gap-3 rounded-xl border border-[#C0923E]/50 bg-[#071E32] px-6 py-4 text-base font-bold uppercase tracking-wider text-[#DEC28B] hover:bg-[#C0923E]/10"
-            >
-              PREFIRO SOMENTE O E-BOOK
-            </a>
-          )}
         </div>
 
-        <div className="mt-6 flex justify-center items-center gap-4 text-xs text-[#DEC28B]/70">
-          <span>Material digital</span>
+        <div className="mt-6 flex justify-center items-center gap-4 text-xs text-[#D6B76C]/80">
+          <span className="flex items-center gap-1">
+            <Smartphone className="h-3.5 w-3.5 text-[#D6B76C]" /> Material digital
+          </span>
           <span>•</span>
-          <span>Pagamento único</span>
+          <span className="flex items-center gap-1">
+            <ShieldCheck className="h-3.5 w-3.5 text-[#D6B76C]" /> Pagamento único
+          </span>
           <span>•</span>
-          <span>Acesso após a confirmação</span>
+          <span className="flex items-center gap-1">
+            <BookOpen className="h-3.5 w-3.5 text-[#D6B76C]" /> 7 dias de garantia
+          </span>
         </div>
 
       </div>

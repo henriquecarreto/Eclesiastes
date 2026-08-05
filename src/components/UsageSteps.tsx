@@ -1,58 +1,58 @@
 import React from "react";
-import { CheckCircle2, Calendar } from "lucide-react";
+import { METHOD_STEPS } from "../data/siteContent";
+import { BookOpen, Eye, HeartHandshake, Zap, MessageSquareQuote } from "lucide-react";
 
 export function UsageSteps() {
-  const steps = [
-    "Leia a referência bíblica.",
-    "Observe o mapa visual.",
-    "Leia a explicação.",
-    "Responda à pergunta de reflexão.",
-    "Faça a prática proposta.",
-    "Encerre com a oração.",
-  ];
+  const stepIcons = [BookOpen, Eye, HeartHandshake, Zap, MessageSquareQuote];
 
   return (
-    <section className="py-16 sm:py-24 bg-[#F8F0DE] text-[#1D252C]">
+    <section className="py-16 sm:py-24 bg-[#EADDC5] text-[#1F272D] border-b border-[#B8892E]/20">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         
         {/* Header */}
         <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-flex items-center gap-2 rounded-full border border-[#C0923E]/30 bg-[#FFFDF7] px-3.5 py-1.5 text-xs font-semibold uppercase tracking-widest text-[#A97924]">
-            RITMO FLEXÍVEL
+          <span className="inline-flex items-center gap-2 rounded-full border border-[#B8892E]/40 bg-[#FFFDF8] px-3.5 py-1.5 text-xs font-bold uppercase tracking-widest text-[#B8892E]">
+            UM MÉTODO SIMPLES
           </span>
-          <h2 className="mt-4 font-serif text-3xl sm:text-4xl font-normal text-[#0B2D4A] tracking-tight">
-            Você não precisa concluir tudo de uma vez
+          
+          <h2 className="mt-5 font-serif text-3xl sm:text-4xl lg:text-4.5xl font-normal leading-tight text-[#0B2942] tracking-tight">
+            Leia, observe, reflita, pratique e ore
           </h2>
-          <p className="mt-3 text-base text-[#46515B]">
-            A jornada foi planejada para se encaixar na sua rotina diária sem gerar sobrecarga.
+        </div>
+
+        {/* 5 Passos */}
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
+          {METHOD_STEPS.map((item, idx) => {
+            const Icon = stepIcons[idx] || BookOpen;
+            return (
+              <div
+                key={idx}
+                className="flex flex-col justify-between rounded-2xl border border-[#B8892E]/30 bg-[#FFFDF8] p-5 shadow-sm transition hover:border-[#B8892E]"
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="font-serif font-bold text-xs bg-[#0B2942] text-[#FFFDF8] px-2.5 py-0.5 rounded-full">
+                      Passo {item.step}
+                    </span>
+                    <Icon className="h-5 w-5 text-[#B8892E]" />
+                  </div>
+                  <h3 className="font-serif text-base font-bold text-[#0B2942]">
+                    {item.title}
+                  </h3>
+                  <p className="mt-2 text-xs sm:text-sm text-[#5C6062] leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+
+        {/* Texto complementar de apoio ao ritmo */}
+        <div className="mt-10 mx-auto max-w-2xl text-center">
+          <p className="text-sm sm:text-base text-[#1F272D] leading-relaxed font-sans">
+            Você pode percorrer a jornada no seu ritmo, utilizando pequenos momentos da rotina sem transformar a leitura em mais uma cobrança.
           </p>
-        </div>
-
-        {/* Steps Grid */}
-        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 max-w-4xl mx-auto">
-          {steps.map((stepText, idx) => (
-            <div
-              key={idx}
-              className="flex items-center gap-4 rounded-xl border border-[#EAD9B5] bg-[#FFFDF7] p-4 shadow-sm"
-            >
-              <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-[#C0923E]/20 text-[#A97924] font-serif font-bold text-sm">
-                {idx + 1}
-              </span>
-              <span className="text-sm font-medium text-[#0B2D4A]">
-                {stepText}
-              </span>
-            </div>
-          ))}
-        </div>
-
-        {/* Highlight Card */}
-        <div className="mt-10 max-w-2xl mx-auto text-center">
-          <div className="flex items-center justify-center gap-3 rounded-2xl border border-[#C0923E]/40 bg-[#FFFDF7] p-5 shadow-md gold-glow">
-            <Calendar className="h-6 w-6 text-[#A97924] shrink-0" />
-            <p className="text-sm sm:text-base font-serif font-bold text-[#0B2D4A]">
-              Use uma lição por dia, duas por semana ou adapte o material à sua rotina.
-            </p>
-          </div>
         </div>
 
       </div>

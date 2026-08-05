@@ -3,14 +3,14 @@ import { AnnouncementBar } from "../components/AnnouncementBar";
 import { Hero } from "../components/Hero";
 import { TrustStrip } from "../components/TrustStrip";
 import { ProblemSolution } from "../components/ProblemSolution";
-import { Methodology } from "../components/Methodology";
-import { PreviewCarousel } from "../components/PreviewCarousel";
+import { BeliefBreak } from "../components/BeliefBreak";
+import { FourMovements } from "../components/FourMovements";
 import { ProductDetails } from "../components/ProductDetails";
-import { Audience } from "../components/Audience";
 import { UsageSteps } from "../components/UsageSteps";
+import { PreviewCarousel } from "../components/PreviewCarousel";
 import { Benefits } from "../components/Benefits";
+import { Audience } from "../components/Audience";
 import { Offers } from "../components/Offers";
-import { AccessSteps } from "../components/AccessSteps";
 import { Guarantee } from "../components/Guarantee";
 import { FAQ } from "../components/FAQ";
 import { FinalCTA } from "../components/FinalCTA";
@@ -23,17 +23,17 @@ export const Route = createFileRoute("/")({
   component: LandingPage,
   head: () => ({
     meta: [
-      { title: `${editableFields.productName} | ${editableFields.companyName}` },
+      { title: "Jornada Debaixo do Sol | 4 Guias Visuais Baseados em Eclesiastes" },
       {
         name: "description",
         content:
-          "Uma jornada visual de 50 páginas pelo livro de Eclesiastes, com 20 lições, reflexões, práticas e orações para o cotidiano.",
+          "Uma jornada bíblica em quatro movimentos para compreender fases de espera, sair do automático e reorganizar prioridades com mais sabedoria.",
       },
-      { property: "og:title", content: `${editableFields.productName} | ${editableFields.companyName}` },
+      { property: "og:title", content: "Jornada Debaixo do Sol | 4 Guias Visuais Baseados em Eclesiastes" },
       {
         property: "og:description",
         content:
-          "Uma jornada visual de 50 páginas pelo livro de Eclesiastes, com 20 lições, reflexões, práticas e orações para o cotidiano.",
+          "Uma jornada bíblica em quatro movimentos para compreender fases de espera, sair do automático e reorganizar prioridades com mais sabedoria.",
       },
       { property: "og:type", content: "product" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -44,14 +44,14 @@ export const Route = createFileRoute("/")({
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Product",
-          name: editableFields.productName,
+          name: "Jornada Debaixo do Sol",
           description:
-            "E-book digital com 50 páginas e 20 lições visuais pelo livro de Eclesiastes.",
+            "Uma jornada bíblica em quatro movimentos para compreender fases de espera, sair do automático e reorganizar prioridades com mais sabedoria.",
           brand: { "@type": "Brand", name: editableFields.companyName },
           category: "Livros e Literatura Bíblica",
           offers: {
             "@type": "Offer",
-            price: editableFields.singleOfferPrice.replace("R$", "").replace(",", ".").trim(),
+            price: "19.90",
             priceCurrency: "BRL",
             availability: "https://schema.org/InStock",
           },
@@ -75,62 +75,62 @@ export const Route = createFileRoute("/")({
 
 function LandingPage() {
   return (
-    <div className="min-h-screen bg-[#FFFDF7] text-[#1D252C] selection:bg-[#C0923E]/30 selection:text-[#071E32]">
+    <div className="min-h-screen bg-[#FFFDF8] text-[#1F272D] selection:bg-[#B8892E]/30 selection:text-[#0B2942]">
       {/* 1. Barra Superior */}
       <AnnouncementBar />
 
-      {/* Main Content Sections */}
+      {/* Seções Principais */}
       <main id="top">
-        {/* 2. Hero */}
+        {/* 2. Primeira Dobra (Hero) */}
         <Hero />
 
         {/* 3. Faixa de Confiança */}
         <TrustStrip />
 
-        {/* 4. Identificação com o Problema */}
+        {/* 4. Identificação com a Dor */}
         <ProblemSolution />
 
-        {/* 5. Metodologia */}
-        <Methodology />
+        {/* 5. Quebra de Crença */}
+        <BeliefBreak />
 
-        {/* 6. Carrossel de Prévia */}
-        <PreviewCarousel />
+        {/* 6. Mecanismo dos Quatro Movimentos */}
+        <FourMovements />
 
-        {/* 7. Apresentação do Produto */}
+        {/* 7. Apresentação dos Quatro Materiais */}
         <ProductDetails />
 
-        {/* 8. Para Quem É */}
-        <Audience />
-
-        {/* 10. Como Utilizar */}
+        {/* 8. Como Utilizar (Método) */}
         <UsageSteps />
 
-        {/* 11. Benefícios */}
+        {/* 9. Prévia do Material */}
+        <PreviewCarousel />
+
+        {/* 10. Benefícios */}
         <Benefits />
 
-        {/* 12. Ofertas */}
+        {/* 11. Para Quem É / Para Quem Não É */}
+        <Audience />
+
+        {/* 12. Apresentação Consolidada da Oferta */}
         <Offers />
 
-        {/* 13. Como o Acesso Funciona */}
-        <AccessSteps />
-
-        {/* 14. Garantia */}
+        {/* 13. Garantia */}
         <Guarantee />
 
-        {/* 15. FAQ */}
+        {/* 14. Perguntas Frequentes */}
         <FAQ />
 
-        {/* 16. CTA Final */}
+        {/* 15. Chamada Final */}
         <FinalCTA />
       </main>
 
-      {/* 17. Rodapé */}
+      {/* 16. Rodapé */}
       <Footer />
 
-      {/* 18. CTA Fixo Celular */}
+      {/* 17. CTA Fixo Celular */}
       <MobileStickyCTA />
 
-      {/* 19. Botão Voltar ao Topo */}
+      {/* 18. Botão Voltar ao Topo */}
       <BackToTop />
     </div>
   );

@@ -1,72 +1,76 @@
 import React from "react";
-import { Eye, Layers, CheckSquare, Heart, Clock, Printer } from "lucide-react";
+import { Lightbulb, Eye, Flame, BookOpen, Clock, CheckCircle2 } from "lucide-react";
 
 export function Benefits() {
-  const benefitCards = [
+  const benefitsList = [
+    {
+      icon: Lightbulb,
+      title: "Clareza",
+      desc: "Organizar pensamentos e compreender melhor a fase que você está vivendo.",
+    },
     {
       icon: Eye,
-      title: "Clareza",
-      desc: "Ideias complexas apresentadas de forma visual.",
+      title: "Presença",
+      desc: "Voltar a perceber a vida que está acontecendo enquanto algumas respostas ainda não chegaram.",
     },
     {
-      icon: Layers,
-      title: "Organização",
-      desc: "Uma sequência simples para atravessar o livro.",
+      icon: Flame,
+      title: "Prioridades",
+      desc: "Refletir sobre aquilo que merece tempo, atenção e energia.",
     },
     {
-      icon: CheckSquare,
-      title: "Aplicação",
-      desc: "Relação direta com o cotidiano.",
-    },
-    {
-      icon: Heart,
-      title: "Profundidade",
-      desc: "Perguntas que ajudam a examinar prioridades.",
+      icon: BookOpen,
+      title: "Sabedoria bíblica",
+      desc: "Relacionar as ideias de Eclesiastes com situações reais do cotidiano.",
     },
     {
       icon: Clock,
       title: "Constância",
-      desc: "Leitura possível em pequenos períodos.",
+      desc: "Utilizar o material em pequenos momentos, respeitando seu ritmo.",
     },
     {
-      icon: Printer,
-      title: "Praticidade",
-      desc: "Acesso digital e possibilidade de impressão para uso pessoal.",
+      icon: CheckCircle2,
+      title: "Aplicação",
+      desc: "Transformar reflexões em pequenas práticas possíveis.",
     },
   ];
 
   return (
-    <section className="py-16 sm:py-24 bg-[#FFFDF7] text-[#1D252C]">
+    <section className="py-16 sm:py-24 bg-[#FFFDF8] text-[#1F272D] border-b border-[#EADDC5]">
       <div className="mx-auto max-w-6xl px-4 sm:px-6">
         
         {/* Header */}
         <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-flex items-center gap-2 rounded-full border border-[#C0923E]/30 bg-[#F8F0DE] px-3.5 py-1.5 text-xs font-semibold uppercase tracking-widest text-[#A97924]">
-            BENEFÍCIOS REAIS
+          <span className="inline-flex items-center gap-2 rounded-full border border-[#B8892E]/30 bg-[#F7F0E3] px-3.5 py-1.5 text-xs font-bold uppercase tracking-widest text-[#B8892E]">
+            O QUE ESTA JORNADA PODE AJUDAR VOCÊ A FAZER
           </span>
-          <h2 className="mt-4 font-serif text-3xl sm:text-4xl font-normal text-[#0B2D4A] tracking-tight">
-            Mais do que terminar uma leitura: compreender, refletir e aplicar
+          
+          <h2 className="mt-5 font-serif text-3xl sm:text-4xl lg:text-4.5xl font-normal leading-tight text-[#0B2942] tracking-tight">
+            Mais do que terminar uma leitura: compreender e aplicar
           </h2>
         </div>
 
-        {/* 6 Cards Grid */}
-        <div className="mt-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {benefitCards.map((card, idx) => (
-            <div
-              key={idx}
-              className="rounded-2xl border border-[#EAD9B5] bg-[#F8F0DE]/50 p-6 shadow-sm transition hover:-translate-y-1 hover:border-[#C0923E] hover:bg-[#FFFDF7]"
-            >
-              <span className="grid h-10 w-10 place-items-center rounded-xl bg-[#C0923E]/20 text-[#A97924]">
-                <card.icon className="h-5 w-5 stroke-[1.75]" />
-              </span>
-              <h3 className="mt-4 font-serif text-xl font-bold text-[#0B2D4A]">
-                {card.title}
-              </h3>
-              <p className="mt-2 text-sm text-[#46515B] leading-relaxed">
-                {card.desc}
-              </p>
-            </div>
-          ))}
+        {/* 6 Cards de Benefícios */}
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {benefitsList.map((item, idx) => {
+            const Icon = item.icon;
+            return (
+              <div
+                key={idx}
+                className="flex flex-col justify-start rounded-2xl border border-[#EADDC5] bg-[#F7F0E3]/40 p-6 shadow-sm transition hover:border-[#B8892E]"
+              >
+                <div className="grid h-12 w-12 place-items-center rounded-xl bg-[#FFFDF8] border border-[#B8892E]/30 text-[#B8892E] shadow-sm mb-4">
+                  <Icon className="h-6 w-6 stroke-[1.75]" />
+                </div>
+                <h3 className="font-serif text-xl font-bold text-[#0B2942]">
+                  {item.title}
+                </h3>
+                <p className="mt-2 text-sm text-[#5C6062] leading-relaxed">
+                  {item.desc}
+                </p>
+              </div>
+            );
+          })}
         </div>
 
       </div>
