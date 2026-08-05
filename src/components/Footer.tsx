@@ -2,64 +2,66 @@ import React from "react";
 import { editableFields } from "../data/siteContent";
 
 export function Footer() {
+  const supportEmail = editableFields.supportEmail || "aprovavisual@gmail.com";
+
   return (
-    <footer className="bg-[#0B2942] text-[#F7F0E3]/70 border-t border-[#B8892E]/20 py-12 px-4 sm:px-6 font-sans text-xs sm:text-sm">
+    <footer className="bg-black text-white font-sans border-t border-zinc-900 py-10 px-4 sm:px-6">
       <div className="mx-auto max-w-6xl">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6 border-b border-[#B8892E]/10 pb-8">
+        
+        {/* Parte Superior */}
+        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 pb-8">
           
-          {/* Logo & Marca */}
-          <div className="flex items-center gap-3">
-            <span className="font-serif text-xl font-bold tracking-tight text-[#FFFDF8]">
-              {editableFields.companyName}
-            </span>
-            <span className="text-[#B8892E]">•</span>
-            <span className="text-xs text-[#D6B76C]">
-              {editableFields.productName}
-            </span>
+          {/* Logo & Descrição da Marca */}
+          <div className="flex flex-col items-start">
+            <div className="flex items-center gap-3">
+              <img
+                src="/logo.png"
+                alt="Logo Acervo Seguro"
+                className="h-10 w-10 rounded-full object-contain border border-[#B8892E]/40"
+                onError={(e) => {
+                  // Fallback se logo.png não estiver no caminho
+                  (e.target as HTMLElement).style.display = 'none';
+                }}
+              />
+              <span className="text-xl font-bold text-white tracking-tight">
+                {editableFields.companyName}
+              </span>
+            </div>
+
+            <p className="mt-3 text-xs sm:text-sm text-zinc-400 max-w-md leading-relaxed">
+              Coleção digital sobre o Livro de Eclesiastes — Jornada Debaixo do Sol. Desenvolvido para auxílio no estudo, leitura e reflexão bíblica.
+            </p>
           </div>
 
-          {/* Links Legais */}
-          <div className="flex flex-wrap justify-center gap-6 text-xs text-[#D6B76C]">
-            {editableFields.privacyUrl ? (
-              <a href={editableFields.privacyUrl} target="_blank" rel="noopener noreferrer" className="hover:underline">
-                Política de Privacidade
+          {/* Suporte ao Cliente */}
+          <div className="flex flex-col items-start md:items-end text-left md:text-right">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-white">
+              SUPORTE AO CLIENTE
+            </h4>
+            <p className="mt-2 text-xs sm:text-sm text-zinc-400">
+              E-mail de suporte:{" "}
+              <a
+                href={`mailto:${supportEmail}`}
+                className="font-bold text-[#D6B76C] hover:underline"
+              >
+                {supportEmail}
               </a>
-            ) : (
-              <span className="opacity-60">Política de Privacidade</span>
-            )}
-
-            {editableFields.termsUrl ? (
-              <a href={editableFields.termsUrl} target="_blank" rel="noopener noreferrer" className="hover:underline">
-                Termos de Uso
-              </a>
-            ) : (
-              <span className="opacity-60">Termos de Uso</span>
-            )}
-
-            {editableFields.contactUrl ? (
-              <a href={editableFields.contactUrl} target="_blank" rel="noopener noreferrer" className="hover:underline">
-                Contato
-              </a>
-            ) : editableFields.supportEmail ? (
-              <a href={`mailto:${editableFields.supportEmail}`} className="hover:underline">
-                Suporte
-              </a>
-            ) : (
-              <span className="opacity-60">Suporte ao Cliente</span>
-            )}
+            </p>
           </div>
+
         </div>
 
-        {/* Texto Institucional & Não Afiliação */}
-        <div className="mt-8 space-y-3 text-center md:text-left text-[11px] sm:text-xs leading-relaxed opacity-75">
-          <p>
-            Este site não é afiliado ao Facebook™, Instagram™, Google™ ou a outras plataformas mencionadas.
+        {/* Divisor */}
+        <div className="border-t border-zinc-900" />
+
+        {/* Parte Inferior Centralizada */}
+        <div className="pt-8 text-center text-xs text-zinc-400 space-y-3 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-zinc-300">
+            © {new Date().getFullYear()} {editableFields.companyName}. Todos os direitos reservados.
           </p>
-          <p>
-            Todos os direitos sobre a obra “Jornada Debaixo do Sol” são reservados à marca Acervo Seguro. A reprodução, redistribuição ou revenda não autorizada dos materiais é proibida.
-          </p>
-          <p className="pt-2 text-[10px] uppercase tracking-wider text-[#D6B76C]">
-            © {new Date().getFullYear()} {editableFields.companyName}. Todos os direitos reservados. Produto 100% Digital.
+
+          <p className="text-[11px] sm:text-xs text-zinc-500">
+            Aviso legal: Este produto é um recurso educativo digital comercializado como acervo complementar. As marcas e plataformas de checkout terceiras mencionadas são de propriedade de seus respectivos titulares.
           </p>
         </div>
 

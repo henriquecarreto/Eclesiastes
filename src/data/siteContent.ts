@@ -2,7 +2,7 @@ export const editableFields = {
   productName: "Jornada Debaixo do Sol",
   productSubtitle: "Uma jornada bíblica em 4 movimentos baseada em Eclesiastes",
   companyName: "Acervo Seguro",
-  supportEmail: "",
+  supportEmail: "aprovavisual@gmail.com",
   privacyUrl: "",
   termsUrl: "",
   contactUrl: "",
