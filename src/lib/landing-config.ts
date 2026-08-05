@@ -29,9 +29,12 @@ export type ConfigKey = keyof typeof CONFIG;
 
 export function trackEvent(name: string, payload?: Record<string, unknown>) {
   if (typeof window === "undefined") return;
-  // Placeholder — no fake pixel/analytics ids. Emit CustomEvent for future wiring.
   try {
     window.dispatchEvent(new CustomEvent("lp:track", { detail: { name, payload } }));
+    const win = window as unknown as { fbq?: (...args: unknown[]) => void };
+    if (typeof win.fbq === "function") {
+      win.fbq("track", name, payload);
+    }
   } catch {
     /* noop */
   }
